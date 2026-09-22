@@ -1,0 +1,17 @@
+/* AuctionWire · Badge  (registry id: badge · class: .aw-badge)
+   Contract: components/badge.md · Coded mirror: components/coded/badge.html */
+
+/* ── Badge (count indicator) ──────────────────────────────────────────── */
+.aw-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px; padding: 0 var(--aw-badge-padding-x); border-radius: var(--aw-radius-pill);
+  background: var(--aw-caution); color: var(--aw-badge-text);
+  font-size: var(--aw-fs-caption); font-weight: var(--aw-fw-bold);
+}
+.aw-badge--positive { background: var(--aw-positive); color: var(--aw-text-primary); }
+.aw-badge-dot { width: 8px; height: 8px; border-radius: var(--aw-radius-pill); background: var(--aw-urgency); }
+/* anchor a badge to the top-right of a relatively-positioned host */
+.aw-badge-anchor { position: absolute; top: -4px; right: -4px; }
+/* Payment-plan addition — screenshot reconstruction, not yet verified against live Figma. */
+/* Soft positive badge (green text on faint green fill) — e.g. "Save 25%". */
+.aw-badge--positive-soft { min-width: 0; height: auto; padding: var(--aw-space-micro) var(--aw-space-row); background: var(--aw-badge-soft-positive-bg); color: var(--aw-text-accent); font-size: var(--aw-fs-chip); line-height: var(--aw-lh-chip); font-weight: var(--aw-fw-semibold); }

@@ -1,0 +1,12 @@
+/* AuctionWire · Fast switcher  (registry id: fast-switcher · class: .aw-fast-switcher)
+   Contract: components/fast-switcher.md · Coded mirror: components/coded/fast-switcher.html */
+
+/* ── Fast switcher — focal-zoom strip of circular thumbnails ───────────── */
+.aw-fast-switcher { display: flex; align-items: center; justify-content: center; gap: var(--aw-space-block); }
+.aw-fast-switcher__thumb {
+  width: 40px; height: 40px; border-radius: var(--aw-radius-pill);
+  background: var(--aw-surface-raised); border: 1px solid var(--aw-border-hairline);
+  flex: none; overflow: hidden; opacity: 0.6;
+  transition: transform var(--aw-dur-fast) var(--aw-ease-out), opacity var(--aw-dur-fast) var(--aw-ease-out);
+}
+.aw-fast-switcher__thumb.is-focal { width: 64px; height: 64px; opacity: 1; border-color: var(--aw-border-primary); }

@@ -1,0 +1,13 @@
+/* AuctionWire · Device frame  (registry id: device · class: .aw-device)
+   Contract: components/device.md · Coded mirror: components/coded/device.html */
+
+/* ── Device / screen frame (web preview surface) ──────────────────────── */
+.aw-device {
+  width: 402px;
+  max-width: 100%;
+  background: var(--aw-bg);
+  border-radius: var(--aw-radius-screen);
+  border: 1px solid var(--aw-zinc-800);
+  overflow: hidden;
+  position: relative;
+}

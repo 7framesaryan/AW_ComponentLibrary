@@ -1,0 +1,10 @@
+/* AuctionWire · Glass top bar  (registry id: top-bar · class: .aw-top-bar)
+   Contract: components/top-bar.md · Coded mirror: components/coded/top-bar.html */
+
+/* ── Glass top bar (home greeting) ────────────────────────────────────── */
+.aw-top-bar {
+  display: flex; align-items: center; gap: var(--aw-space-block);
+  height: 64px; padding: 0 var(--aw-space-section);
+}
+.aw-top-bar__greeting { flex: 1; min-width: 0; }
+.aw-top-bar__actions { display: flex; align-items: center; gap: var(--aw-space-block); }

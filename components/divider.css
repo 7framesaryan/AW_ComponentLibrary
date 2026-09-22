@@ -1,0 +1,6 @@
+/* AuctionWire · Divider  (registry id: divider · class: .aw-divider)
+   Contract: components/divider.md · Coded mirror: components/coded/divider.html */
+
+/* ── Divider ──────────────────────────────────────────────────────────── */
+.aw-divider { height: 1px; background: var(--aw-border-subtle); border: 0; margin: var(--aw-space-section) 0; }
+.aw-divider--primary { background: var(--aw-border-primary-soft); }

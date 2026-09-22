@@ -1,0 +1,7 @@
+/* AuctionWire · Fact row  (registry id: fact-row · class: .aw-fact-row)
+   Contract: components/fact-row.md · Coded mirror: components/coded/fact-row.html */
+
+.aw-fact-row { display: flex; align-items: center; gap: var(--aw-space-tight); }
+.aw-fact-row__label { font-size: var(--aw-fs-sm); color: var(--aw-text-muted); }
+.aw-fact-row .aw-icon { color: var(--aw-text-warning-dim); }
+.aw-fact-row__value { font-size: var(--aw-fs-sm); color: var(--aw-text-primary); }

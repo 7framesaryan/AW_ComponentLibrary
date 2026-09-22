@@ -1,0 +1,5 @@
+/* AuctionWire · Success indicator  (registry id: success-indicator · class: .aw-success-indicator)
+   Contract: components/success-indicator.md · Coded mirror: components/coded/success-indicator.html */
+
+.aw-success-indicator { display: flex; align-items: center; justify-content: center; width: var(--aw-success-size); height: var(--aw-success-size); flex: none; border-radius: var(--aw-radius-pill); background: var(--aw-success-surface); color: var(--aw-success-icon-color); }
+.aw-success-indicator__glyph { font-family: var(--aw-font-sans); font-weight: var(--aw-fw-bold); font-size: var(--aw-success-icon-size); line-height: var(--aw-success-icon-line); }

@@ -1,0 +1,11 @@
+/* AuctionWire · Avatar  (registry id: avatar · class: .aw-avatar)
+   Contract: components/avatar.md · Coded mirror: components/coded/avatar.html */
+
+/* ── Avatar ───────────────────────────────────────────────────────────── */
+.aw-avatar {
+  width: 32px; height: 32px; border-radius: var(--aw-radius-pill);
+  background: var(--aw-zinc-200); overflow: hidden; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--aw-avatar-figure);
+}
+.aw-avatar img { width: 100%; height: 100%; object-fit: cover; }

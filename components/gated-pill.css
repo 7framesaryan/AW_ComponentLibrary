@@ -1,0 +1,12 @@
+/* AuctionWire · Gated pill  (registry id: gated-pill · class: .aw-gated-pill)
+   Contract: components/gated-pill.md · Coded mirror: components/coded/listing-card.html (folded into listing-card) */
+
+/* Gated pill — "Seller 🔒" / "PSA Grade 🔒" */
+.aw-gated-pill {
+  display: inline-flex; align-items: center; gap: var(--aw-space-tight);
+  height: 24px; padding: 0 var(--aw-space-row);
+  border-radius: var(--aw-radius-md);
+  background: var(--aw-surface-raised);
+  font-size: var(--aw-fs-xs); font-weight: var(--aw-fw-medium); color: var(--aw-text-primary);
+}
+.aw-gated-pill .aw-icon { color: var(--aw-text-warning-dim); }   /* amber lock #936316 */

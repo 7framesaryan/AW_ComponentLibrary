@@ -1,0 +1,20 @@
+/* AuctionWire · More-menu  (registry id: menu · class: .aw-menu)
+   Contract: components/menu.md · Coded mirror: components/coded/menu.html */
+
+/* ── More menu (overflow dropdown) ────────────────────────────────────── */
+.aw-menu {
+  min-width: 200px; padding: var(--aw-space-row);
+  border-radius: var(--aw-radius-card);
+  background: var(--aw-surface-raised); border: 1px solid var(--aw-border-hairline);
+  box-shadow: var(--aw-shadow-hairline);
+  display: flex; flex-direction: column; gap: var(--aw-space-micro);
+}
+.aw-menu__item {
+  display: flex; align-items: center; gap: var(--aw-space-block);
+  padding: var(--aw-space-row) var(--aw-space-block); border-radius: var(--aw-radius-sm);
+  font-size: var(--aw-fs-sm); color: var(--aw-text-body);
+  text-decoration: none;
+  transition: background var(--aw-dur-fast) var(--aw-ease-out);
+}
+.aw-menu__item:hover { background: var(--aw-surface-strong); color: var(--aw-text-primary); }
+.aw-menu__item.is-danger { color: var(--aw-text-danger); }

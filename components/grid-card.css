@@ -1,0 +1,14 @@
+/* AuctionWire · PLP grid card  (registry id: grid-card · class: .aw-grid-card)
+   Contract: components/grid-card.md · Coded mirror: components/coded/grid-card.html */
+
+/* ── PLP grid card — compact 2-up (183 wide, no inline CTA) ───────────── */
+.aw-grid-card {
+  width: 100%; /* fills its column span: 2 columns = 181px on the 402px screen */ padding: var(--aw-space-row);
+  border-radius: var(--aw-radius-card);
+  border: 1px solid var(--aw-zinc-600);
+  background: var(--aw-surface-translucent);
+  box-shadow: var(--aw-shadow-hairline);
+  display: flex; flex-direction: column; gap: var(--aw-space-row);
+}
+.aw-grid-card__media { position: relative; width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; background: var(--aw-surface-raised); border-radius: var(--aw-radius-sm); }
+.aw-grid-card__title { color: var(--aw-text-high-alt); }

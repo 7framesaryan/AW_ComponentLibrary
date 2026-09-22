@@ -1,0 +1,8 @@
+/* AuctionWire · Screen  (registry id: screen · class: .aw-screen)
+   Contract: components/screen.md · Coded mirror: components/coded/screen.html */
+
+.aw-screen {
+  background: var(--aw-bg);
+  min-height: 100%;
+  padding: 0 var(--aw-space-section);
+}

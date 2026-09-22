@@ -1,0 +1,14 @@
+/* AuctionWire · Status chip  (registry id: status-chip · class: .aw-status-chip)
+   Contract: components/status-chip.md · Coded mirror: components/coded/status-chip.html */
+
+/* ── Status chip — auction state (own colours) ────────────────────────── */
+.aw-status-chip {
+  display: inline-flex; align-items: center; gap: var(--aw-space-tight);
+  height: 24px; padding: 0 var(--aw-space-row);
+  border-radius: var(--aw-radius-pill);
+  font-size: var(--aw-fs-chip); font-weight: var(--aw-fw-medium);
+}
+.aw-status-chip::before { content: ""; width: 6px; height: 6px; border-radius: var(--aw-radius-pill); background: currentColor; }
+.aw-status-chip--live   { background: var(--aw-accent-deep);        color: var(--aw-positive); }
+.aw-status-chip--upcoming{ background: var(--aw-accent-warning-soft); color: var(--aw-caution); }
+.aw-status-chip--ended  { background: var(--aw-surface-raised);     color: var(--aw-text-muted); }

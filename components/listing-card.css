@@ -1,0 +1,55 @@
+/* AuctionWire · Listing card  (registry id: listing-card · class: .aw-listing-card)
+   Contract: components/listing-card.md · Coded mirror: components/coded/listing-card.html */
+
+/* ── Listing card — carbon copy of AW Design System "Main Cards" (292 × 487).
+   Source: tyqrAWDfmJ8E7yLRmap6VH → Components → Card Base (268 × 455).
+   Subscription-gated: locked meta + "Subscribe to see full details". ─────── */
+.aw-listing-card {
+  position: relative; width: 292px; padding: var(--aw-space-block);
+  border-radius: var(--aw-radius-hero);
+  border: 1px solid var(--aw-border-hairline);   /* #52525b */
+  background: var(--aw-black);
+  box-shadow: var(--aw-shadow-hairline);
+  display: flex; flex-direction: column; align-items: center; gap: var(--aw-space-block);
+  transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+}
+.aw-listing-card:active { opacity: 0.9; }
+/* Thumbnail — 144×176 slab in a white holder */
+.aw-listing-card__media { position: relative; width: 100%; display: flex; justify-content: center; }
+.aw-listing-card__photo {
+  width: 144px; height: 176px; border-radius: var(--aw-radius-sm);
+  background-color: var(--aw-white);
+  background-size: cover; background-position: center;
+}
+.aw-listing-card__fav {
+  position: absolute; top: 0; right: 0; width: 28px; height: 28px;
+  border-radius: var(--aw-radius-favourite);
+  border: 1px solid var(--aw-border-hairline);
+  background: var(--aw-black);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--aw-text-primary);
+}
+.aw-listing-card.is-watched .aw-listing-card__fav { border-color: var(--aw-caution); }
+.aw-listing-card__body { width: 100%; display: flex; flex-direction: column; gap: var(--aw-space-block); }
+.aw-listing-card__title {
+  font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-semibold);
+  color: var(--aw-text-high-alt);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.aw-listing-card__pills { display: flex; align-items: center; gap: var(--aw-space-row); }
+.aw-listing-card__bid { display: flex; align-items: baseline; gap: var(--aw-space-row); }
+.aw-listing-card__bid-count { font-size: var(--aw-fs-xs); color: var(--aw-text-muted); }
+.aw-listing-card__facts { display: flex; flex-direction: column; gap: var(--aw-space-micro); }
+.aw-listing-card__footer { width: 100%; display: flex; flex-direction: column; gap: var(--aw-space-row); }
+.aw-listing-card__urgency { font-size: var(--aw-fs-xs); font-weight: var(--aw-fw-medium); color: var(--aw-text-danger); }
+.aw-listing-card__subscribe {
+  display: flex; align-items: center; gap: var(--aw-space-tight);
+  font-size: var(--aw-fs-xs); font-weight: var(--aw-fw-medium); color: var(--aw-text-warning-dim);
+}
+.aw-listing-card__cta {
+  width: 100%; height: 32px; border-radius: var(--aw-radius-button);
+  border: 1px solid var(--aw-positive);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: var(--aw-fs-xs); font-weight: var(--aw-fw-medium); color: var(--aw-text-accent);
+  background: none;
+}

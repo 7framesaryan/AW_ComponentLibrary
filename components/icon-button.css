@@ -1,0 +1,20 @@
+/* AuctionWire · Icon button  (registry id: icon-button · class: .aw-btn-icon)
+   Contract: components/icon-button.md · Coded mirror: components/coded/icon-button.html */
+
+/* Icon-only primary button (page-title header add/scan) */
+.aw-btn-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 43px; height: 43px; border-radius: var(--aw-radius-button);
+  background: var(--aw-positive); color: var(--aw-zinc-50);
+  transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+}
+.aw-btn-icon:active { opacity: 0.7; }
+/* Ghost icon button — #3f3f46 fill + #71717a border */
+.aw-btn-icon-ghost {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 32px; border-radius: var(--aw-radius-button);
+  background: var(--aw-surface-strong); border: 1px solid var(--aw-border-strong);
+  color: var(--aw-text-secondary);
+  transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+}
+.aw-btn-icon-ghost:active { opacity: 0.7; }

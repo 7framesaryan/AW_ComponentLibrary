@@ -1,0 +1,10 @@
+/* AuctionWire · Calendar strip  (registry id: calendar-strip · class: .aw-calendar-strip)
+   Contract: components/calendar-strip.md · Coded mirror: components/coded/calendar-strip.html */
+
+/* ── Calendar strip + auction entry ───────────────────────────────────── */
+.aw-calendar-strip {
+  display: flex; gap: var(--aw-space-row);
+  border-radius: var(--aw-radius-card);
+  background: var(--aw-surface); border: 1px solid var(--aw-border-hairline);
+  padding: var(--aw-space-block); overflow-x: auto;
+}

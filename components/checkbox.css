@@ -1,0 +1,13 @@
+/* AuctionWire · Checkbox  (registry id: checkbox · class: .aw-checkbox)
+   Contract: components/checkbox.md · Coded mirror: components/coded/checkbox.html */
+
+/* ── Checkbox / Radio ─────────────────────────────────────────────────── */
+/* split from the shared rule ".aw-checkbox, .aw-radio" */
+.aw-checkbox {
+  width: 20px; height: 20px; border: 1px solid var(--aw-border-strong);
+  background: transparent; display: inline-flex; align-items: center; justify-content: center;
+  color: var(--aw-zinc-50);
+}
+.aw-checkbox { border-radius: var(--aw-radius-sm); }
+/* split from the shared rule ".aw-checkbox.is-checked, .aw-radio.is-checked" */
+.aw-checkbox.is-checked { background: var(--aw-positive); border-color: var(--aw-positive); }

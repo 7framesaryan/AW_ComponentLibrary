@@ -1,0 +1,8 @@
+/* AuctionWire · Bottom action bar  (registry id: action-bar · class: .aw-action-bar)
+   Contract: components/action-bar.md · Coded mirror: components/coded/action-bar.html */
+
+/* ── Bottom action bar (glass, holds the primary CTA) ─────────────────── */
+.aw-action-bar {
+  padding: var(--aw-space-section);
+  border-top: 1px solid var(--aw-border-ghost);
+}

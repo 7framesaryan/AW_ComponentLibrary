@@ -1,0 +1,6 @@
+/* AuctionWire · Filter chip row  (registry id: filter-row · class: .aw-filter-row)
+   Contract: components/filter-row.md · Coded mirror: components/coded/filter-row.html */
+
+/* ── Filter chip row (scrollable) ─────────────────────────────────────── */
+.aw-filter-row { display: flex; gap: var(--aw-space-row); overflow-x: auto; scrollbar-width: none; }
+.aw-filter-row::-webkit-scrollbar { display: none; }

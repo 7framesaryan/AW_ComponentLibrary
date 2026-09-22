@@ -1,0 +1,6 @@
+/* AuctionWire · Dots  (registry id: dots · class: .aw-dots)
+   Contract: components/dots.md · Coded mirror: components/coded/dots.html */
+
+.aw-dots { display: flex; gap: var(--aw-space-tight); justify-content: center; }
+.aw-dot { width: 6px; height: 6px; border-radius: var(--aw-radius-pill); background: var(--aw-border-strong); }
+.aw-dot.is-active { background: var(--aw-text-primary); width: 16px; }

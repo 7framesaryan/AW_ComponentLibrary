@@ -1,0 +1,9 @@
+/* AuctionWire · Stat card  (registry id: stat-card · class: .aw-stat-card)
+   Contract: components/stat-card.md · Coded mirror: components/coded/stat-card.html */
+
+.aw-stat-card {
+  border-radius: var(--aw-radius-card);
+  border: 1px solid var(--aw-border-hairline);
+  background: var(--aw-surface); padding: var(--aw-space-section);
+  display: flex; flex-direction: column; gap: var(--aw-space-tight);
+}

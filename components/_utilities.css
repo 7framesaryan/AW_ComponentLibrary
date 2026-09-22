@@ -1,0 +1,21 @@
+/* AuctionWire · utilities — card imagery (.aw-photo, .aw-thumb) and .aw-root--transparent.
+   Not components (registered under "utilities" in components.json). Loaded last so photo
+   backgrounds win over the component surfaces they sit on. */
+
+/* thumbnail image helpers (real DS slab thumbnails) */
+.aw-thumb--mantle    { background-image: var(--aw-thumb-mantle); }
+.aw-thumb--henderson { background-image: var(--aw-thumb-henderson); }
+.aw-thumb--jordan    { background-image: var(--aw-thumb-jordan); }
+.aw-thumb--lebron    { background-image: var(--aw-thumb-lebron); }
+.aw-thumb--magic     { background-image: var(--aw-thumb-magic); }
+.aw-thumb--reggie    { background-image: var(--aw-thumb-reggie); }
+/* ── Real card imagery helpers ────────────────────────────────────────────
+   Apply to any media/thumbnail box to fill it with a real card photo instead
+   of a flat placeholder. cover-crops and centres. */
+.aw-photo { background-size: cover; background-position: center; background-color: var(--aw-surface-raised); }
+.aw-photo--aaron   { background-image: var(--aw-img-aaron); }
+.aw-photo--cobb    { background-image: var(--aw-img-cobb); }
+.aw-photo--mantels { background-image: var(--aw-img-mantels); background-position: top center; }
+.aw-photo--slab    { background-image: var(--aw-img-slab); background-position: top center; }
+.aw-photo--hero    { background-image: var(--aw-img-hero); }
+.aw-root--transparent { background: transparent; }

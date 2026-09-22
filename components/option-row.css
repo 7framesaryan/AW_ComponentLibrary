@@ -1,0 +1,7 @@
+/* AuctionWire · Filter option row  (registry id: option-row · class: .aw-option-row)
+   Contract: components/option-row.md · Coded mirror: components/coded/option-row.html */
+
+/* ── Filter option row (list of selectable options) ───────────────────── */
+.aw-option-row { display: flex; align-items: center; justify-content: space-between; padding: var(--aw-space-block) 0; border-bottom: 1px solid var(--aw-border-subtle); }
+.aw-option-row:last-child { border-bottom: 0; }
+.aw-option-row__label { font-size: var(--aw-fs-sm); color: var(--aw-text-body); }

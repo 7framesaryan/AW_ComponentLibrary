@@ -1,0 +1,17 @@
+/* AuctionWire · Sheet  (registry id: sheet · class: .aw-sheet)
+   Contract: components/sheet.md · Coded mirror: components/coded/sheet.html */
+
+/* ── Filter sheet / modal (bottom sheet) ──────────────────────────────── */
+.aw-sheet {
+  border-radius: var(--aw-radius-hero) var(--aw-radius-hero) 0 0;
+  background: var(--aw-surface-raised);
+  border-top: 1px solid var(--aw-border-ghost);
+  padding: var(--aw-space-section);
+}
+.aw-sheet__handle { width: 36px; height: 4px; border-radius: var(--aw-radius-pill); background: var(--aw-zinc-600); margin: 0 auto var(--aw-space-section); }
+/* Payment-plan addition — screenshot reconstruction, not yet verified against live Figma. */
+/* Modal sheet variant: near-black fill for payment / confirmation sheets,
+   distinct from the raised-grey filter sheet. Larger top radius. */
+.aw-sheet--modal { background: var(--aw-sheet-modal-surface); border-top: 0; border-radius: var(--aw-radius-sheet) var(--aw-radius-sheet) 0 0; padding: var(--aw-space-section-sm) var(--aw-space-section-sm) var(--aw-space-header-pad); }
+.aw-sheet__title { margin: 0 0 var(--aw-space-section-sm); text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); font-weight: var(--aw-fw-bold); color: var(--aw-text-primary); }
+.aw-sheet__footnote { margin: var(--aw-space-block) 0 0; text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); }

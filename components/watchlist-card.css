@@ -1,0 +1,10 @@
+/* AuctionWire · Watchlist card  (registry id: watchlist-card · class: .aw-watchlist-card)
+   Contract: components/watchlist-card.md · Coded mirror: components/coded/watchlist-card.html */
+
+/* ── Watchlist card + stat card ───────────────────────────────────────── */
+.aw-watchlist-card {
+  border-radius: var(--aw-radius-card);
+  border: 1px solid var(--aw-border-hairline);
+  background: var(--aw-surface); padding: var(--aw-space-block);
+  box-shadow: var(--aw-shadow-soft);
+}

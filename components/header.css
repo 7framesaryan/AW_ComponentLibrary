@@ -1,0 +1,9 @@
+/* AuctionWire · Second-level header  (registry id: header · class: .aw-header)
+   Contract: components/header.md · Coded mirror: components/coded/header.html */
+
+/* ── Mobile header (2nd level) ────────────────────────────────────────── */
+.aw-header {
+  display: flex; align-items: center; gap: var(--aw-space-block);
+  height: 64px; padding: 0 var(--aw-space-section);
+}
+.aw-header__title { flex: 1; text-align: center; }

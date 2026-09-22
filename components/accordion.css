@@ -1,0 +1,9 @@
+/* AuctionWire · Accordion  (registry id: accordion · class: .aw-accordion)
+   Contract: components/accordion.md · Coded mirror: components/coded/accordion.html */
+
+/* ── Accordion (calendar month, expandable) ───────────────────────────── */
+.aw-accordion { border-radius: var(--aw-radius-card); border: 1px solid var(--aw-border-hairline); background: var(--aw-surface); overflow: hidden; }
+.aw-accordion__head { display: flex; align-items: center; justify-content: space-between; padding: var(--aw-space-block) var(--aw-space-section); cursor: pointer; }
+.aw-accordion__chevron { transition: transform var(--aw-dur-fast) var(--aw-ease-out); color: var(--aw-text-muted); }
+.aw-accordion.is-open .aw-accordion__chevron { transform: rotate(90deg); }
+.aw-accordion__body { padding: 0 var(--aw-space-section) var(--aw-space-section); display: flex; flex-direction: column; gap: var(--aw-space-row); }

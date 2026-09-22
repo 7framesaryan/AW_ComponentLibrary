@@ -1,0 +1,12 @@
+/* AuctionWire · Segmented  (registry id: segmented · class: .aw-segmented)
+   Contract: components/segmented.md · Coded mirror: components/coded/segmented.html */
+
+/* ── Segmented / toggle button (List / Chart) ─────────────────────────── */
+.aw-segmented { display: inline-flex; padding: var(--aw-space-micro); border-radius: var(--aw-radius-pill); background: var(--aw-surface-raised); }
+.aw-segmented__opt {
+  display: inline-flex; align-items: center; gap: var(--aw-space-tight);
+  padding: var(--aw-space-tight) var(--aw-space-block); border-radius: var(--aw-radius-pill);
+  font-size: var(--aw-fs-chip); font-weight: var(--aw-fw-medium); color: var(--aw-text-muted);
+  transition: background var(--aw-dur-fast) var(--aw-ease-out);
+}
+.aw-segmented__opt.is-active { background: var(--aw-surface-strong); color: var(--aw-text-primary); }

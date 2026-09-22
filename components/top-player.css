@@ -1,0 +1,11 @@
+/* AuctionWire · Top-player card  (registry id: top-player · class: .aw-top-player)
+   Contract: components/top-player.md · Coded mirror: components/coded/top-player.html */
+
+/* ── Top-player card — ranked, compact ────────────────────────────────── */
+.aw-top-player {
+  display: flex; align-items: center; gap: var(--aw-space-row);
+  padding: var(--aw-space-row);
+  border-radius: var(--aw-radius-card);
+  background: var(--aw-surface); border: 1px solid var(--aw-border-hairline);
+}
+.aw-top-player__rank { font-size: var(--aw-fs-xs); font-weight: var(--aw-fw-bold); color: var(--aw-text-accent); }

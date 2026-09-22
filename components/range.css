@@ -1,0 +1,16 @@
+/* AuctionWire · Range  (registry id: range · class: .aw-range)
+   Contract: components/range.md · Coded mirror: components/coded/range.html */
+
+/* ── Range input (price / year filter) ────────────────────────────────── */
+.aw-range { display: flex; align-items: center; gap: var(--aw-space-block); }
+.aw-range__input {
+  flex: 1; height: 40px; padding: 0 var(--aw-space-block);
+  border-radius: var(--aw-radius-search-sm);
+  background: var(--aw-surface); border: 1px solid var(--aw-border-strong);
+  color: var(--aw-text-primary); font-size: var(--aw-fs-sm); outline: none;
+}
+.aw-range__input:focus { border-color: var(--aw-border-primary); }
+.aw-range__sep { color: var(--aw-text-muted); }
+.aw-range__track { position: relative; height: 4px; border-radius: var(--aw-radius-pill); background: var(--aw-surface-strong); margin: var(--aw-space-section) 0; }
+.aw-range__fill { position: absolute; height: 100%; border-radius: var(--aw-radius-pill); background: var(--aw-positive); }
+.aw-range__knob { position: absolute; top: 50%; width: 16px; height: 16px; border-radius: var(--aw-radius-pill); background: var(--aw-zinc-50); transform: translate(-50%, -50%); box-shadow: var(--aw-shadow-hairline); }
