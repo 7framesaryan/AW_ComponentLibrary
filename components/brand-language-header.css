@@ -1,9 +1,0 @@
-/* AuctionWire · Brand / language header  (registry id: brand-language-header · class: .aw-brand-language-header)
-   Contract: components/brand-language-header.md · Coded mirror: components/coded/brand-language-header.html */
-
-.aw-brand-language-header { display: flex; justify-content: space-between; align-items: center; height: var(--aw-brand-logo-height); }
-.aw-brand-language-header__wordmark { position: relative; width: var(--aw-brand-logo-width); height: var(--aw-brand-logo-height); flex: none; }
-.aw-brand-language-header__wordmark img { position: absolute; left: var(--aw-brand-ink-left); top: var(--aw-brand-ink-top); width: var(--aw-brand-ink-width); height: var(--aw-brand-ink-height); max-width: none; }
-.aw-brand-language-header__language { display: flex; align-items: center; gap: var(--aw-space-row); color: var(--aw-text-high-alt); font-family: var(--aw-font-language); font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular); }
-.aw-brand-language-header__flag { position: relative; width: var(--aw-language-flag-size); height: var(--aw-language-flag-size); flex: none; }
-.aw-brand-language-header__flag img { position: absolute; left: var(--aw-language-flag-render-offset); top: var(--aw-language-flag-render-offset); width: var(--aw-language-flag-render-size); height: var(--aw-language-flag-render-size); max-width: none; }

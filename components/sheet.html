@@ -1,0 +1,198 @@
+<!doctype html>
+<!--
+  AuctionWire · Sheet  (registry id: sheet · class: .aw-sheet · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-sheet .aw-sheet__handle .aw-sheet--modal .aw-sheet__title .aw-sheet__footnote
+  Composes (rules copied for the specimen): .aw-btn (button), .aw-btn-icon-ghost (icon-button), .aw-checkbox (checkbox), .aw-option-row (option-row)
+  Contract: Foundations components/sheet.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css, icons/sprite/
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Sheet</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-surface-raised: #27272a;
+    --aw-surface-strong: #3f3f46;
+    --aw-surface-glass-bar-alt: #00000033;
+    --aw-border-subtle: #27272a;
+    --aw-border-strong: #71717a;
+    --aw-border-ghost: #ffffff26;
+    --aw-text-primary: #ffffff;
+    --aw-text-body: #e4e4e7;
+    --aw-text-secondary: #d4d4d8;
+    --aw-text-muted: #a1a1aa;
+    --aw-text-accent-dim: #42835a;
+    --aw-positive: #009350;
+    --aw-zinc-50: #fafafa;
+    --aw-zinc-500: #71717a;
+    --aw-zinc-600: #52525b;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-medium: 500;
+    --aw-fw-semibold: 600;
+    --aw-fw-bold: 700;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-fs-sm: 14px;
+    --aw-fs-base: 16px;
+    --aw-lh-base: 24px;
+    --aw-fs-lg: 18px;
+    --aw-lh-lg: 28px;
+    --aw-space-row: 8px;
+    --aw-space-block: 12px;
+    --aw-space-section: 16px;
+    --aw-space-header-pad: 20px;
+    --aw-space-section-sm: 24px;
+    --aw-radius-sm: 4px;
+    --aw-radius-button: 8px;
+    --aw-radius-hero: 12px;
+    --aw-radius-pill: 9999px;
+    --aw-shadow-primary-glow: 0 4px 12px 0 #00935033;
+    --aw-glass-blur-sheet: 30px;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
+    --aw-sheet-modal-surface: #0a0a0b;
+    --aw-radius-sheet: 24px;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Element-only reset (specificity 1) so any component class always wins over it. */
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+  .aw-section-title-lg { font-size: var(--aw-fs-base); font-weight: var(--aw-fw-semibold); color: var(--aw-text-secondary); }
+  .aw-glass-sheet {
+    background: var(--aw-surface-glass-bar-alt);
+    backdrop-filter: blur(var(--aw-glass-blur-sheet));
+    -webkit-backdrop-filter: blur(var(--aw-glass-blur-sheet));
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+  .aw-icon svg { display: block; width: 100%; height: 100%; }
+
+  /* — composed components it sits with (from components/) — */
+  .aw-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: var(--aw-space-row);
+    height: 48px; padding: 0 var(--aw-space-section-sm);
+    border: 0; border-radius: var(--aw-radius-button);
+    font-family: inherit;
+    font-size: var(--aw-fs-base); line-height: var(--aw-lh-base);
+    font-weight: var(--aw-fw-medium);
+    cursor: pointer;
+    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  .aw-btn:active { opacity: 0.7; }
+  .aw-btn--primary { background: var(--aw-positive); color: var(--aw-zinc-50); }
+  .aw-btn--primary:hover { box-shadow: var(--aw-shadow-primary-glow); } /* glow max once per screen */
+  .aw-btn--outline { background: transparent; color: var(--aw-positive); border: 1px solid var(--aw-positive); }
+  .aw-btn--full { width: 100%; }
+  .aw-btn[disabled], .aw-btn.is-disabled {
+    background: var(--aw-text-accent-dim); color: var(--aw-zinc-500);
+    pointer-events: none;
+  }
+  .aw-btn--outline[disabled], .aw-btn--outline.is-disabled {
+    background: transparent; border-color: var(--aw-text-accent-dim); color: var(--aw-zinc-500);
+  }
+  /* Ghost icon button — #3f3f46 fill + #71717a border */
+  .aw-btn-icon-ghost {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 32px; border-radius: var(--aw-radius-button);
+    background: var(--aw-surface-strong); border: 1px solid var(--aw-border-strong);
+    color: var(--aw-text-secondary);
+    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  .aw-btn-icon-ghost:active { opacity: 0.7; }
+  /* split from the shared rule ".aw-checkbox, .aw-radio" */
+  .aw-checkbox {
+    width: 20px; height: 20px; border: 1px solid var(--aw-border-strong);
+    background: transparent; display: inline-flex; align-items: center; justify-content: center;
+    color: var(--aw-zinc-50);
+  }
+  .aw-checkbox { border-radius: var(--aw-radius-sm); }
+  /* split from the shared rule ".aw-checkbox.is-checked, .aw-radio.is-checked" */
+  .aw-checkbox.is-checked { background: var(--aw-positive); border-color: var(--aw-positive); }
+  .aw-option-row { display: flex; align-items: center; justify-content: space-between; padding: var(--aw-space-block) 0; border-bottom: 1px solid var(--aw-border-subtle); }
+  .aw-option-row:last-child { border-bottom: 0; }
+  .aw-option-row__label { font-size: var(--aw-fs-sm); color: var(--aw-text-body); }
+
+  /* — component — */
+  /* ── Filter sheet / modal (bottom sheet) ──────────────────────────────── */
+  .aw-sheet {
+    border-radius: var(--aw-radius-hero) var(--aw-radius-hero) 0 0;
+    background: var(--aw-surface-raised);
+    border-top: 1px solid var(--aw-border-ghost);
+    padding: var(--aw-space-section);
+  }
+  .aw-sheet__handle { width: 36px; height: 4px; border-radius: var(--aw-radius-pill); background: var(--aw-zinc-600); margin: 0 auto var(--aw-space-section); }
+  /* Modal sheet variant: near-black fill for payment / confirmation sheets,
+     distinct from the raised-grey filter sheet. Larger top radius. */
+  .aw-sheet--modal { background: var(--aw-sheet-modal-surface); border-top: 0; border-radius: var(--aw-radius-sheet) var(--aw-radius-sheet) 0 0; padding: var(--aw-space-section-sm) var(--aw-space-section-sm) var(--aw-space-header-pad); }
+  .aw-sheet__title { margin: 0 0 var(--aw-space-section-sm); text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); font-weight: var(--aw-fw-bold); color: var(--aw-text-primary); }
+  .aw-sheet__footnote { margin: var(--aw-space-block) 0 0; text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <!-- icon sprite: only the 2 symbols this component uses (from the Foundations icons/sprite/) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m4 12.5 5 5 11-11"/>
+    </symbol>
+      <symbol id="aw-i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m6 6 12 12M18 6 6 18"/>
+    </symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Sheet</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Filter sheet (default, on .aw-glass-sheet)</div>
+      <div class="aw-sheet aw-glass-sheet">
+        <div class="aw-sheet__handle"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <span class="aw-section-title-lg">Filters</span>
+          <button type="button" class="aw-btn-icon-ghost" aria-label="Close"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-close"/></svg></button>
+        </div>
+        <div class="aw-option-row"><span class="aw-option-row__label">PSA 9 &amp; above</span><span class="aw-checkbox is-checked"><svg class="aw-icon" style="width:14px;height:14px" aria-hidden="true"><use href="#aw-i-check"/></svg></span></div>
+        <div class="aw-option-row"><span class="aw-option-row__label">Raw / ungraded</span><span class="aw-checkbox"></span></div>
+        <div style="display:flex;gap:12px;margin-top:20px">
+          <button type="button" class="aw-btn aw-btn--outline" style="flex:1">Reset</button>
+          <button type="button" class="aw-btn aw-btn--primary" style="flex:2">Show 248 results</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Modal (.aw-sheet--modal) — payment / confirm</div>
+      <div class="aw-sheet aw-sheet--modal">
+        <div class="aw-sheet__handle"></div>
+        <h2 class="aw-sheet__title">Choose your plan</h2>
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--full">Continue</button>
+        <p class="aw-sheet__footnote">Cancel anytime. Billed on our website.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

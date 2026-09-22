@@ -1,0 +1,95 @@
+<!doctype html>
+<!--
+  AuctionWire · Social auth button  (registry id: social-btn · class: .aw-social-btn · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-social-btn .aw-social-btn--google .aw-social-btn--apple
+  Contract: Foundations components/social-btn.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css, icons/sprite/
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Social auth button</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-black: #000000;
+    --aw-white: #ffffff;
+    --aw-google-stroke: #747775;
+    --aw-google-text: #1f1f1f;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-medium: 500;
+    --aw-fs-sm: 14px;
+    --aw-space-row: 8px;
+    --aw-radius-button: 8px;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Element-only reset (specificity 1) so any component class always wins over it. */
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+  .aw-icon svg { display: block; width: 100%; height: 100%; }
+
+  /* — component — */
+  /* ── Social auth button (component-owned brand colours) ────────────────── */
+  .aw-social-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--aw-space-row);
+    width: 100%; height: 48px; border-radius: var(--aw-radius-button);
+    font-size: var(--aw-fs-sm); font-weight: var(--aw-fw-medium);
+    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  .aw-social-btn:active { opacity: 0.8; }
+  .aw-social-btn--google { background: var(--aw-white); color: var(--aw-google-text); border: 1px solid var(--aw-google-stroke); }
+  .aw-social-btn--apple  { background: var(--aw-white); color: var(--aw-black); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <!-- icon sprite: only the 2 symbols this component uses (from the Foundations icons/sprite/) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-apple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path fill="currentColor" stroke="none" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.5 3 2.4 1.2-.05 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.75 1.3-.02 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.03-.01-2.5-.96-2.5-3.85Zm-2.3-7.1c.7-.8 1.1-2 1-3.1-.95.04-2.1.64-2.8 1.44-.6.7-1.2 1.9-1 3 1.05.08 2.1-.54 2.8-1.34Z"/>
+    </symbol>
+      <symbol id="aw-i-google" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path fill="#4285F4" stroke="none" d="M21.6 12.2c0-.7-.06-1.3-.2-2H12v3.8h5.4c-.2 1.2-.9 2.3-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3Z"/><path fill="#34A853" stroke="none" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.7-5.6-4.1H3.1v2.6C4.7 19.8 8.1 22 12 22Z"/><path fill="#FBBC05" stroke="none" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1C2.4 8.8 2 10.4 2 12s.4 3.2 1.1 4.6L6.4 14Z"/><path fill="#EA4335" stroke="none" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8C16.9 2.9 14.7 2 12 2 8.1 2 4.7 4.2 3.1 7.4L6.4 10c.8-2.4 3-4.1 5.6-4.1Z"/>
+    </symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Social auth button</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Google &amp; Apple</div>
+      <div class="stack">
+        <button type="button" class="aw-social-btn aw-social-btn--google"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-google"/></svg>Continue with Google</button>
+        <button type="button" class="aw-social-btn aw-social-btn--apple"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-apple"/></svg>Continue with Apple</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

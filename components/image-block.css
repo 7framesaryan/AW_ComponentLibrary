@@ -1,5 +1,0 @@
-/* AuctionWire · Image block  (registry id: image-block · class: .aw-image-block)
-   Contract: components/image-block.md · Coded mirror: components/coded/image-block.html */
-
-/* ── Image block + carousel dots ──────────────────────────────────────── */
-.aw-image-block { position: relative; border-radius: var(--aw-radius-sm); overflow: hidden; background: var(--aw-surface-raised); display: flex; align-items: center; justify-content: center; }

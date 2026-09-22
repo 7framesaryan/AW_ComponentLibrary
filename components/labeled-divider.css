@@ -1,6 +1,0 @@
-/* AuctionWire · Labeled divider  (registry id: labeled-divider · class: .aw-labeled-divider)
-   Contract: components/labeled-divider.md · Coded mirror: components/coded/labeled-divider.html */
-
-/* ── Labeled divider ("or") ───────────────────────────────────────────── */
-.aw-labeled-divider { display: flex; align-items: center; gap: var(--aw-space-block); color: var(--aw-text-muted); font-size: var(--aw-fs-xs); }
-.aw-labeled-divider::before, .aw-labeled-divider::after { content: ""; flex: 1; height: 1px; background: var(--aw-border-subtle); }

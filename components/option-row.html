@@ -1,0 +1,95 @@
+<!doctype html>
+<!--
+  AuctionWire · Filter option row  (registry id: option-row · class: .aw-option-row · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-option-row .aw-option-row__label
+  Composes (rules copied for the specimen): .aw-checkbox (checkbox)
+  Contract: Foundations components/option-row.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css, icons/sprite/
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Filter option row</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-border-subtle: #27272a;
+    --aw-border-strong: #71717a;
+    --aw-text-primary: #ffffff;
+    --aw-text-body: #e4e4e7;
+    --aw-positive: #009350;
+    --aw-zinc-50: #fafafa;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fs-sm: 14px;
+    --aw-space-block: 12px;
+    --aw-radius-sm: 4px;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+  .aw-icon svg { display: block; width: 100%; height: 100%; }
+
+  /* — composed components it sits with (from components/) — */
+  /* split from the shared rule ".aw-checkbox, .aw-radio" */
+  .aw-checkbox {
+    width: 20px; height: 20px; border: 1px solid var(--aw-border-strong);
+    background: transparent; display: inline-flex; align-items: center; justify-content: center;
+    color: var(--aw-zinc-50);
+  }
+  .aw-checkbox { border-radius: var(--aw-radius-sm); }
+  /* split from the shared rule ".aw-checkbox.is-checked, .aw-radio.is-checked" */
+  .aw-checkbox.is-checked { background: var(--aw-positive); border-color: var(--aw-positive); }
+
+  /* — component — */
+  /* ── Filter option row (list of selectable options) ───────────────────── */
+  .aw-option-row { display: flex; align-items: center; justify-content: space-between; padding: var(--aw-space-block) 0; border-bottom: 1px solid var(--aw-border-subtle); }
+  .aw-option-row:last-child { border-bottom: 0; }
+  .aw-option-row__label { font-size: var(--aw-fs-sm); color: var(--aw-text-body); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <!-- icon sprite: only the 1 symbol this component uses (from the Foundations icons/sprite/) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m4 12.5 5 5 11-11"/>
+    </symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Filter option row</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Option list (last row loses its border)</div>
+      <div>
+        <div class="aw-option-row"><span class="aw-option-row__label">PSA 9 &amp; above</span><span class="aw-checkbox is-checked"><svg class="aw-icon" style="width:14px;height:14px" aria-hidden="true"><use href="#aw-i-check"/></svg></span></div>
+        <div class="aw-option-row"><span class="aw-option-row__label">PSA 6 – 8</span><span class="aw-checkbox"></span></div>
+        <div class="aw-option-row"><span class="aw-option-row__label">Raw / ungraded</span><span class="aw-checkbox"></span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

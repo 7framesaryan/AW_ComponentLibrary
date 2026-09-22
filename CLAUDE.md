@@ -10,21 +10,20 @@ are all there, in `AW_DesignLanguage/02-design-system/`. Come here only for the 
 
 | You need | Open |
 |---|---|
-| How one component looks (the source of truth) | `components/<id>.css` — that one file only |
-| A drop-in coded component for an artifact | `coded/<id>.html` — that one file only, it is self-contained |
-| The cascade order / the list of components | `components.css` |
-| What a coded file demonstrates | `scripts/specimens.mjs` |
+| How one component looks, or to change it | `components/<id>.html` — that one file only. Its `component` block is the styling |
+| A drop-in coded component for an artifact | the same `components/<id>.html` — it is self-contained |
+| The cascade order / the list of components | `cascade.mjs` |
 
-Never read the whole of `components/` or `coded/`. Never open `coded/*.html` to *edit* it — it is
-generated from `components/<id>.css` + `scripts/specimens.mjs`.
+There is **one file per component**, and it is both the drop-in and the source. Never read the whole
+of `components/` — open only the one you need.
 
 ## Rules
 
 - Every value is a Foundations token (`var(--aw-*)`). A raw hex fails the check.
-- Editing a component means editing **one** `components/<id>.css`, then
-  `node scripts/build-mirrors.mjs`, then `node scripts/check.mjs`.
+- Editing a component means editing **one** `components/<id>.html` — the rules under its `component`
+  marker, keeping its demo markup and `:root` token list in step — then `node scripts/check.mjs`.
 - After changing how a component looks or behaves, update its guideline
-  `components/<id>.md` in the Foundations repo in the same pass. The `.md` and the CSS must agree.
+  `components/<id>.md` in the Foundations repo in the same pass. The `.md` and the file must agree.
 - If the system doesn't cover something, stop and flag the gap. Don't invent a component.
 
 ## Done means

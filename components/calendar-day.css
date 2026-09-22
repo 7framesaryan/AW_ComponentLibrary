@@ -1,9 +1,0 @@
-/* AuctionWire · Calendar day  (registry id: calendar-day · class: .aw-calendar-day)
-   Contract: components/calendar-day.md · Coded mirror: components/coded/calendar-strip.html (folded into calendar-strip) */
-
-.aw-calendar-day {
-  display: flex; flex-direction: column; align-items: center; gap: var(--aw-space-micro);
-  min-width: 44px; padding: var(--aw-space-row) var(--aw-space-tight);
-  border-radius: var(--aw-radius-button);
-}
-.aw-calendar-day.is-active { background: var(--aw-accent-deep); color: var(--aw-text-accent); }

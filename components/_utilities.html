@@ -1,0 +1,74 @@
+<!doctype html>
+<!--
+  AuctionWire · Utilities  (card imagery .aw-photo / .aw-thumb, and .aw-root--transparent)
+  Not components — registered under "utilities" in the Foundations components.json. Loaded LAST so
+  photo backgrounds win over the component surfaces they sit on.
+  THIS FILE IS THE SOURCE. The rules under the "component" marker are the styling; screen builds read
+  that block straight out of this file. Edit it here, nowhere else.
+  The image tokens (--aw-thumb-*, --aw-img-*) live in the Foundations library (src/assets.css), so the
+  boxes below are empty here on purpose — this file carries no image data.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Utilities</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-surface-raised: #27272a;
+    --aw-radius-sm: 4px;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *, *::before, *::after { box-sizing: border-box; }
+  .aw-root { background: var(--aw-bg); font-family: var(--aw-font-sans); -webkit-font-smoothing: antialiased; }
+
+  /* — component — */
+  /* AuctionWire · utilities — card imagery (.aw-photo, .aw-thumb) and .aw-root--transparent.
+     Not components (registered under "utilities" in components.json). Loaded last so photo
+     backgrounds win over the component surfaces they sit on. */
+
+  /* thumbnail image helpers (real DS slab thumbnails) */
+  .aw-thumb--mantle    { background-image: var(--aw-thumb-mantle); }
+  .aw-thumb--henderson { background-image: var(--aw-thumb-henderson); }
+  .aw-thumb--jordan    { background-image: var(--aw-thumb-jordan); }
+  .aw-thumb--lebron    { background-image: var(--aw-thumb-lebron); }
+  .aw-thumb--magic     { background-image: var(--aw-thumb-magic); }
+  .aw-thumb--reggie    { background-image: var(--aw-thumb-reggie); }
+  /* ── Real card imagery helpers ────────────────────────────────────────────
+     Apply to any media/thumbnail box to fill it with a real card photo instead
+     of a flat placeholder. cover-crops and centres. */
+  .aw-photo { background-size: cover; background-position: center; background-color: var(--aw-surface-raised); }
+  .aw-photo--aaron   { background-image: var(--aw-img-aaron); }
+  .aw-photo--cobb    { background-image: var(--aw-img-cobb); }
+  .aw-photo--mantels { background-image: var(--aw-img-mantels); background-position: top center; }
+  .aw-photo--slab    { background-image: var(--aw-img-slab); background-position: top center; }
+  .aw-photo--hero    { background-image: var(--aw-img-hero); }
+  .aw-root--transparent { background: transparent; }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+  .box { width: 86px; height: 86px; border-radius: var(--aw-radius-sm); }
+</style>
+</head>
+<body class="aw-root">
+  <h1>AuctionWire · Utilities</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Card photo boxes (.aw-photo + a photo modifier) — images come from the Foundations library</div>
+      <div class="row">
+        <div class="box aw-photo aw-photo--slab"></div>
+        <div class="box aw-photo aw-photo--mantels"></div>
+        <div class="box aw-photo aw-thumb--mantle"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

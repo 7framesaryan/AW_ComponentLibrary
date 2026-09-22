@@ -5,19 +5,19 @@
  *   node scripts/check.mjs          (needs the Foundations library; see scripts/foundations.mjs)
  *
  * Fails (exit 1) when this library has drifted:
- *   - folder hygiene: components/ holds only <id>.css, coded/ only generated <id>.html
- *   - the components.css manifest and components/ disagree, or a file is imported twice
- *   - a component CSS file is not a component registered in the Foundations components.json,
- *     or a registered component has no CSS file here
- *   - a coded/<id>.html mirror is missing or stale vs the CSS it is generated from
+ *   - folder hygiene: components/ holds only <id>.html files
+ *   - the cascade.mjs order and components/ disagree, or a file is listed twice
+ *   - a component file is not a component registered in the Foundations components.json,
+ *     or a registered component has no file here
+ *   - a component file has no "component" marker, so its styling can't be read out of it
  *   - a raw hex or deny-listed colour (every value must be a Foundations token)
  *   - a var(--aw-*) this CSS uses that the Foundations tokens.css / assets.css does not define
  */
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { basename, join } from "node:path";
-import { componentCssFiles } from "./components-css.mjs";
+import { componentCssFiles, componentCss } from "./components-css.mjs";
+import { FOLDED } from "../cascade.mjs";
 import { foundationsDir, root } from "./foundations.mjs";
-import { renderComponentMirrors, CODED_DIR } from "./build-mirrors.mjs";
 
 const errors = [];
 const notes = [];
@@ -35,47 +35,58 @@ try {
 notes.push(`foundations: ${fnd}`);
 const reg = JSON.parse(readFileSync(join(fnd, "components.json"), "utf8"));
 
+
 // ── Folder hygiene ───────────────────────────────────────────────────────
 for (const n of readdirSync(join(root, "components")))
-  if (n !== ".DS_Store" && !n.endsWith(".css")) fail(`components/${n}: components/ holds only <id>.css files`);
-for (const n of readdirSync(join(root, CODED_DIR)))
-  if (n !== ".DS_Store" && !n.endsWith(".html")) fail(`${CODED_DIR}/${n}: ${CODED_DIR}/ holds only generated <id>.html files`);
+  if (n !== ".DS_Store" && !n.endsWith(".html")) fail(`components/${n}: components/ holds only <id>.html files`);
 
 // ── Manifest ↔ files ↔ registry ──────────────────────────────────────────
 let listed = [];
 try {
   listed = componentCssFiles();
   const ids = listed.map((f) => f.id);
-  if (new Set(ids).size !== ids.length) fail("components.css imports a file more than once");
+  if (new Set(ids).size !== ids.length) fail("cascade.mjs lists a component more than once");
   for (const { id, path, file } of listed) {
-    if (!existsSync(file)) fail(`components.css imports ${path}, which doesn't exist`);
+    if (!existsSync(file)) fail(`cascade.mjs lists ${path}, which doesn't exist`);
+    else {
+      try {
+        if (!componentCss(file).trim()) fail(`${path}: the "component" section is empty`);
+      } catch (e) {
+        fail(`${path}: ${e.message.replace(`${file}: `, "")}`);
+      }
+    }
     if (!id.startsWith("_") && !reg.components[id]) fail(`${path} is not a registered component (prefix helper files with "_")`);
   }
-  for (const f of readdirSync(join(root, "components")).filter((f) => f.endsWith(".css")))
-    if (!ids.includes(basename(f, ".css"))) fail(`components/${f} is not imported by components.css`);
+  for (const f of readdirSync(join(root, "components")).filter((f) => f.endsWith(".html")))
+    if (!ids.includes(basename(f, ".html"))) fail(`components/${f} is not listed in cascade.mjs`);
   for (const id of Object.keys(reg.components))
-    if (!ids.includes(id)) fail(`component "${id}" is registered in the Foundations components.json but has no components/${id}.css here`);
+    if (!ids.includes(id) && !FOLDED.has(id)) fail(`component "${id}" is registered in the Foundations components.json but has no components/${id}.html here`);
 } catch (e) {
   fail(`component CSS: ${e.message}`);
 }
 
-// ── Coded mirrors are generated, never hand-edited ───────────────────────
+// ── Every registered class is actually styled somewhere ──────────────────
 try {
-  const mirrors = renderComponentMirrors();
-  for (const [path, html] of mirrors) {
-    if (!existsSync(join(root, path))) fail(`${path} is missing: run node scripts/build-mirrors.mjs`);
-    else if (read(path) !== html) fail(`${path} is out of date: run node scripts/build-mirrors.mjs`);
+  const allCss = listed.map(({ file }) => componentCss(file)).join("\n");
+  const styled = new Set([...allCss.matchAll(/\.(aw-[\w-]+)/g)].map(([, c]) => c));
+  for (const [id, c] of Object.entries(reg.components)) {
+    if (!c.class) continue;
+    if (!styled.has(c.class)) {
+      const where = FOLDED.get(id);
+      fail(`.${c.class} (component "${id}") is styled nowhere${where ? `, but should sit inside components/${where}.html` : ""}`);
+    }
   }
-  for (const f of readdirSync(join(root, CODED_DIR)).filter((f) => f.endsWith(".html")))
-    if (!mirrors.has(`${CODED_DIR}/${f}`)) fail(`${CODED_DIR}/${f} is not generated by build-mirrors.mjs (add it to scripts/specimens.mjs)`);
+  for (const [id, parent] of FOLDED)
+    if (!componentCss(join(root, `components/${parent}.html`)).includes(`.${reg.components[id]?.class}`))
+      fail(`component "${id}" is folded into components/${parent}.html, but its styling isn't there`);
 } catch (e) {
-  fail(`component mirrors: ${e.message}`);
+  fail(`component styling: ${e.message}`);
 }
 
 // ── Colours: Foundations tokens only ─────────────────────────────────────
 const DENY = ["#16a34a", "#2563eb", "#4773b9", "#89afed", "#09090b", "#22c55e", "#ef4444"];
 for (const { path, file } of listed) {
-  const text = stripComments(readFileSync(file, "utf8")).toLowerCase();
+  const text = stripComments(componentCss(file)).toLowerCase();
   for (const hex of DENY) if (text.includes(hex)) fail(`${path}: uses deny-listed colour ${hex}`);
   for (const [, hex] of text.matchAll(/(?<![\w-])(#[0-9a-f]{3,8})\b/g)) fail(`${path}: raw colour ${hex} (use a Foundations token)`);
 }
@@ -90,7 +101,7 @@ const defined = new Set(
 );
 const stillMissing = new Set();
 for (const { path, file } of listed) {
-  const text = stripComments(readFileSync(file, "utf8"));
+  const text = stripComments(componentCss(file));
   const local = new Set([...text.matchAll(/(--aw-[\w-]+)\s*:/g)].map(([, k]) => k));
   for (const [, v] of text.matchAll(/var\(\s*(--aw-[\w-]+)/g)) {
     if (defined.has(v) || local.has(v)) continue;
@@ -109,4 +120,4 @@ if (errors.length) {
   console.error(`✗ ${errors.length} problem(s):\n` + errors.map((e) => `  - ${e}`).join("\n"));
   process.exit(1);
 }
-console.log(`✓ component library consistent (${listed.length} component CSS files, ${readdirSync(join(root, CODED_DIR)).filter((f) => f.endsWith(".html")).length} coded mirrors)`);
+console.log(`✓ component library consistent (${listed.length} component files, one per component)`);

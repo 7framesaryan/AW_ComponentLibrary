@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+  AuctionWire · Hero band  (registry id: hero-band · class: .aw-hero-band · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-hero-band
+  Composes (rules copied for the specimen): .aw-photo
+  Contract: Foundations components/hero-band.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Hero band</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-surface-raised: #27272a;
+    --aw-text-primary: #ffffff;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-shadow-hairline: 0 1px 0 0 #0000004d;
+    --aw-grad-hero: linear-gradient(180deg, #171a17 0%, #121412 100%);
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* — composed components it sits with (from components/) — */
+  .aw-photo { background-size: cover; background-position: center; background-color: var(--aw-surface-raised); }
+
+  /* — component — */
+  .aw-hero-band { background: var(--aw-grad-hero); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <h1>AuctionWire · Hero band</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Near-black gradient band behind a hero</div>
+      <div class="aw-hero-band" style="height:260px;display:flex;align-items:center;justify-content:center;border-radius:12px">
+        <div class="aw-photo" style="width:150px;height:210px;border-radius:8px;box-shadow:var(--aw-shadow-hairline)"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,7 +1,8 @@
 # AuctionWire Component Library
 
-The **coded** half of the AuctionWire design system: the CSS that gives every `aw-*` class its
-appearance, and one self-contained HTML file per component for dropping into an artifact.
+The **coded** half of the AuctionWire design system: one self-contained HTML file per component. Each
+file is both the drop-in you can open in a browser and the source of the styling that gives every
+`aw-*` class its appearance.
 
 It is styling only. It defines no colours, sizes or spacing of its own — every value resolves to a
 token from the **Foundations library** ([AW_DesignLanguage](https://github.com/onkarpreetsinghkapoor/AW_Design_Language),
@@ -13,20 +14,20 @@ token from the **Foundations library** ([AW_DesignLanguage](https://github.com/o
 | Design values (colour, type, spacing, radius, effects, grid, icons) | ✅ | — |
 | Written guideline per component (`<id>.md`) | ✅ | — |
 | `tokens.json`, `components.json` | ✅ | — |
-| Component CSS | — | ✅ `components/<id>.css` |
-| Coded component HTML | — | ✅ `coded/<id>.html` |
+| Component code, one self-contained file each | — | ✅ `components/<id>.html` |
 
 ## Layout
 
 ```
-components.css          manifest: the @import list that fixes CASCADE ORDER
-components/<id>.css     one file per component — the source of truth for how it looks
-coded/<id>.html         GENERATED self-contained drop-in (tokens + rules + icons it uses)
+components/<id>.html    ONE file per component, and the only file it has. Self-contained:
+                        open it in a browser and you see the component, with the tokens,
+                        rules and icons it uses. The rules under its "component" marker
+                        ARE the styling — screens are built from that block.
+cascade.mjs             the order those blocks are concatenated in, and the small parts
+                        that sit inside a parent's file (nav-item, gated-pill, calendar-day)
 scripts/
   foundations.mjs       finds the Foundations library
-  components-css.mjs    reads the manifest in cascade order
-  build-mirrors.mjs     regenerates coded/ from components/ + Foundations
-  specimens.mjs         the variants/states each coded/<id>.html demonstrates
+  components-css.mjs    lifts each component's styling out of its file, in cascade order
   check.mjs             integrity check
 ```
 
@@ -47,16 +48,16 @@ Node.js, no dependencies.
 
 ```sh
 node scripts/check.mjs          # must pass after any change
-node scripts/build-mirrors.mjs  # regenerate coded/ after editing components/ or specimens
 ```
 
 ## Changing a component
 
-1. Edit **one** file: `components/<id>.css`. Use Foundations tokens, never raw values.
-2. `node scripts/build-mirrors.mjs` — regenerates `coded/<id>.html`.
-3. `node scripts/check.mjs` — must pass.
-4. Update the component's guideline `components/<id>.md` **in the Foundations repo** so the written
-   contract matches what the CSS now does, and rebuild the screens there (`node build.mjs`).
+1. Edit **one** file: `components/<id>.html`, in the rules under its `component` marker. Use
+   Foundations tokens, never raw values. Keep the demo markup below it in step, and if you use a new
+   token, add it to the `:root` block at the top so the file stays self-contained.
+2. `node scripts/check.mjs` — must pass.
+3. Update the component's guideline `components/<id>.md` **in the Foundations repo** so the written
+   contract matches what the component now does, and rebuild the screens there (`node build.mjs`).
 
 `coded/*.html` is generated. Never edit it by hand — the check fails if you do.
 

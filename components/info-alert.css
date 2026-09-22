@@ -1,8 +1,0 @@
-/* AuctionWire · Information alert  (registry id: info-alert · class: .aw-info-alert)
-   Contract: components/info-alert.md · Coded mirror: components/coded/info-alert.html */
-
-.aw-info-alert { display: flex; align-items: flex-start; gap: var(--aw-space-block); padding: var(--aw-space-block); border-radius: var(--aw-info-radius); background: var(--aw-surface-raised); font-family: var(--aw-font-sans); }
-.aw-info-alert__icon { width: var(--aw-space-section-sm); height: var(--aw-space-section-sm); flex: none; display: block; }
-.aw-info-alert__content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--aw-space-micro); }
-.aw-info-alert__title { margin: 0; font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-bold); color: var(--aw-info-title-color); }
-.aw-info-alert__description { margin: 0; font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); font-weight: var(--aw-fw-regular); color: var(--aw-text-muted); white-space: pre-line; }

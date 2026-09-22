@@ -1,0 +1,112 @@
+<!doctype html>
+<!--
+  AuctionWire · Second-level header  (registry id: header · class: .aw-header · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-header .aw-header__title
+  Composes (rules copied for the specimen): .aw-btn-icon-ghost (icon-button)
+  Contract: Foundations components/header.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css, icons/sprite/
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Second-level header</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-surface-strong: #3f3f46;
+    --aw-surface-glass-bar-alt: #00000033;
+    --aw-border-strong: #71717a;
+    --aw-text-primary: #ffffff;
+    --aw-text-secondary: #d4d4d8;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-semibold: 600;
+    --aw-fs-base: 16px;
+    --aw-space-block: 12px;
+    --aw-space-section: 16px;
+    --aw-radius-button: 8px;
+    --aw-glass-blur-header: 16px;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Element-only reset (specificity 1) so any component class always wins over it. */
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+  .aw-section-title-lg { font-size: var(--aw-fs-base); font-weight: var(--aw-fw-semibold); color: var(--aw-text-secondary); }
+  .aw-glass-header-alt {
+    background: var(--aw-surface-glass-bar-alt);
+    backdrop-filter: blur(var(--aw-glass-blur-header));
+    -webkit-backdrop-filter: blur(var(--aw-glass-blur-header));
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+  .aw-icon svg { display: block; width: 100%; height: 100%; }
+
+  /* — composed components it sits with (from components/) — */
+  /* Ghost icon button — #3f3f46 fill + #71717a border */
+  .aw-btn-icon-ghost {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 32px; border-radius: var(--aw-radius-button);
+    background: var(--aw-surface-strong); border: 1px solid var(--aw-border-strong);
+    color: var(--aw-text-secondary);
+    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  .aw-btn-icon-ghost:active { opacity: 0.7; }
+
+  /* — component — */
+  /* ── Mobile header (2nd level) ────────────────────────────────────────── */
+  .aw-header {
+    display: flex; align-items: center; gap: var(--aw-space-block);
+    height: 64px; padding: 0 var(--aw-space-section);
+  }
+  .aw-header__title { flex: 1; text-align: center; }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <!-- icon sprite: only the 2 symbols this component uses (from the Foundations icons/sprite/) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9 5 7 7-7 7"/>
+    </symbol>
+      <symbol id="aw-i-more" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>
+    </symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Second-level header</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">2nd-level header (on .aw-glass-header-alt)</div>
+      <div class="aw-glass-header-alt aw-header">
+        <button type="button" class="aw-btn-icon-ghost" aria-label="Back" style="transform:rotate(180deg)"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-chevron-right"/></svg></button>
+        <span class="aw-header__title aw-section-title-lg">Card detail</span>
+        <button type="button" class="aw-btn-icon-ghost" aria-label="More options"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-more"/></svg></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<!--
+  AuctionWire · Range  (registry id: range · class: .aw-range · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-range .aw-range__input .aw-range__sep .aw-range__track .aw-range__fill .aw-range__knob
+  Contract: Foundations components/range.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Range</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-surface: #18181b;
+    --aw-surface-strong: #3f3f46;
+    --aw-border-strong: #71717a;
+    --aw-border-primary: #009350;
+    --aw-text-primary: #ffffff;
+    --aw-text-muted: #a1a1aa;
+    --aw-positive: #009350;
+    --aw-zinc-50: #fafafa;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fs-sm: 14px;
+    --aw-space-block: 12px;
+    --aw-space-section: 16px;
+    --aw-radius-search-sm: 8px;
+    --aw-radius-pill: 9999px;
+    --aw-shadow-hairline: 0 1px 0 0 #0000004d;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* — component — */
+  /* ── Range input (price / year filter) ────────────────────────────────── */
+  .aw-range { display: flex; align-items: center; gap: var(--aw-space-block); }
+  .aw-range__input {
+    flex: 1; height: 40px; padding: 0 var(--aw-space-block);
+    border-radius: var(--aw-radius-search-sm);
+    background: var(--aw-surface); border: 1px solid var(--aw-border-strong);
+    color: var(--aw-text-primary); font-size: var(--aw-fs-sm); outline: none;
+  }
+  .aw-range__input:focus { border-color: var(--aw-border-primary); }
+  .aw-range__sep { color: var(--aw-text-muted); }
+  .aw-range__track { position: relative; height: 4px; border-radius: var(--aw-radius-pill); background: var(--aw-surface-strong); margin: var(--aw-space-section) 0; }
+  .aw-range__fill { position: absolute; height: 100%; border-radius: var(--aw-radius-pill); background: var(--aw-positive); }
+  .aw-range__knob { position: absolute; top: 50%; width: 16px; height: 16px; border-radius: var(--aw-radius-pill); background: var(--aw-zinc-50); transform: translate(-50%, -50%); box-shadow: var(--aw-shadow-hairline); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <h1>AuctionWire · Range</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Min / max inputs + track</div>
+      <div>
+        <div class="aw-range"><input class="aw-range__input" value="$1,000"><span class="aw-range__sep">–</span><input class="aw-range__input" value="$10,000"></div>
+        <div class="aw-range__track"><div class="aw-range__fill" style="left:12%;right:30%"></div><div class="aw-range__knob" style="left:12%"></div><div class="aw-range__knob" style="left:70%"></div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

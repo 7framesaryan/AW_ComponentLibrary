@@ -1,9 +1,0 @@
-/* AuctionWire · Bottom nav  (registry id: bottom-nav · class: .aw-bottom-nav)
-   Contract: components/bottom-nav.md · Coded mirror: components/coded/bottom-nav.html */
-
-/* ── Bottom nav — floating glass pill, 5 items ────────────────────────── */
-.aw-bottom-nav {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--aw-space-tight); padding: var(--aw-space-row);
-  border-radius: var(--aw-radius-nav-pill);
-}

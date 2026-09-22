@@ -1,0 +1,126 @@
+<!doctype html>
+<!--
+  AuctionWire · Badge  (registry id: badge · class: .aw-badge · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-badge .aw-badge--positive .aw-badge-dot .aw-badge-anchor .aw-badge--positive-soft
+  Composes (rules copied for the specimen): .aw-btn-icon-ghost (icon-button)
+  Contract: Foundations components/badge.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css, icons/sprite/
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Badge</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-surface-strong: #3f3f46;
+    --aw-border-strong: #71717a;
+    --aw-text-primary: #ffffff;
+    --aw-text-secondary: #d4d4d8;
+    --aw-text-accent: #009350;
+    --aw-positive: #009350;
+    --aw-urgency: #d4183d;
+    --aw-caution: #f5a524;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-semibold: 600;
+    --aw-fw-bold: 700;
+    --aw-fs-caption: 10px;
+    --aw-fs-chip: 11px;
+    --aw-lh-chip: 16px;
+    --aw-space-micro: 2px;
+    --aw-space-row: 8px;
+    --aw-radius-button: 8px;
+    --aw-radius-pill: 9999px;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
+    --aw-badge-soft-positive-bg: #0093501f;
+    --aw-badge-text: #040501;
+    --aw-badge-padding-x: 5px;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Element-only reset (specificity 1) so any component class always wins over it. */
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+  .aw-icon svg { display: block; width: 100%; height: 100%; }
+
+  /* — composed components it sits with (from components/) — */
+  /* Ghost icon button — #3f3f46 fill + #71717a border */
+  .aw-btn-icon-ghost {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 32px; border-radius: var(--aw-radius-button);
+    background: var(--aw-surface-strong); border: 1px solid var(--aw-border-strong);
+    color: var(--aw-text-secondary);
+    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  .aw-btn-icon-ghost:active { opacity: 0.7; }
+
+  /* — component — */
+  /* ── Badge (count indicator) ──────────────────────────────────────────── */
+  .aw-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 18px; height: 18px; padding: 0 var(--aw-badge-padding-x); border-radius: var(--aw-radius-pill);
+    background: var(--aw-caution); color: var(--aw-badge-text);
+    font-size: var(--aw-fs-caption); font-weight: var(--aw-fw-bold);
+  }
+  .aw-badge--positive { background: var(--aw-positive); color: var(--aw-text-primary); }
+  .aw-badge-dot { width: 8px; height: 8px; border-radius: var(--aw-radius-pill); background: var(--aw-urgency); }
+  /* anchor a badge to the top-right of a relatively-positioned host */
+  .aw-badge-anchor { position: absolute; top: -4px; right: -4px; }
+  /* Soft positive badge (green text on faint green fill) — e.g. "Save 25%". */
+  .aw-badge--positive-soft { min-width: 0; height: auto; padding: var(--aw-space-micro) var(--aw-space-row); background: var(--aw-badge-soft-positive-bg); color: var(--aw-text-accent); font-size: var(--aw-fs-chip); line-height: var(--aw-lh-chip); font-weight: var(--aw-fw-semibold); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <!-- icon sprite: only the 1 symbol this component uses (from the Foundations icons/sprite/) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18.5 10.5c0-3.6-2.9-6.5-6.5-6.5S5.5 6.9 5.5 10.5c0 1-.3 2-.8 2.8L3.4 15.6c-.9 1.4 0 3.2 1.6 3.6 4.5 1.2 9.5 1.2 14 0 1.6-.4 2.5-2.2 1.6-3.6l-1.3-2.3c-.5-.8-.8-1.8-.8-2.8Z"/>
+      <path d="M9.5 20.5c.6 1.5 2 2.5 3.5 2.5s2.9-1 3.5-2.5"/>
+      <path d="M12 6v4"/>
+    </symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Badge</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Count (amber, default) · positive · positive-soft · dot</div>
+      <div class="row">
+        <span class="aw-badge">3</span>
+        <span class="aw-badge aw-badge--positive">12</span>
+        <span class="aw-badge aw-badge--positive-soft">Save 25%</span>
+        <span class="aw-badge-dot"></span>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Anchored on an icon button (.aw-badge-anchor)</div>
+      <span style="position:relative;display:inline-flex"><button type="button" class="aw-btn-icon-ghost" aria-label="Notifications, 3 new"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-bell"/></svg></button><span class="aw-badge aw-badge-anchor">3</span></span>
+    </div>
+  </div>
+</body>
+</html>

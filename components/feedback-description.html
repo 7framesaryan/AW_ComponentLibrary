@@ -1,0 +1,61 @@
+<!doctype html>
+<!--
+  AuctionWire · Feedback description  (registry id: feedback-description · class: .aw-feedback-description · status: verified)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-feedback-description
+  Contract: Foundations components/feedback-description.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Feedback description</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-text-muted: #a1a1aa;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-regular: 400;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* — component — */
+  .aw-feedback-description { margin: 0; color: var(--aw-text-muted); text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <h1>AuctionWire · Feedback description</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Supporting line under a success heading</div>
+      <p class="aw-feedback-description">Your account created successfully.</p>
+    </div>
+  </div>
+</body>
+</html>

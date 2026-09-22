@@ -1,0 +1,134 @@
+<!doctype html>
+<!--
+  AuctionWire · List-result row  (registry id: list-row · class: .aw-list-row · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-list-row .aw-list-row__thumb .aw-list-row__body .aw-list-row__spacer
+  Composes (rules copied for the specimen): .aw-btn (button)
+  Contract: Foundations components/list-row.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · List-result row</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-surface-raised: #27272a;
+    --aw-surface-translucent: #00000066;
+    --aw-border-ghost: #ffffff26;
+    --aw-text-primary: #ffffff;
+    --aw-text-high-alt: #f4f4f5;
+    --aw-text-muted: #a1a1aa;
+    --aw-text-accent-dim: #42835a;
+    --aw-text-danger: #d4183d;
+    --aw-positive: #009350;
+    --aw-zinc-500: #71717a;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-regular: 400;
+    --aw-fw-medium: 500;
+    --aw-fw-semibold: 600;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-fs-base: 16px;
+    --aw-lh-base: 24px;
+    --aw-fs-lg: 18px;
+    --aw-space-tight: 4px;
+    --aw-space-row: 8px;
+    --aw-space-block: 12px;
+    --aw-space-section-sm: 24px;
+    --aw-radius-sm: 4px;
+    --aw-radius-card: 8px;
+    --aw-radius-button: 8px;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Element-only reset (specificity 1) so any component class always wins over it. */
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+  .aw-card-title    { font-size: var(--aw-fs-xs);   line-height: var(--aw-lh-xs);   font-weight: var(--aw-fw-semibold); color: var(--aw-text-high-alt); }
+  .aw-price-lead    { font-size: var(--aw-fs-lg);   font-weight: var(--aw-fw-semibold); color: var(--aw-text-primary); }
+  .aw-body-muted    { font-size: var(--aw-fs-xs);   line-height: var(--aw-lh-xs);   font-weight: var(--aw-fw-regular);  color: var(--aw-text-muted); }
+  .aw-urgency       { font-size: var(--aw-fs-xs);   line-height: var(--aw-lh-xs);   font-weight: var(--aw-fw-medium);   color: var(--aw-text-danger); }
+
+  /* — composed components it sits with (from components/) — */
+  .aw-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: var(--aw-space-row);
+    height: 48px; padding: 0 var(--aw-space-section-sm);
+    border: 0; border-radius: var(--aw-radius-button);
+    font-family: inherit;
+    font-size: var(--aw-fs-base); line-height: var(--aw-lh-base);
+    font-weight: var(--aw-fw-medium);
+    cursor: pointer;
+    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  .aw-btn:active { opacity: 0.7; }
+  .aw-btn--outline { background: transparent; color: var(--aw-positive); border: 1px solid var(--aw-positive); }
+  .aw-btn--sm { height: 32px; padding: 0 var(--aw-space-block); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); }
+  .aw-btn[disabled], .aw-btn.is-disabled {
+    background: var(--aw-text-accent-dim); color: var(--aw-zinc-500);
+    pointer-events: none;
+  }
+  .aw-btn--outline[disabled], .aw-btn--outline.is-disabled {
+    background: transparent; border-color: var(--aw-text-accent-dim); color: var(--aw-zinc-500);
+  }
+
+  /* — component — */
+  /* ── List-result row — dense (thumb + facts + CTA) ────────────────────── */
+  .aw-list-row {
+    display: flex; gap: var(--aw-space-block); padding: var(--aw-space-block);
+    border-radius: var(--aw-radius-card);
+    border: 1px solid var(--aw-border-ghost);
+    background: var(--aw-surface-translucent);
+  }
+  .aw-list-row__thumb { width: 96px; height: 132px; object-fit: cover; background: var(--aw-surface-raised); border-radius: var(--aw-radius-sm); flex: none; }
+  .aw-list-row__body { flex: 1; display: flex; flex-direction: column; gap: var(--aw-space-tight); min-width: 0; }
+  .aw-list-row__spacer { flex: 1; }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <h1>AuctionWire · List-result row</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Dense result row</div>
+      <div class="aw-list-row">
+        <div class="aw-list-row__thumb"></div>
+        <div class="aw-list-row__body">
+          <div class="aw-card-title">1986 Fleer #57 Michael Jordan RC</div>
+          <div class="aw-body-muted">Heritage Auctions · PSA 8</div>
+          <div class="aw-list-row__spacer"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span class="aw-price-lead">$28,500</span>
+            <span class="aw-urgency">01:02:55</span>
+          </div>
+          <button type="button" class="aw-btn aw-btn--sm aw-btn--outline" style="width:100%">Bid on Auction Site</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

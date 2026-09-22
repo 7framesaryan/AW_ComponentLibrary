@@ -1,0 +1,114 @@
+<!doctype html>
+<!--
+  AuctionWire · Button  (registry id: button · class: .aw-btn · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-btn .aw-btn--primary .aw-btn--outline .aw-btn--full .aw-btn--sm
+  Contract: Foundations components/button.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Button</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-text-accent-dim: #42835a;
+    --aw-positive: #009350;
+    --aw-zinc-50: #fafafa;
+    --aw-zinc-500: #71717a;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-medium: 500;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-fs-base: 16px;
+    --aw-lh-base: 24px;
+    --aw-space-row: 8px;
+    --aw-space-block: 12px;
+    --aw-space-section-sm: 24px;
+    --aw-radius-button: 8px;
+    --aw-shadow-primary-glow: 0 4px 12px 0 #00935033;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Element-only reset (specificity 1) so any component class always wins over it. */
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+
+  /* — component — */
+  /* ── Button ───────────────────────────────────────────────────────────── */
+  .aw-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: var(--aw-space-row);
+    height: 48px; padding: 0 var(--aw-space-section-sm);
+    border: 0; border-radius: var(--aw-radius-button);
+    font-family: inherit;
+    font-size: var(--aw-fs-base); line-height: var(--aw-lh-base);
+    font-weight: var(--aw-fw-medium);
+    cursor: pointer;
+    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  .aw-btn:active { opacity: 0.7; }
+  .aw-btn--primary { background: var(--aw-positive); color: var(--aw-zinc-50); }
+  .aw-btn--primary:hover { box-shadow: var(--aw-shadow-primary-glow); } /* glow max once per screen */
+  .aw-btn--outline { background: transparent; color: var(--aw-positive); border: 1px solid var(--aw-positive); }
+  .aw-btn--full { width: 100%; }
+  .aw-btn--sm { height: 32px; padding: 0 var(--aw-space-block); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); }
+  .aw-btn[disabled], .aw-btn.is-disabled {
+    background: var(--aw-text-accent-dim); color: var(--aw-zinc-500);
+    pointer-events: none;
+  }
+  .aw-btn--outline[disabled], .aw-btn--outline.is-disabled {
+    background: transparent; border-color: var(--aw-text-accent-dim); color: var(--aw-zinc-500);
+  }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <h1>AuctionWire · Button</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Variants</div>
+      <div class="row">
+        <button type="button" class="aw-btn aw-btn--primary">Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--outline">Bid on site</button>
+        <button type="button" class="aw-btn aw-btn--sm aw-btn--outline">Small outline</button>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Full width (4-column span)</div>
+      <button type="button" class="aw-btn aw-btn--primary aw-btn--full">Place Bid — $3,900</button>
+    </div>
+    <div>
+      <div class="cap">Disabled — primary &amp; outline</div>
+      <div class="row">
+        <button type="button" class="aw-btn aw-btn--primary" disabled>Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--outline" disabled>Bid on site</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

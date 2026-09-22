@@ -1,5 +1,0 @@
-/* AuctionWire · Success heading  (registry id: success-heading · class: .aw-success-heading)
-   Contract: components/success-heading.md · Coded mirror: components/coded/success-heading.html */
-
-.aw-success-heading { margin: 0; color: var(--aw-text-high); text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-2xl); line-height: var(--aw-lh-2xl); font-weight: var(--aw-fw-bold); }
-.aw-success-heading__text { position: relative; top: var(--aw-feedback-heading-ink-offset); }

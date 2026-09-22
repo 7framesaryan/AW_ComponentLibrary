@@ -1,9 +1,0 @@
-/* AuctionWire · Calendar entry  (registry id: calendar-entry · class: .aw-calendar-entry)
-   Contract: components/calendar-entry.md · Coded mirror: components/coded/calendar-entry.html */
-
-.aw-calendar-entry {
-  display: flex; align-items: center; justify-content: space-between; gap: var(--aw-space-block);
-  padding: var(--aw-space-block);
-  border-radius: var(--aw-radius-card);
-  border: 1px solid var(--aw-border-hairline); background: var(--aw-surface);
-}

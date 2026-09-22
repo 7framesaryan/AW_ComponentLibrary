@@ -1,0 +1,150 @@
+<!doctype html>
+<!--
+  AuctionWire · Glass top bar  (registry id: top-bar · class: .aw-top-bar · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-top-bar .aw-top-bar__greeting .aw-top-bar__actions
+  Composes (rules copied for the specimen): .aw-btn-icon-ghost (icon-button), .aw-avatar (avatar), .aw-badge (badge), .aw-badge-anchor (badge)
+  Contract: Foundations components/top-bar.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css, icons/sprite/
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Glass top bar</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-surface-strong: #3f3f46;
+    --aw-surface-glass-bar: #04050199;
+    --aw-border-strong: #71717a;
+    --aw-border-ghost: #ffffff26;
+    --aw-text-primary: #ffffff;
+    --aw-text-secondary: #d4d4d8;
+    --aw-text-muted: #a1a1aa;
+    --aw-caution: #f5a524;
+    --aw-avatar-figure: #356848;
+    --aw-zinc-200: #e4e4e7;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-regular: 400;
+    --aw-fw-semibold: 600;
+    --aw-fw-bold: 700;
+    --aw-fs-caption: 10px;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-space-block: 12px;
+    --aw-space-section: 16px;
+    --aw-radius-button: 8px;
+    --aw-radius-pill: 9999px;
+    --aw-glass-blur-header: 16px;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
+    --aw-badge-text: #040501;
+    --aw-badge-padding-x: 5px;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Element-only reset (specificity 1) so any component class always wins over it. */
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+  .aw-body-strong   { font-size: var(--aw-fs-xs);   line-height: var(--aw-lh-xs);   font-weight: var(--aw-fw-semibold); color: var(--aw-text-primary); }
+  .aw-body-muted    { font-size: var(--aw-fs-xs);   line-height: var(--aw-lh-xs);   font-weight: var(--aw-fw-regular);  color: var(--aw-text-muted); }
+  .aw-glass-header {
+    background: var(--aw-surface-glass-bar);
+    backdrop-filter: blur(var(--aw-glass-blur-header));
+    -webkit-backdrop-filter: blur(var(--aw-glass-blur-header));
+    border-bottom: 1px solid var(--aw-border-ghost);
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+  .aw-icon svg { display: block; width: 100%; height: 100%; }
+
+  /* — composed components it sits with (from components/) — */
+  /* Ghost icon button — #3f3f46 fill + #71717a border */
+  .aw-btn-icon-ghost {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 32px; border-radius: var(--aw-radius-button);
+    background: var(--aw-surface-strong); border: 1px solid var(--aw-border-strong);
+    color: var(--aw-text-secondary);
+    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  .aw-btn-icon-ghost:active { opacity: 0.7; }
+  .aw-avatar {
+    width: 32px; height: 32px; border-radius: var(--aw-radius-pill);
+    background: var(--aw-zinc-200); overflow: hidden; flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--aw-avatar-figure);
+  }
+  .aw-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .aw-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 18px; height: 18px; padding: 0 var(--aw-badge-padding-x); border-radius: var(--aw-radius-pill);
+    background: var(--aw-caution); color: var(--aw-badge-text);
+    font-size: var(--aw-fs-caption); font-weight: var(--aw-fw-bold);
+  }
+  /* anchor a badge to the top-right of a relatively-positioned host */
+  .aw-badge-anchor { position: absolute; top: -4px; right: -4px; }
+
+  /* — component — */
+  /* ── Glass top bar (home greeting) ────────────────────────────────────── */
+  .aw-top-bar {
+    display: flex; align-items: center; gap: var(--aw-space-block);
+    height: 64px; padding: 0 var(--aw-space-section);
+  }
+  .aw-top-bar__greeting { flex: 1; min-width: 0; }
+  .aw-top-bar__actions { display: flex; align-items: center; gap: var(--aw-space-block); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <!-- icon sprite: only the 3 symbols this component uses (from the Foundations icons/sprite/) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18.5 10.5c0-3.6-2.9-6.5-6.5-6.5S5.5 6.9 5.5 10.5c0 1-.3 2-.8 2.8L3.4 15.6c-.9 1.4 0 3.2 1.6 3.6 4.5 1.2 9.5 1.2 14 0 1.6-.4 2.5-2.2 1.6-3.6l-1.3-2.3c-.5-.8-.8-1.8-.8-2.8Z"/>
+      <path d="M9.5 20.5c.6 1.5 2 2.5 3.5 2.5s2.9-1 3.5-2.5"/>
+      <path d="M12 6v4"/>
+    </symbol>
+      <symbol id="aw-i-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M4 12h16"/>
+    </symbol>
+      <symbol id="aw-i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="4"/><path d="M4.5 20c1-3.5 4-5.5 7.5-5.5s6.5 2 7.5 5.5"/>
+    </symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Glass top bar</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Glass home top bar (on .aw-glass-header)</div>
+      <div class="aw-glass-header aw-top-bar">
+        <div class="aw-avatar"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-user"/></svg></div>
+        <div class="aw-top-bar__greeting"><div class="aw-body-muted">Good evening</div><div class="aw-body-strong">Aryan</div></div>
+        <div class="aw-top-bar__actions">
+          <span style="position:relative;display:inline-flex"><button type="button" class="aw-btn-icon-ghost" aria-label="Notifications, 3 new"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-bell"/></svg></button><span class="aw-badge aw-badge-anchor">3</span></span>
+          <button type="button" class="aw-btn-icon-ghost" aria-label="Scan card"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-scan"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
