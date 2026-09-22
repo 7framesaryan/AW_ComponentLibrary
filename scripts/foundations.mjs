@@ -6,7 +6,8 @@
  * Resolution order:
  *   1. $AW_FOUNDATIONS                      explicit path to <repo>/02-design-system
  *   2. ../                                  mounted as a submodule at 02-design-system/component-library/
- *   3. ../../AW_DesignLanguage/02-design-system   sibling clone
+ *   3. ../AW_DesignLanguage/02-design-system      sibling clone (both repos checked out side by side)
+ *   4. ../../AW_DesignLanguage/02-design-system   sibling of this repo's parent
  */
 import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -23,6 +24,7 @@ export function foundationsDir() {
   const candidates = [
     process.env.AW_FOUNDATIONS && resolve(process.env.AW_FOUNDATIONS),
     resolve(root, ".."),
+    resolve(root, "../AW_DesignLanguage/02-design-system"),
     resolve(root, "../../AW_DesignLanguage/02-design-system"),
   ].filter(Boolean);
   const found = candidates.find(isFoundations);
