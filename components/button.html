@@ -1,10 +1,17 @@
 <!doctype html>
 <!--
-  AuctionWire · Button  (registry id: button · class: .aw-btn · status: catalogued)
+  AuctionWire · Button  (registry id: button · class: .aw-btn · status: verified)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
-  Classes: .aw-btn .aw-btn--primary .aw-btn--outline .aw-btn--full .aw-btn--sm
-  Contract: Foundations components/button.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Classes: .aw-btn  type .aw-btn--primary|--secondary|--tertiary  size .aw-btn--sm|--lg
+           radius .aw-btn--r-none|--r-md|--r-lg|--r-full   shape .aw-btn--icon  width .aw-btn--full
+  Contract: Foundations components/button.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+
+  Imported from the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH, component set
+  "Button" 2209:26195 — 270 variants: Type × State × size × radius × isIconOnly. Every value
+  below is measured from that set. The ad-hoc sets on that page ("Buttons" frame 5414:59886)
+  are deliberately NOT imported.
   THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
   screen builds read that block straight out of this file. Edit it here, nowhere else.
 -->
@@ -18,96 +25,159 @@
   :root {
     --aw-bg: #040501;
     --aw-text-primary: #ffffff;
-    --aw-text-accent-dim: #42835a;
     --aw-positive: #009350;
-    --aw-zinc-50: #fafafa;
-    --aw-zinc-500: #71717a;
+    --aw-primary-100: #244431;
+    --aw-primary-400: #42835a;
+    --aw-primary-600: #72bb8e;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-fw-medium: 500;
-    --aw-fs-xs: 12px;
-    --aw-lh-xs: 16px;
-    --aw-fs-base: 16px;
-    --aw-lh-base: 24px;
+    --aw-fw-regular: 400;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
     --aw-space-row: 8px;
     --aw-space-block: 12px;
+    --aw-space-section: 16px;
     --aw-space-section-sm: 24px;
+    --aw-btn-h-sm: 32px;
+    --aw-btn-h-md: 40px;
+    --aw-btn-h-lg: 48px;
+    --aw-btn-icon-size: 20px;
+    --aw-btn-radius-md: 12px;
+    --aw-btn-radius-lg: 14px;
     --aw-radius-button: 8px;
-    --aw-shadow-primary-glow: 0 4px 12px 0 #00935033;
+    --aw-radius-pill: 9999px;
     --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
     --aw-dur-fast: 120ms;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
-  *,
-  *::before,
-  *::after { box-sizing: border-box; }
-  .aw-root {
-    font-family: var(--aw-font-sans);
-    color: var(--aw-text-primary);
-    background: var(--aw-bg);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-  /* Element-only reset (specificity 1) so any component class always wins over it. */
-  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+  *, *::before, *::after { box-sizing: border-box; }
+  .aw-root { background: var(--aw-bg); font-family: var(--aw-font-sans); -webkit-font-smoothing: antialiased; }
+  button { font: inherit; }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+  .aw-icon svg { display: block; width: 100%; height: 100%; }
 
   /* — component — */
   /* ── Button ───────────────────────────────────────────────────────────── */
   .aw-btn {
     display: inline-flex; align-items: center; justify-content: center;
     gap: var(--aw-space-row);
-    height: 48px; padding: 0 var(--aw-space-section-sm);
+    height: var(--aw-btn-h-md); padding: 0 var(--aw-space-section);
     border: 0; border-radius: var(--aw-radius-button);
+    background: transparent;
     font-family: inherit;
-    font-size: var(--aw-fs-base); line-height: var(--aw-lh-base);
-    font-weight: var(--aw-fw-medium);
+    font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular);
+    color: var(--aw-text-primary);
     cursor: pointer;
-    transition: opacity var(--aw-dur-fast) var(--aw-ease-out);
+    transition: background-color var(--aw-dur-fast) var(--aw-ease-out), border-color var(--aw-dur-fast) var(--aw-ease-out);
   }
-  .aw-btn:active { opacity: 0.7; }
-  .aw-btn--primary { background: var(--aw-positive); color: var(--aw-zinc-50); }
-  .aw-btn--primary:hover { box-shadow: var(--aw-shadow-primary-glow); } /* glow max once per screen */
-  .aw-btn--outline { background: transparent; color: var(--aw-positive); border: 1px solid var(--aw-positive); }
+  .aw-btn .aw-icon { width: var(--aw-btn-icon-size); height: var(--aw-btn-icon-size); }
+
+  /* size */
+  .aw-btn--sm { height: var(--aw-btn-h-sm); padding: 0 var(--aw-space-block); }
+  .aw-btn--lg { height: var(--aw-btn-h-lg); padding: 0 var(--aw-space-section-sm); }
+
+  /* type — Primary: solid fill */
+  .aw-btn--primary { background: var(--aw-positive); }
+  .aw-btn--primary:hover { background: var(--aw-primary-400); }
+  .aw-btn--primary[disabled], .aw-btn--primary.is-disabled { background: var(--aw-primary-100); pointer-events: none; }
+
+  /* type — Secondary: 1px outline, no fill */
+  .aw-btn--secondary { border: 1px solid var(--aw-positive); }
+  .aw-btn--secondary:hover { border-color: var(--aw-primary-400); }
+  .aw-btn--secondary[disabled], .aw-btn--secondary.is-disabled { border-color: var(--aw-primary-100); pointer-events: none; }
+
+  /* type — Tertiary: label only. The set gives it no hover or disabled treatment */
+  .aw-btn--tertiary { background: transparent; border: 0; }
+  .aw-btn--tertiary[disabled], .aw-btn--tertiary.is-disabled { pointer-events: none; }
+
+  /* radius — the set's radius axis (default is its radius=sm) */
+  .aw-btn--r-none { border-radius: 0; }
+  .aw-btn--r-md { border-radius: var(--aw-btn-radius-md); }
+  .aw-btn--r-lg { border-radius: var(--aw-btn-radius-lg); }
+  .aw-btn--r-full { border-radius: var(--aw-radius-pill); }
+
+  /* icon-only — square, no padding */
+  .aw-btn--icon { width: var(--aw-btn-h-md); padding: 0; }
+  .aw-btn--icon.aw-btn--sm { width: var(--aw-btn-h-sm); }
+  .aw-btn--icon.aw-btn--lg { width: var(--aw-btn-h-lg); }
+  .aw-btn--icon.aw-btn--primary { background: var(--aw-primary-600); }
+  .aw-btn--icon.aw-btn--primary:hover { background: var(--aw-primary-400); }
+  .aw-btn--icon.aw-btn--primary[disabled], .aw-btn--icon.aw-btn--primary.is-disabled { background: var(--aw-primary-100); }
+
+  /* width */
   .aw-btn--full { width: 100%; }
-  .aw-btn--sm { height: 32px; padding: 0 var(--aw-space-block); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); }
-  .aw-btn[disabled], .aw-btn.is-disabled {
-    background: var(--aw-text-accent-dim); color: var(--aw-zinc-500);
-    pointer-events: none;
-  }
-  .aw-btn--outline[disabled], .aw-btn--outline.is-disabled {
-    background: transparent; border-color: var(--aw-text-accent-dim); color: var(--aw-zinc-500);
-  }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }
   h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
-  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .spec { display: grid; gap: 22px; max-width: 520px; }
   .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .stack { display: flex; flex-direction: column; gap: 12px; }
   .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
 </style>
 </head>
 <body class="aw-root">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4 20 10"/><path d="M17 7 10 14"/><path d="m8 12 4 4-4 4-4-4z"/><path d="M4 20h8"/></symbol>
+      <symbol id="aw-i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    </defs>
+  </svg>
+
   <h1>AuctionWire · Button</h1>
   <div class="spec">
     <div>
-      <div class="cap">Variants</div>
+      <div class="cap">Type — Primary · Secondary · Tertiary (size md, default radius)</div>
       <div class="row">
         <button type="button" class="aw-btn aw-btn--primary">Place Bid</button>
-        <button type="button" class="aw-btn aw-btn--outline">Bid on site</button>
-        <button type="button" class="aw-btn aw-btn--sm aw-btn--outline">Small outline</button>
+        <button type="button" class="aw-btn aw-btn--secondary">Bid on site</button>
+        <button type="button" class="aw-btn aw-btn--tertiary">Maybe later</button>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Size — sm 32 · md 40 · lg 48</div>
+      <div class="row">
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--sm">Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--primary">Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--lg">Place Bid</button>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Disabled — primary, secondary, tertiary</div>
+      <div class="row">
+        <button type="button" class="aw-btn aw-btn--primary" disabled>Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--secondary" disabled>Bid on site</button>
+        <button type="button" class="aw-btn aw-btn--tertiary" disabled>Maybe later</button>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Radius — none 0 · default 8 · md 12 · lg 14 · full</div>
+      <div class="row">
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--r-none">Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--primary">Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--r-md">Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--r-lg">Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--r-full">Place Bid</button>
+      </div>
+    </div>
+    <div>
+      <div class="cap">With icon — 20px slot, 8px gap</div>
+      <div class="row">
+        <button type="button" class="aw-btn aw-btn--primary"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-gavel"/></svg>Place Bid</button>
+        <button type="button" class="aw-btn aw-btn--secondary">Add to watchlist<svg class="aw-icon" aria-hidden="true"><use href="#aw-i-plus"/></svg></button>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Icon-only — square 32 / 40 / 48, primary fill is the set's primary-600</div>
+      <div class="row">
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--icon aw-btn--sm" aria-label="Add"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-plus"/></svg></button>
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--icon" aria-label="Add"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-plus"/></svg></button>
+        <button type="button" class="aw-btn aw-btn--primary aw-btn--icon aw-btn--lg" aria-label="Add"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-plus"/></svg></button>
+        <button type="button" class="aw-btn aw-btn--secondary aw-btn--icon aw-btn--r-full" aria-label="Add"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-plus"/></svg></button>
       </div>
     </div>
     <div>
       <div class="cap">Full width (4-column span)</div>
-      <button type="button" class="aw-btn aw-btn--primary aw-btn--full">Place Bid — $3,900</button>
-    </div>
-    <div>
-      <div class="cap">Disabled — primary &amp; outline</div>
-      <div class="row">
-        <button type="button" class="aw-btn aw-btn--primary" disabled>Place Bid</button>
-        <button type="button" class="aw-btn aw-btn--outline" disabled>Bid on site</button>
-      </div>
+      <button type="button" class="aw-btn aw-btn--primary aw-btn--lg aw-btn--full">Place Bid — $3,900</button>
     </div>
   </div>
 </body>
