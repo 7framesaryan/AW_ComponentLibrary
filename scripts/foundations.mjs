@@ -1,40 +1,45 @@
 /**
- * Locates the AuctionWire Foundations library (tokens, base.css, the icon sprite and
- * components.json). The coded components are styling only — every value they use is a
- * foundations token, so nothing here can be built or checked without it.
+ * Locates the AuctionWire Foundations library (tokens, base.css, utilities.json, the icon sprite).
+ * The components are styling only — every value they use is a Foundations token — so nothing here
+ * can be built or checked without it.
  *
- * Resolution order:
- *   1. $AW_FOUNDATIONS                      explicit path to <repo>/02-design-system
- *   2. ../                                  mounted as a submodule at 02-design-system/component-library/
- *   3. ../AW_DesignLanguage/02-design-system      sibling clone (both repos checked out side by side)
- *   4. ../../AW_DesignLanguage/02-design-system   sibling of this repo's parent
+ * The two repos sit side by side (nothing is nested inside the other). Resolution order:
+ *   1. $AW_FOUNDATIONS                                   explicit path to <foundations repo>/02-design-system
+ *   2. ../AW_DesignLanguage/02-design-system             sibling clone, local folder name
+ *   3. ../auctionwire-mobile-design/02-design-system     sibling clone, GitHub default folder name
  */
 import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+/** This repo's root (the Component library). */
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
-const MARKERS = ["src/tokens.css", "src/base.css", "components.json"];
+const MARKERS = ["src/tokens.css", "src/base.css", "utilities.json"];
 const isFoundations = (dir) => !!dir && MARKERS.every((m) => existsSync(join(dir, m)));
 
+export const FOUNDATIONS_REPO = "https://github.com/intelligaia/auctionwire-mobile-design";
+
 let cached;
+/** <foundations repo>/02-design-system */
 export function foundationsDir() {
   if (cached) return cached;
   const candidates = [
     process.env.AW_FOUNDATIONS && resolve(process.env.AW_FOUNDATIONS),
-    resolve(root, ".."),
     resolve(root, "../AW_DesignLanguage/02-design-system"),
-    resolve(root, "../../AW_DesignLanguage/02-design-system"),
+    resolve(root, "../auctionwire-mobile-design/02-design-system"),
   ].filter(Boolean);
   const found = candidates.find(isFoundations);
   if (!found) {
     throw new Error(
-      `Foundations library not found. The coded components need it for tokens, base.css, the icon sprite and components.json.\n` +
+      `Foundations library not found. The components need it for tokens, base.css, utilities.json and the icon sprite.\n` +
         `  Looked in:\n${candidates.map((c) => `    ${c}`).join("\n")}\n` +
-        `  Fix: mount this repo as the submodule 02-design-system/component-library/ of AW_DesignLanguage,\n` +
-        `       or run with AW_FOUNDATIONS=/path/to/AW_DesignLanguage/02-design-system`
+        `  Fix: clone ${FOUNDATIONS_REPO} next to this repo,\n` +
+        `       or run with AW_FOUNDATIONS=/path/to/<foundations repo>/02-design-system`
     );
   }
   return (cached = found);
 }
+
+/** The Foundations repo root: paths written as `02-design-system/...` resolve against it. */
+export const foundationsRoot = () => dirname(foundationsDir());

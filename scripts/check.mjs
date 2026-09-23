@@ -5,19 +5,24 @@
  *   node scripts/check.mjs          (needs the Foundations library; see scripts/foundations.mjs)
  *
  * Fails (exit 1) when this library has drifted:
- *   - folder hygiene: components/ holds only <id>.html files
+ *   - structure: unexpected top-level items; components/ holds only <id>.html, <id>.md and INDEX.md
  *   - the cascade.mjs order and components/ disagree, or a file is listed twice
- *   - a component file is not a component registered in the Foundations components.json,
- *     or a registered component has no file here
+ *   - components.json: a component file or guideline that isn't registered, a registered component
+ *     with no code file or no guideline, a guideline missing its required sections or its class
+ *   - components/INDEX.md is out of date (run node scripts/build-index.mjs)
+ *   - a class this CSS defines that is neither a registered component nor a Foundations utility
+ *   - a markdown link that goes nowhere, or a `02-design-system/...` path missing from the Foundations
+ *   - an #aw-i-* icon that the Foundations sprite (icons/sprite/) doesn't have
  *   - a component file has no "component" marker, so its styling can't be read out of it
  *   - a raw hex or deny-listed colour (every value must be a Foundations token)
  *   - a var(--aw-*) this CSS uses that the Foundations tokens.css / assets.css does not define
  */
-import { readFileSync, readdirSync, existsSync } from "node:fs";
-import { basename, join } from "node:path";
+import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
 import { componentCssFiles, componentCss } from "./components-css.mjs";
 import { FOLDED } from "../cascade.mjs";
-import { foundationsDir, root } from "./foundations.mjs";
+import { foundationsDir, foundationsRoot, root } from "./foundations.mjs";
+import { renderComponentIndex } from "./build-index.mjs";
 
 const errors = [];
 const notes = [];
@@ -33,12 +38,16 @@ try {
   process.exit(1);
 }
 notes.push(`foundations: ${fnd}`);
-const reg = JSON.parse(readFileSync(join(fnd, "components.json"), "utf8"));
+const reg = JSON.parse(read("components.json"));
+const utilityClasses = new Set(Object.values(JSON.parse(readFileSync(join(fnd, "utilities.json"), "utf8")).utilities).flat());
 
-
-// ── Folder hygiene ───────────────────────────────────────────────────────
+// ── Structure ────────────────────────────────────────────────────────────
+const TOP = ["README.md", "CLAUDE.md", "AGENTS.md", "cascade.mjs", "components.json", "components", "scripts"];
+for (const n of readdirSync(root))
+  if (![".git", ".gitignore", ".DS_Store", ...TOP].includes(n)) fail(`unexpected top-level item: ${n}`);
+for (const n of TOP) if (!existsSync(join(root, n))) fail(`missing ${n}`);
 for (const n of readdirSync(join(root, "components")))
-  if (n !== ".DS_Store" && !n.endsWith(".html")) fail(`components/${n}: components/ holds only <id>.html files`);
+  if (n !== ".DS_Store" && !/\.(html|md)$/.test(n)) fail(`components/${n}: components/ holds only <id>.html (code), <id>.md (guideline) and INDEX.md`);
 
 // ── Manifest ↔ files ↔ registry ──────────────────────────────────────────
 let listed = [];
@@ -60,10 +69,36 @@ try {
   for (const f of readdirSync(join(root, "components")).filter((f) => f.endsWith(".html")))
     if (!ids.includes(basename(f, ".html"))) fail(`components/${f} is not listed in cascade.mjs`);
   for (const id of Object.keys(reg.components))
-    if (!ids.includes(id) && !FOLDED.has(id)) fail(`component "${id}" is registered in the Foundations components.json but has no components/${id}.html here`);
+    if (!ids.includes(id) && !FOLDED.has(id)) fail(`component "${id}" is registered in components.json but has no components/${id}.html`);
 } catch (e) {
   fail(`component CSS: ${e.message}`);
 }
+
+// ── Registry ↔ guidelines ────────────────────────────────────────────────
+const categorised = new Set(Object.values(reg.categories ?? {}).flat());
+for (const [id, c] of Object.entries(reg.components)) {
+  for (const field of ["name", "category", "status", "guide", "class"]) if (!c[field]) fail(`components.json "${id}": missing "${field}"`);
+  if (!categorised.has(id)) fail(`components.json "${id}": not listed in any category`);
+  if (c.status && !reg.statusKey?.[c.status]) fail(`components.json "${id}": unknown status "${c.status}"`);
+  const want = `components/${FOLDED.get(id) ?? id}.html`;
+  if (!(c.files ?? []).includes(want)) fail(`components.json "${id}": files must list ${want}`);
+  if (c.guide !== `components/${id}.md`) fail(`components.json "${id}": guide must be components/${id}.md`);
+  if (!existsSync(join(root, `components/${id}.md`))) { fail(`component "${id}" has no guideline components/${id}.md`); continue; }
+  const g = read(`components/${id}.md`);
+  if (!g.includes(`.${c.class}`)) fail(`components/${id}.md: doesn't name its class .${c.class}`);
+  for (const h of ["## When to use", "## When not to use", "## Variants", "## States", "## Example"])
+    if (!g.includes(h)) fail(`components/${id}.md: missing section "${h}"`);
+}
+for (const f of readdirSync(join(root, "components")).filter((f) => f.endsWith(".md") && f !== "INDEX.md"))
+  if (!reg.components[basename(f, ".md")]) fail(`components/${f} has no entry in components.json`);
+try {
+  if (!existsSync(join(root, "components/INDEX.md")) || read("components/INDEX.md") !== renderComponentIndex())
+    fail("components/INDEX.md is out of date: run node scripts/build-index.mjs");
+} catch (e) {
+  fail(`components/INDEX.md: ${e.message}`);
+}
+const provisional = Object.entries(reg.components).filter(([, c]) => c.status === "provisional").map(([id]) => id);
+if (provisional.length) notes.push(`provisional components (screenshot-based, verify in Figma): ${provisional.join(", ")}`);
 
 // ── Every registered class is actually styled somewhere ──────────────────
 try {
@@ -79,9 +114,44 @@ try {
   for (const [id, parent] of FOLDED)
     if (!componentCss(join(root, `components/${parent}.html`)).includes(`.${reg.components[id]?.class}`))
       fail(`component "${id}" is folded into components/${parent}.html, but its styling isn't there`);
+  // every variant class is styled (here or in the Foundations base.css), and every class this CSS
+  // defines is a registered component block or a Foundations utility
+  const base = readFileSync(join(fnd, "src/base.css"), "utf8");
+  const defined = new Set([...stripComments(allCss + "\n" + base).matchAll(/\.(aw-[\w-]+)/g)].map(([, c]) => c));
+  const block = (c) => c.replace(/(__|--).*$/, "");
+  const blocks = new Set();
+  for (const [id, c] of Object.entries(reg.components))
+    for (const cls of new Set([c.class, ...Object.values(c.variants ?? {}).flatMap((v) => v.match(/aw-[\w-]+/g) ?? [])])) {
+      blocks.add(block(cls));
+      if (!defined.has(cls)) fail(`components.json "${id}": .${cls} is styled nowhere (components/*.html or the Foundations base.css)`);
+    }
+  for (const b of new Set([...stripComments(allCss).matchAll(/\.(aw-[\w-]+)/g)].map(([, c]) => block(c))))
+    if (!blocks.has(b) && !utilityClasses.has(b)) fail(`CSS class .${b} is neither a registered component (components.json) nor a Foundations utility (02-design-system/utilities.json)`);
 } catch (e) {
   fail(`component styling: ${e.message}`);
 }
+
+// ── Links and paths in markdown ─────────────────────────────────────────
+// Relative links stay inside this repo. A Foundations file is written as a backticked path from the
+// Foundations repo root (`02-design-system/foundations/grid.md`) and checked against it.
+const mdFiles = [...readdirSync(root).filter((f) => f.endsWith(".md")), ...readdirSync(join(root, "components")).filter((f) => f.endsWith(".md")).map((f) => `components/${f}`)];
+for (const f of mdFiles) {
+  const text = read(f);
+  for (const [, target] of text.matchAll(/\]\(([^)\s#]+)(?:#[^)]*)?\)/g)) {
+    if (/^[a-z]+:/i.test(target)) continue;
+    if (!existsSync(resolve(root, dirname(f), target))) fail(`${f}: broken link → ${target}`);
+  }
+  for (const [, path] of text.matchAll(/`((?:01-product-context|02-design-system|03-UI designs)\/[^`\s]*)`/g)) {
+    if (/[<>*{}…]/.test(path)) continue;
+    if (!existsSync(join(foundationsRoot(), path))) fail(`${f}: dead Foundations path → ${path}`);
+  }
+}
+
+// ── Icons: every #aw-i-* exists in the Foundations sprite ───────────────
+const iconIds = new Set(readdirSync(join(fnd, "icons/sprite")).filter((f) => f.endsWith(".svg")).map((f) => `aw-i-${basename(f, ".svg")}`));
+for (const f of readdirSync(join(root, "components")).filter((f) => /\.(md|html)$/.test(f)))
+  for (const [, id] of read(`components/${f}`).matchAll(/#(aw-i-[a-z0-9-]+)/g))
+    if (!iconIds.has(id) && !id.endsWith("-")) fail(`components/${f}: uses #${id}, which the Foundations sprite has no icons/sprite/${id.slice(5)}.svg for`);
 
 // ── Colours: Foundations tokens only ─────────────────────────────────────
 const DENY = ["#16a34a", "#2563eb", "#4773b9", "#89afed", "#09090b", "#22c55e", "#ef4444"];
@@ -120,4 +190,4 @@ if (errors.length) {
   console.error(`✗ ${errors.length} problem(s):\n` + errors.map((e) => `  - ${e}`).join("\n"));
   process.exit(1);
 }
-console.log(`✓ component library consistent (${listed.length} component files, one per component)`);
+console.log(`✓ component library consistent (${Object.keys(reg.components).length} components: code, guideline and registry in step)`);

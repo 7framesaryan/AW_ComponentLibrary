@@ -1,0 +1,1071 @@
+{
+  "version": 1,
+  "description": "Every AuctionWire component: name, category, status, class, variants, its guideline (components/<id>.md) and its code (components/<id>.html). Utility classes live in the Foundations repo (02-design-system/utilities.json).",
+  "statusKey": {
+    "verified": "Checked against live Figma in a reproduction",
+    "catalogued": "Documented from the CSS; not yet verified against live Figma",
+    "provisional": "Reconstructed from a screenshot; values may change after a Figma pass"
+  },
+  "categories": {
+    "actions": [
+      "button",
+      "icon-button",
+      "quick-action",
+      "social-btn"
+    ],
+    "chips-and-badges": [
+      "chip",
+      "filter-chip",
+      "status-chip",
+      "stat-pill",
+      "badge",
+      "gated-pill"
+    ],
+    "inputs-and-controls": [
+      "search",
+      "field",
+      "switch",
+      "checkbox",
+      "radio",
+      "segmented",
+      "range",
+      "option-row",
+      "plan-option"
+    ],
+    "cards-and-content": [
+      "listing-card",
+      "grid-card",
+      "list-row",
+      "top-player",
+      "saved-search",
+      "portfolio-summary",
+      "watchlist-card",
+      "stat-card",
+      "calendar-strip",
+      "calendar-day",
+      "calendar-entry",
+      "detail-row",
+      "fact-row",
+      "image-block",
+      "dots",
+      "fast-switcher",
+      "avatar"
+    ],
+    "navigation-and-chrome": [
+      "top-bar",
+      "header",
+      "bottom-nav",
+      "nav-item",
+      "menu",
+      "section-header",
+      "filter-row",
+      "action-bar",
+      "brand-language-header"
+    ],
+    "overlays-and-feedback": [
+      "sheet",
+      "accordion",
+      "empty",
+      "info-alert",
+      "success-indicator",
+      "success-heading",
+      "feedback-description"
+    ],
+    "layout-and-surfaces": [
+      "device",
+      "screen",
+      "hero-band",
+      "divider",
+      "labeled-divider"
+    ]
+  },
+  "components": {
+    "button": {
+      "name": "Button",
+      "category": "actions",
+      "status": "verified",
+      "guide": "components/button.md",
+      "class": "aw-btn",
+      "files": [
+        "components/button.html"
+      ],
+      "contract": "components/button.md",
+      "variants": {
+        "default": ".aw-btn",
+        "primary": ".aw-btn.aw-btn--primary",
+        "secondary": ".aw-btn.aw-btn--secondary",
+        "tertiary": ".aw-btn.aw-btn--tertiary",
+        "sm": ".aw-btn.aw-btn--sm",
+        "lg": ".aw-btn.aw-btn--lg",
+        "radiusNone": ".aw-btn.aw-btn--r-none",
+        "radiusMd": ".aw-btn.aw-btn--r-md",
+        "radiusLg": ".aw-btn.aw-btn--r-lg",
+        "radiusFull": ".aw-btn.aw-btn--r-full",
+        "iconOnly": ".aw-btn.aw-btn--icon",
+        "full": ".aw-btn.aw-btn--full"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2209:26195 (component set \"Button\", 270 variants)",
+      "verification": "imported from the live Figma component set 2026-09-22; every value measured from it"
+    },
+    "chip": {
+      "name": "Chip",
+      "category": "chips-and-badges",
+      "status": "catalogued",
+      "guide": "components/chip.md",
+      "class": "aw-chip",
+      "files": [
+        "components/chip.html"
+      ],
+      "contract": "components/chip.md",
+      "variants": {
+        "default": ".aw-chip",
+        "primary": ".aw-chip.aw-chip--primary",
+        "sm": ".aw-chip.aw-chip--sm"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "status-chip": {
+      "name": "Status chip",
+      "category": "chips-and-badges",
+      "status": "catalogued",
+      "guide": "components/status-chip.md",
+      "class": "aw-status-chip",
+      "files": [
+        "components/status-chip.html"
+      ],
+      "contract": "components/status-chip.md",
+      "variants": {
+        "default": ".aw-status-chip",
+        "ended": ".aw-status-chip.aw-status-chip--ended",
+        "live": ".aw-status-chip.aw-status-chip--live",
+        "upcoming": ".aw-status-chip.aw-status-chip--upcoming"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "stat-pill": {
+      "name": "Stat pill",
+      "category": "chips-and-badges",
+      "status": "catalogued",
+      "guide": "components/stat-pill.md",
+      "class": "aw-stat-pill",
+      "files": [
+        "components/stat-pill.html"
+      ],
+      "contract": "components/stat-pill.md",
+      "variants": {
+        "default": ".aw-stat-pill"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "quick-action": {
+      "name": "Quick action",
+      "category": "actions",
+      "status": "catalogued",
+      "guide": "components/quick-action.md",
+      "class": "aw-quick-action",
+      "files": [
+        "components/quick-action.html"
+      ],
+      "contract": "components/quick-action.md",
+      "variants": {
+        "default": ".aw-quick-action"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "switch": {
+      "name": "Switch",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/switch.md",
+      "class": "aw-switch",
+      "files": [
+        "components/switch.html"
+      ],
+      "contract": "components/switch.md",
+      "variants": {
+        "default": ".aw-switch"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "checkbox": {
+      "name": "Checkbox",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/checkbox.md",
+      "class": "aw-checkbox",
+      "files": [
+        "components/checkbox.html"
+      ],
+      "contract": "components/checkbox.md",
+      "variants": {
+        "default": ".aw-checkbox"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "radio": {
+      "name": "Radio",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/radio.md",
+      "class": "aw-radio",
+      "files": [
+        "components/radio.html"
+      ],
+      "contract": "components/radio.md",
+      "variants": {
+        "default": ".aw-radio",
+        "ring": ".aw-radio.aw-radio--ring"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; ring variant added from payment-plan screenshot reconstruction (unverified vs live Figma)"
+    },
+    "search": {
+      "name": "Search",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/search.md",
+      "class": "aw-search",
+      "files": [
+        "components/search.html"
+      ],
+      "contract": "components/search.md",
+      "variants": {
+        "default": ".aw-search",
+        "sm": ".aw-search.aw-search--sm"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "avatar": {
+      "name": "Avatar",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/avatar.md",
+      "class": "aw-avatar",
+      "files": [
+        "components/avatar.html"
+      ],
+      "contract": "components/avatar.md",
+      "variants": {
+        "default": ".aw-avatar"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "section-header": {
+      "name": "Section header",
+      "category": "navigation-and-chrome",
+      "status": "catalogued",
+      "guide": "components/section-header.md",
+      "class": "aw-section-header",
+      "files": [
+        "components/section-header.html"
+      ],
+      "contract": "components/section-header.md",
+      "variants": {
+        "default": ".aw-section-header"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "listing-card": {
+      "name": "Listing card",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/listing-card.md",
+      "class": "aw-listing-card",
+      "files": [
+        "components/listing-card.html"
+      ],
+      "contract": "components/listing-card.md",
+      "variants": {
+        "default": ".aw-listing-card"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "grid-card": {
+      "name": "PLP grid card",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/grid-card.md",
+      "class": "aw-grid-card",
+      "files": [
+        "components/grid-card.html"
+      ],
+      "contract": "components/grid-card.md",
+      "variants": {
+        "default": ".aw-grid-card"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "list-row": {
+      "name": "List-result row",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/list-row.md",
+      "class": "aw-list-row",
+      "files": [
+        "components/list-row.html"
+      ],
+      "contract": "components/list-row.md",
+      "variants": {
+        "default": ".aw-list-row"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "top-player": {
+      "name": "Top-player card",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/top-player.md",
+      "class": "aw-top-player",
+      "files": [
+        "components/top-player.html"
+      ],
+      "contract": "components/top-player.md",
+      "variants": {
+        "default": ".aw-top-player"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "saved-search": {
+      "name": "Saved-search card",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/saved-search.md",
+      "class": "aw-saved-search",
+      "files": [
+        "components/saved-search.html"
+      ],
+      "contract": "components/saved-search.md",
+      "variants": {
+        "default": ".aw-saved-search",
+        "h": ".aw-saved-search.aw-saved-search--h",
+        "v": ".aw-saved-search.aw-saved-search--v"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "portfolio-summary": {
+      "name": "Portfolio summary",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/portfolio-summary.md",
+      "class": "aw-portfolio-summary",
+      "files": [
+        "components/portfolio-summary.html"
+      ],
+      "contract": "components/portfolio-summary.md",
+      "variants": {
+        "default": ".aw-portfolio-summary"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "watchlist-card": {
+      "name": "Watchlist card",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/watchlist-card.md",
+      "class": "aw-watchlist-card",
+      "files": [
+        "components/watchlist-card.html"
+      ],
+      "contract": "components/watchlist-card.md",
+      "variants": {
+        "default": ".aw-watchlist-card"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "stat-card": {
+      "name": "Stat card",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/stat-card.md",
+      "class": "aw-stat-card",
+      "files": [
+        "components/stat-card.html"
+      ],
+      "contract": "components/stat-card.md",
+      "variants": {
+        "default": ".aw-stat-card"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "calendar-strip": {
+      "name": "Calendar strip",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/calendar-strip.md",
+      "class": "aw-calendar-strip",
+      "files": [
+        "components/calendar-strip.html"
+      ],
+      "contract": "components/calendar-strip.md",
+      "variants": {
+        "default": ".aw-calendar-strip"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "calendar-day": {
+      "name": "Calendar day",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/calendar-day.md",
+      "class": "aw-calendar-day",
+      "files": [
+        "components/calendar-strip.html"
+      ],
+      "contract": "components/calendar-day.md",
+      "variants": {
+        "default": ".aw-calendar-day"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "calendar-entry": {
+      "name": "Calendar entry",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/calendar-entry.md",
+      "class": "aw-calendar-entry",
+      "files": [
+        "components/calendar-entry.html"
+      ],
+      "contract": "components/calendar-entry.md",
+      "variants": {
+        "default": ".aw-calendar-entry"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "detail-row": {
+      "name": "Detail row",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/detail-row.md",
+      "class": "aw-detail-row",
+      "files": [
+        "components/detail-row.html"
+      ],
+      "contract": "components/detail-row.md",
+      "variants": {
+        "default": ".aw-detail-row"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "top-bar": {
+      "name": "Glass top bar",
+      "category": "navigation-and-chrome",
+      "status": "catalogued",
+      "guide": "components/top-bar.md",
+      "class": "aw-top-bar",
+      "files": [
+        "components/top-bar.html"
+      ],
+      "contract": "components/top-bar.md",
+      "variants": {
+        "default": ".aw-top-bar"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "header": {
+      "name": "Second-level header",
+      "category": "navigation-and-chrome",
+      "status": "catalogued",
+      "guide": "components/header.md",
+      "class": "aw-header",
+      "files": [
+        "components/header.html"
+      ],
+      "contract": "components/header.md",
+      "variants": {
+        "default": ".aw-header"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "bottom-nav": {
+      "name": "Bottom nav",
+      "category": "navigation-and-chrome",
+      "status": "catalogued",
+      "guide": "components/bottom-nav.md",
+      "class": "aw-bottom-nav",
+      "files": [
+        "components/bottom-nav.html"
+      ],
+      "contract": "components/bottom-nav.md",
+      "variants": {
+        "default": ".aw-bottom-nav"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "nav-item": {
+      "name": "Nav item",
+      "category": "navigation-and-chrome",
+      "status": "catalogued",
+      "guide": "components/nav-item.md",
+      "class": "aw-nav-item",
+      "files": [
+        "components/bottom-nav.html"
+      ],
+      "contract": "components/nav-item.md",
+      "variants": {
+        "default": ".aw-nav-item"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "sheet": {
+      "name": "Sheet",
+      "category": "overlays-and-feedback",
+      "status": "catalogued",
+      "guide": "components/sheet.md",
+      "class": "aw-sheet",
+      "files": [
+        "components/sheet.html"
+      ],
+      "contract": "components/sheet.md",
+      "variants": {
+        "default": ".aw-sheet",
+        "modal": ".aw-sheet.aw-sheet--modal"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; modal (near-black) variant added from payment-plan screenshot reconstruction (unverified vs live Figma)"
+    },
+    "field": {
+      "name": "Field",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/field.md",
+      "class": "aw-field",
+      "files": [
+        "components/field.html"
+      ],
+      "contract": "components/field.md",
+      "variants": {
+        "default": ".aw-field"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "social-btn": {
+      "name": "Social auth button",
+      "category": "actions",
+      "status": "catalogued",
+      "guide": "components/social-btn.md",
+      "class": "aw-social-btn",
+      "files": [
+        "components/social-btn.html"
+      ],
+      "contract": "components/social-btn.md",
+      "variants": {
+        "default": ".aw-social-btn",
+        "apple": ".aw-social-btn.aw-social-btn--apple",
+        "google": ".aw-social-btn.aw-social-btn--google"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "labeled-divider": {
+      "name": "Labeled divider",
+      "category": "layout-and-surfaces",
+      "status": "catalogued",
+      "guide": "components/labeled-divider.md",
+      "class": "aw-labeled-divider",
+      "files": [
+        "components/labeled-divider.html"
+      ],
+      "contract": "components/labeled-divider.md",
+      "variants": {
+        "default": ".aw-labeled-divider"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "segmented": {
+      "name": "Segmented",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/segmented.md",
+      "class": "aw-segmented",
+      "files": [
+        "components/segmented.html"
+      ],
+      "contract": "components/segmented.md",
+      "variants": {
+        "default": ".aw-segmented"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "badge": {
+      "name": "Badge",
+      "category": "chips-and-badges",
+      "status": "catalogued",
+      "guide": "components/badge.md",
+      "class": "aw-badge",
+      "files": [
+        "components/badge.html"
+      ],
+      "contract": "components/badge.md",
+      "variants": {
+        "default": ".aw-badge",
+        "positive": ".aw-badge.aw-badge--positive",
+        "positive-soft": ".aw-badge.aw-badge--positive-soft",
+        "dot": ".aw-badge-dot",
+        "anchored": ".aw-badge-anchor"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "fast-switcher": {
+      "name": "Fast switcher",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/fast-switcher.md",
+      "class": "aw-fast-switcher",
+      "files": [
+        "components/fast-switcher.html"
+      ],
+      "contract": "components/fast-switcher.md",
+      "variants": {
+        "default": ".aw-fast-switcher"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "menu": {
+      "name": "More-menu",
+      "category": "navigation-and-chrome",
+      "status": "catalogued",
+      "guide": "components/menu.md",
+      "class": "aw-menu",
+      "files": [
+        "components/menu.html"
+      ],
+      "contract": "components/menu.md",
+      "variants": {
+        "default": ".aw-menu"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "image-block": {
+      "name": "Image block",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/image-block.md",
+      "class": "aw-image-block",
+      "files": [
+        "components/image-block.html"
+      ],
+      "contract": "components/image-block.md",
+      "variants": {
+        "default": ".aw-image-block"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "dots": {
+      "name": "Dots",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/dots.md",
+      "class": "aw-dots",
+      "files": [
+        "components/dots.html"
+      ],
+      "contract": "components/dots.md",
+      "variants": {
+        "default": ".aw-dots",
+        "dot": ".aw-dot",
+        "dot-active": ".aw-dot.is-active"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "accordion": {
+      "name": "Accordion",
+      "category": "overlays-and-feedback",
+      "status": "catalogued",
+      "guide": "components/accordion.md",
+      "class": "aw-accordion",
+      "files": [
+        "components/accordion.html"
+      ],
+      "contract": "components/accordion.md",
+      "variants": {
+        "default": ".aw-accordion"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "range": {
+      "name": "Range",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/range.md",
+      "class": "aw-range",
+      "files": [
+        "components/range.html"
+      ],
+      "contract": "components/range.md",
+      "variants": {
+        "default": ".aw-range"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "option-row": {
+      "name": "Filter option row",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/option-row.md",
+      "class": "aw-option-row",
+      "files": [
+        "components/option-row.html"
+      ],
+      "contract": "components/option-row.md",
+      "variants": {
+        "default": ".aw-option-row"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "empty": {
+      "name": "Empty state",
+      "category": "overlays-and-feedback",
+      "status": "catalogued",
+      "guide": "components/empty.md",
+      "class": "aw-empty",
+      "files": [
+        "components/empty.html"
+      ],
+      "contract": "components/empty.md",
+      "variants": {
+        "default": ".aw-empty"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "action-bar": {
+      "name": "Bottom action bar",
+      "category": "navigation-and-chrome",
+      "status": "catalogued",
+      "guide": "components/action-bar.md",
+      "class": "aw-action-bar",
+      "files": [
+        "components/action-bar.html"
+      ],
+      "contract": "components/action-bar.md",
+      "variants": {
+        "default": ".aw-action-bar"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "filter-row": {
+      "name": "Filter chip row",
+      "category": "navigation-and-chrome",
+      "status": "catalogued",
+      "guide": "components/filter-row.md",
+      "class": "aw-filter-row",
+      "files": [
+        "components/filter-row.html"
+      ],
+      "contract": "components/filter-row.md",
+      "variants": {
+        "default": ".aw-filter-row"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "device": {
+      "name": "Device frame",
+      "category": "layout-and-surfaces",
+      "status": "catalogued",
+      "guide": "components/device.md",
+      "class": "aw-device",
+      "files": [
+        "components/device.html"
+      ],
+      "contract": "components/device.md",
+      "variants": {
+        "default": ".aw-device"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "screen": {
+      "name": "Screen",
+      "category": "layout-and-surfaces",
+      "status": "catalogued",
+      "guide": "components/screen.md",
+      "class": "aw-screen",
+      "files": [
+        "components/screen.html"
+      ],
+      "contract": "components/screen.md",
+      "variants": {
+        "default": ".aw-screen"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not independently verified against live Figma"
+    },
+    "success-indicator": {
+      "name": "Success indicator",
+      "category": "overlays-and-feedback",
+      "status": "verified",
+      "guide": "components/success-indicator.md",
+      "class": "aw-success-indicator",
+      "files": [
+        "components/success-indicator.html"
+      ],
+      "fontStylesheet": "src/fonts.css",
+      "assets": [],
+      "contract": "components/success-indicator.md",
+      "variants": {
+        "default": ".aw-success-indicator"
+      },
+      "figmaSource": {
+        "fileKey": "B7mJJRaFlVAfLKPTjz48aK",
+        "frameId": "14794:80176",
+        "nodeId": "14794:80191"
+      },
+      "verification": "Geometry, source styles and screenshot reviewed in reproductions/web-approach; small raster differences remain. Browser evidence is frame-specific.",
+      "evidence": "reproductions/web-approach/qa.md"
+    },
+    "success-heading": {
+      "name": "Success heading",
+      "category": "overlays-and-feedback",
+      "status": "verified",
+      "guide": "components/success-heading.md",
+      "class": "aw-success-heading",
+      "files": [
+        "components/success-heading.html"
+      ],
+      "fontStylesheet": "src/fonts.css",
+      "assets": [],
+      "contract": "components/success-heading.md",
+      "variants": {
+        "default": ".aw-success-heading"
+      },
+      "figmaSource": {
+        "fileKey": "B7mJJRaFlVAfLKPTjz48aK",
+        "frameId": "14794:80176",
+        "nodeId": "14794:80194"
+      },
+      "verification": "Geometry, source styles and screenshot reviewed in reproductions/web-approach; small raster differences remain. Browser evidence is frame-specific.",
+      "evidence": "reproductions/web-approach/qa.md"
+    },
+    "feedback-description": {
+      "name": "Feedback description",
+      "category": "overlays-and-feedback",
+      "status": "verified",
+      "guide": "components/feedback-description.md",
+      "class": "aw-feedback-description",
+      "files": [
+        "components/feedback-description.html"
+      ],
+      "fontStylesheet": "src/fonts.css",
+      "assets": [],
+      "contract": "components/feedback-description.md",
+      "variants": {
+        "default": ".aw-feedback-description"
+      },
+      "figmaSource": {
+        "fileKey": "B7mJJRaFlVAfLKPTjz48aK",
+        "frameId": "14794:80176",
+        "nodeId": "14794:80195"
+      },
+      "verification": "Geometry, source styles and screenshot reviewed in reproductions/web-approach; small raster differences remain. Browser evidence is frame-specific.",
+      "evidence": "reproductions/web-approach/qa.md"
+    },
+    "info-alert": {
+      "name": "Information alert",
+      "category": "overlays-and-feedback",
+      "status": "verified",
+      "guide": "components/info-alert.md",
+      "class": "aw-info-alert",
+      "files": [
+        "components/info-alert.html"
+      ],
+      "fontStylesheet": "src/fonts.css",
+      "assets": [
+        "icons/images/info-circle.svg"
+      ],
+      "contract": "components/info-alert.md",
+      "variants": {
+        "default": ".aw-info-alert"
+      },
+      "figmaSource": {
+        "fileKey": "B7mJJRaFlVAfLKPTjz48aK",
+        "frameId": "14794:80176",
+        "nodeId": "14794:80200"
+      },
+      "verification": "Geometry, source styles and screenshot reviewed in reproductions/web-approach; small raster differences remain. Browser evidence is frame-specific.",
+      "evidence": "reproductions/web-approach/qa.md"
+    },
+    "brand-language-header": {
+      "name": "Brand / language header",
+      "category": "navigation-and-chrome",
+      "status": "verified",
+      "guide": "components/brand-language-header.md",
+      "class": "aw-brand-language-header",
+      "files": [
+        "components/brand-language-header.html"
+      ],
+      "fontStylesheet": "src/fonts.css",
+      "assets": [
+        "assets/auctionwire-wordmark.svg",
+        "icons/images/language-uk.svg"
+      ],
+      "contract": "components/brand-language-header.md",
+      "variants": {
+        "default": ".aw-brand-language-header"
+      },
+      "figmaSource": {
+        "fileKey": "B7mJJRaFlVAfLKPTjz48aK",
+        "frameId": "14794:80176",
+        "nodeId": "14794:80180"
+      },
+      "verification": "Geometry, source styles and screenshot reviewed in reproductions/web-approach; small raster differences remain. Browser evidence is frame-specific.",
+      "evidence": "reproductions/web-approach/qa.md"
+    },
+    "plan-option": {
+      "name": "Plan option",
+      "category": "inputs-and-controls",
+      "status": "provisional",
+      "guide": "components/plan-option.md",
+      "class": "aw-plan-option",
+      "files": [
+        "components/plan-option.html"
+      ],
+      "fontStylesheet": "src/fonts.css",
+      "contract": "components/plan-option.md",
+      "variants": {
+        "default": ".aw-plan-option",
+        "selected": ".aw-plan-option.is-selected"
+      },
+      "figmaSource": null,
+      "verification": "screenshot-reconstruction from user-supplied image (reproductions/payment-plan); NOT verified against live Figma; measurements inferred",
+      "evidence": "reproductions/payment-plan/qa.md"
+    },
+    "icon-button": {
+      "name": "Icon button",
+      "category": "actions",
+      "status": "catalogued",
+      "guide": "components/icon-button.md",
+      "class": "aw-btn-icon",
+      "files": [
+        "components/icon-button.html"
+      ],
+      "contract": "components/icon-button.md",
+      "variants": {
+        "default": ".aw-btn-icon",
+        "ghost": ".aw-btn-icon-ghost"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; used in every sample screen"
+    },
+    "filter-chip": {
+      "name": "Filter chip",
+      "category": "chips-and-badges",
+      "status": "catalogued",
+      "guide": "components/filter-chip.md",
+      "class": "aw-filter-chip",
+      "files": [
+        "components/filter-chip.html"
+      ],
+      "contract": "components/filter-chip.md",
+      "variants": {
+        "default": ".aw-filter-chip",
+        "active": ".aw-filter-chip.is-active"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; used in watchlist and search-results"
+    },
+    "fact-row": {
+      "name": "Fact row",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/fact-row.md",
+      "class": "aw-fact-row",
+      "files": [
+        "components/fact-row.html"
+      ],
+      "contract": "components/fact-row.md",
+      "variants": {
+        "default": ".aw-fact-row"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; used in listing cards and card detail"
+    },
+    "divider": {
+      "name": "Divider",
+      "category": "layout-and-surfaces",
+      "status": "catalogued",
+      "guide": "components/divider.md",
+      "class": "aw-divider",
+      "files": [
+        "components/divider.html"
+      ],
+      "contract": "components/divider.md",
+      "variants": {
+        "default": ".aw-divider",
+        "primary": ".aw-divider.aw-divider--primary"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css"
+    },
+    "gated-pill": {
+      "name": "Gated pill",
+      "category": "chips-and-badges",
+      "status": "catalogued",
+      "guide": "components/gated-pill.md",
+      "class": "aw-gated-pill",
+      "files": [
+        "components/listing-card.html"
+      ],
+      "contract": "components/gated-pill.md",
+      "variants": {
+        "default": ".aw-gated-pill"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; not used in any sample screen yet"
+    },
+    "hero-band": {
+      "name": "Hero band",
+      "category": "layout-and-surfaces",
+      "status": "catalogued",
+      "guide": "components/hero-band.md",
+      "class": "aw-hero-band",
+      "files": [
+        "components/hero-band.html"
+      ],
+      "contract": "components/hero-band.md",
+      "variants": {
+        "default": ".aw-hero-band"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-css; page hero gradient behind screen content"
+    }
+  }
+}
