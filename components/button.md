@@ -24,12 +24,6 @@ system and are not imported.
 - A home-screen shortcut → use [Quick action](quick-action.md)
 - Filtering a list → use [Filter chip](filter-chip.md)
 
-## Where it's used
-- Card detail: `--primary --lg --full` "Place Bid" in the bottom action bar. See `templates/card-detail.template.html`
-- Search results filter sheet: `--secondary` "Reset" plus `--primary` "Show 248 results". See `templates/search-results.template.html`
-- Listing cards and list rows: `--secondary --sm` bid CTA.
-- Gallery: every variant. See `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 button.aw-btn             centred inline-flex row, gap --aw-space-row (8)

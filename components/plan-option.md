@@ -15,9 +15,6 @@ A selectable subscription-plan card: ring radio, plan name with optional savings
 - A bare single-choice control → use [Radio](radio.md)
 - Switching views or timeframes → use [Segmented](segmented.md)
 
-## Where it's used
-- Payment plan sheet (paywall flow, after "Start 30 days free trial") — `reproductions/payment-plan/screen.html`
-
 ## Anatomy
 ```text
 button.aw-plan-option                     row card, role="radio"

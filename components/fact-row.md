@@ -15,11 +15,6 @@ A single inline label and value pair, such as "Buyers Premium: +20% ($770)", use
 - A metric tile → use [Stat card](stat-card.md)
 - A fact hidden behind a subscription → use [Gated pill](gated-pill.md)
 
-## Where it's used
-- Home: two facts per listing card in the "Ending soon" carousel. `templates/home.template.html`
-- Card detail: two facts in the current-bid panel, spread with `justify-content:space-between`. `templates/card-detail.template.html`
-- Gallery: listing card facts. `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-fact-row                row, centred, gap --aw-space-tight

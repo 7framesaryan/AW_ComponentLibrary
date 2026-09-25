@@ -15,11 +15,6 @@ A pill-shaped toggle group where one option is active; switches a view mode or t
 - An on/off setting → use [Switch](switch.md)
 - Top-level navigation between screens → use [Bottom nav](bottom-nav.md)
 
-## Where it's used
-- Portfolio: timeframe toggle under the chart, and List / Grid in the Holdings section header — `templates/portfolio.template.html`
-- Search results: icon-only List / Grid beside the result count — `templates/search-results.template.html`
-- Gallery (List / Chart) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 div.aw-segmented                 inline pill track, 2px padding

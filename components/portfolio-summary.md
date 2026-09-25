@@ -14,12 +14,6 @@ A summary card that leads with a large money value and its change, followed by a
 - An icon + label + value pill → use [Stat pill](stat-pill.md)
 - A list of holdings or past sales → use [Detail row](detail-row.md)
 
-## Where it's used
-- Home: portfolio value, +4.2% delta, then Cards / Watching / Active bids. `templates/home.template.html`
-- Portfolio: total value and delta, a chart and a 1W/1M/1Y/All [Segmented](segmented.md) toggle inside. `templates/portfolio.template.html`
-- Card detail: current bid with countdown, then two [Fact rows](fact-row.md) (premium, total). `templates/card-detail.template.html`
-- Gallery. `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-portfolio-summary               column, padding --aw-space-section, gap --aw-space-block

@@ -13,10 +13,6 @@ A compact ranked row for one player: rank number, avatar, name with lot count, a
 - A stored search → use [Saved-search card](saved-search.md)
 - A single labelled metric → use [Stat card](stat-card.md)
 
-## Where it's used
-- Home: "Top players" section, two rows stacked with an 8px gap. `templates/home.template.html`
-- Gallery: two rows in "Content objects". `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-top-player              row, centred, padding + gap --aw-space-row

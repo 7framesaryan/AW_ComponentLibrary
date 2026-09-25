@@ -1,10 +1,21 @@
 <!doctype html>
 <!--
-  AuctionWire · Checkbox  (registry id: checkbox · class: .aw-checkbox · status: catalogued)
+  AuctionWire · Checkbox  (registry id: checkbox · class: .aw-checkbox · status: verified)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
-  Classes: .aw-checkbox
-  Contract: Foundations components/checkbox.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css, icons/sprite/
+  Classes: .aw-checkbox (the box)  .aw-checkbox__tick  .aw-checkbox__option (box + label row)
+           .aw-checkbox__label
+           size .aw-checkbox--sm|--lg   radius .aw-checkbox--r-none|--r-md|--r-lg|--r-full
+           colour .aw-checkbox--neutral   row .aw-checkbox__option--line-through
+           state .is-checked  .is-disabled
+  Contract: Foundations components/checkbox.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+
+  Imported from the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH, component set
+  "Checkbox" 767:54274 (page "Checkbox" 636:299) — 192 variants:
+  state × color × size × radius × isDisabled × lineThrough. Every value below is measured from
+  that set. color=secondary|success|warning|danger are 12 EMPTY placeholder variants (no layers)
+  and are not imported.
   THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
   screen builds read that block straight out of this file. Edit it here, nowhere else.
 -->
@@ -17,66 +28,156 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-border-strong: #71717a;
     --aw-text-primary: #ffffff;
+    --aw-white: #ffffff;
     --aw-positive: #009350;
-    --aw-zinc-50: #fafafa;
+    --aw-zinc-700: #3f3f46;
+    --aw-zinc-800: #27272a;
+    --aw-text-foreground: #ecedee;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-radius-sm: 4px;
+    --aw-fw-regular: 400;
+    --aw-fs-sm: 14px;       --aw-lh-sm: 20px;
+    --aw-fs-base: 16px;     --aw-lh-base: 24px;
+    --aw-fs-lg: 18px;       --aw-lh-lg: 28px;
+    --aw-space-row: 8px;
+    --aw-radius-md: 6px;
+    --aw-radius-pill: 9999px;
+    --aw-opacity-disabled: 0.5;
+    --aw-checkbox-size-sm: 16px;
+    --aw-checkbox-size-md: 20px;
+    --aw-checkbox-size-lg: 24px;
+    --aw-checkbox-border-width: 2px;
+    --aw-checkbox-radius-md: 7.2px;
+    --aw-checkbox-radius-lg: 8.4px;
+    --aw-checkbox-tick-w: 6.22px;
+    --aw-checkbox-tick-h: 4.44px;
+    --aw-checkbox-tick-stroke: 1px;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
-  *,
-  *::before,
-  *::after { box-sizing: border-box; }
-  .aw-root {
-    font-family: var(--aw-font-sans);
-    color: var(--aw-text-primary);
-    background: var(--aw-bg);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
+  *, *::before, *::after { box-sizing: border-box; }
+  .aw-root { background: var(--aw-bg); color: var(--aw-text-primary); font-family: var(--aw-font-sans); -webkit-font-smoothing: antialiased; }
   .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
   .aw-icon svg { display: block; width: 100%; height: 100%; }
 
   /* — component — */
-  /* ── Checkbox / Radio ─────────────────────────────────────────────────── */
-  /* split from the shared rule ".aw-checkbox, .aw-radio" */
+  /* ── Checkbox ─────────────────────────────────────────────────────────── */
+  /* the box (the set's Checkbox_Element): 2px inside stroke, default size md 20, radius sm 6 */
   .aw-checkbox {
-    width: 20px; height: 20px; border: 1px solid var(--aw-border-strong);
-    background: transparent; display: inline-flex; align-items: center; justify-content: center;
-    color: var(--aw-zinc-50);
+    display: inline-flex; align-items: center; justify-content: center; flex: none;
+    width: var(--aw-checkbox-size-md); height: var(--aw-checkbox-size-md);
+    border: var(--aw-checkbox-border-width) solid var(--aw-zinc-700);
+    border-radius: var(--aw-radius-md);
+    background: transparent;
+    color: var(--aw-white);
+    transition: background-color var(--aw-dur-fast) var(--aw-ease-out), border-color var(--aw-dur-fast) var(--aw-ease-out);
   }
-  .aw-checkbox { border-radius: var(--aw-radius-sm); }
-  /* split from the shared rule ".aw-checkbox.is-checked, .aw-radio.is-checked" */
+  .aw-checkbox__tick {
+    display: none; flex: none; overflow: visible;
+    width: var(--aw-checkbox-tick-w); height: var(--aw-checkbox-tick-h);
+    fill: none; stroke: currentColor; stroke-width: var(--aw-checkbox-tick-stroke);
+    stroke-linecap: round; stroke-linejoin: miter;
+  }
+
+  /* size */
+  .aw-checkbox--sm { width: var(--aw-checkbox-size-sm); height: var(--aw-checkbox-size-sm); }
+  .aw-checkbox--lg { width: var(--aw-checkbox-size-lg); height: var(--aw-checkbox-size-lg); }
+
+  /* radius — the set's radius axis (default is its radius=sm) */
+  .aw-checkbox--r-none { border-radius: 0; }
+  .aw-checkbox--r-md { border-radius: var(--aw-checkbox-radius-md); }
+  .aw-checkbox--r-lg { border-radius: var(--aw-checkbox-radius-lg); }
+  .aw-checkbox--r-full { border-radius: var(--aw-radius-pill); }
+
+  /* hover — unchecked only; the set has no checked-hover variant */
+  .aw-checkbox:not(.is-checked):hover,
+  .aw-checkbox__option:hover .aw-checkbox:not(.is-checked) { background: var(--aw-zinc-800); }
+
+  /* checked — color=primary (the default): green fill and stroke, white tick */
   .aw-checkbox.is-checked { background: var(--aw-positive); border-color: var(--aw-positive); }
+  .aw-checkbox.is-checked .aw-checkbox__tick { display: block; }
+  /* checked — color=default: zinc fill, no stroke, white tick */
+  .aw-checkbox--neutral.is-checked { background: var(--aw-zinc-700); border-color: var(--aw-zinc-700); }
+
+  /* disabled — the whole control at 50%, as the set does */
+  .aw-checkbox.is-disabled,
+  .aw-checkbox__option.is-disabled { opacity: var(--aw-opacity-disabled); pointer-events: none; }
+
+  /* the row: box + label, 8 padding, 8 gap (the set's component frame) */
+  .aw-checkbox__option {
+    display: inline-flex; align-items: center; gap: var(--aw-space-row);
+    padding: var(--aw-space-row);
+    cursor: pointer;
+  }
+  .aw-checkbox__label {
+    font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); font-weight: var(--aw-fw-regular);
+    color: var(--aw-text-foreground);
+  }
+  .aw-checkbox--sm + .aw-checkbox__label { font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); }
+  .aw-checkbox--lg + .aw-checkbox__label { font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); }
+  /* lineThrough=on — strikes the label of a checked option (the set only draws it checked) */
+  .aw-checkbox__option--line-through .aw-checkbox.is-checked + .aw-checkbox__label { text-decoration: line-through; }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }
   h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
-  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .spec { display: grid; gap: 22px; max-width: 520px; }
   .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .stack { display: flex; flex-direction: column; gap: 12px; }
   .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
 </style>
 </head>
 <body class="aw-root">
-  <!-- icon sprite: only the 1 symbol this component uses (from the Foundations icons/sprite/) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <defs>
-      <symbol id="aw-i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m4 12.5 5 5 11-11"/>
-    </symbol>
-    </defs>
-  </svg>
-
   <h1>AuctionWire · Checkbox</h1>
   <div class="spec">
     <div>
-      <div class="cap">Checked (.is-checked) &amp; unchecked</div>
+      <div class="cap">State — unchecked · checked (primary, the default colour) · checked neutral (the set's color=default)</div>
       <div class="row">
-        <span class="aw-checkbox is-checked"><svg class="aw-icon" style="width:14px;height:14px" aria-hidden="true"><use href="#aw-i-check"/></svg></span>
-        <span class="aw-checkbox"></span>
+        <span class="aw-checkbox" role="checkbox" aria-checked="false" aria-label="Unchecked"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span>
+        <span class="aw-checkbox is-checked" role="checkbox" aria-checked="true" aria-label="Checked"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span>
+        <span class="aw-checkbox aw-checkbox--neutral is-checked" role="checkbox" aria-checked="true" aria-label="Checked, neutral"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Option row — box + label, hover an unchecked row to see the zinc-800 fill</div>
+      <div class="row">
+        <div class="aw-checkbox__option" role="checkbox" aria-checked="false" tabindex="0"><span class="aw-checkbox" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">PSA 10</span></div>
+        <div class="aw-checkbox__option" role="checkbox" aria-checked="true" tabindex="0"><span class="aw-checkbox is-checked" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">PSA 9</span></div>
+        <div class="aw-checkbox__option" role="checkbox" aria-checked="true" tabindex="0"><span class="aw-checkbox aw-checkbox--neutral is-checked" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">Raw</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Size — sm 16 (14/20) · md 20 (16/24) · lg 24 (18/28)</div>
+      <div class="row">
+        <div class="aw-checkbox__option" role="checkbox" aria-checked="true" tabindex="0"><span class="aw-checkbox aw-checkbox--sm is-checked" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">Option</span></div>
+        <div class="aw-checkbox__option" role="checkbox" aria-checked="true" tabindex="0"><span class="aw-checkbox is-checked" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">Option</span></div>
+        <div class="aw-checkbox__option" role="checkbox" aria-checked="true" tabindex="0"><span class="aw-checkbox aw-checkbox--lg is-checked" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">Option</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Radius — none 0 · default 6 · md 7.2 · lg 8.4 · full (lg size)</div>
+      <div class="row">
+        <span class="aw-checkbox aw-checkbox--lg aw-checkbox--r-none"></span>
+        <span class="aw-checkbox aw-checkbox--lg"></span>
+        <span class="aw-checkbox aw-checkbox--lg aw-checkbox--r-md"></span>
+        <span class="aw-checkbox aw-checkbox--lg aw-checkbox--r-lg"></span>
+        <span class="aw-checkbox aw-checkbox--lg aw-checkbox--r-full"></span>
+        <span class="aw-checkbox aw-checkbox--lg aw-checkbox--r-full is-checked"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Disabled — the whole row at 50%</div>
+      <div class="row">
+        <div class="aw-checkbox__option is-disabled" role="checkbox" aria-checked="false" aria-disabled="true" tabindex="0"><span class="aw-checkbox" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">Option</span></div>
+        <div class="aw-checkbox__option is-disabled" role="checkbox" aria-checked="true" aria-disabled="true" tabindex="0"><span class="aw-checkbox is-checked" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">Option</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Line-through — the label of a checked option is struck (a done task)</div>
+      <div class="row">
+        <div class="aw-checkbox__option aw-checkbox__option--line-through" role="checkbox" aria-checked="true" tabindex="0"><span class="aw-checkbox is-checked" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">Verify grade</span></div>
+        <div class="aw-checkbox__option aw-checkbox__option--line-through" role="checkbox" aria-checked="true" tabindex="0"><span class="aw-checkbox aw-checkbox--neutral is-checked" aria-hidden="true"><svg class="aw-checkbox__tick" viewBox="0 0 6.22 4.44" aria-hidden="true"><path d="M0 2.22 2.666 4.44 6.22 0"/></svg></span><span class="aw-checkbox__label">Ship card</span></div>
       </div>
     </div>
   </div>

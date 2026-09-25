@@ -12,10 +12,6 @@ A 32px row with the AuctionWire wordmark in the centre and a flag + language lab
 - Interior screens with back and title → use [Second-level header](header.md)
 - Titling a content block → use [Section header](section-header.md)
 
-## Where it's used
-- Web approach ("You're all set") — `reproductions/web-approach/screen.html`
-- Payment plan (backdrop screen) — `reproductions/payment-plan/screen.html`
-
 ## Anatomy
 ```text
 header.aw-brand-language-header          row, space-between, 32px tall

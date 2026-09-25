@@ -13,13 +13,6 @@ One destination in the bottom nav: an icon over a short label, with an active st
 - Toggling views inside a screen → use [Segmented](segmented.md)
 - A standalone icon action → use [Icon button](icon-button.md)
 
-## Where it's used
-- Home — `templates/home.template.html`
-- Watchlist — `templates/watchlist.template.html`
-- Portfolio — `templates/portfolio.template.html`
-- Saved searches — `templates/saved-searches.template.html`
-- Component gallery (specimen only) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 a.aw-nav-item              column, centred, icon over label

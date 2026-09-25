@@ -15,10 +15,6 @@ A bottom sheet that rises over a scrim to hold a contained task: filters, or a p
 - Inline explanation that needs no decision → use [Information alert](info-alert.md)
 - A centred confirm or destructive alert → see the Dialog pattern (`02-design-system/patterns/dialog.md`)
 
-## Where it's used
-- Search results filter sheet (default, with `.aw-glass-sheet`) — `templates/search-results.template.html`
-- Payment plan sheet (paywall, `--modal`) — `reproductions/payment-plan/screen.html`
-
 ## Anatomy
 ```text
 div|section.aw-sheet                   bottom-pinned panel, top corners rounded

@@ -13,10 +13,6 @@ A centred row of small page indicators for an image carousel, where the current 
 - Switching between views (List / Chart) → use [Segmented](segmented.md)
 - A count or alert marker → use [Badge](badge.md)
 
-## Where it's used
-- Gallery: three dots under the image block, first active. `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 .aw-dots              row, centred, gap --aw-space-tight

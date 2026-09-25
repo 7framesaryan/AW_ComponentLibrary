@@ -13,13 +13,6 @@ A full-bleed background that paints the near-black hero gradient behind a page t
 - A card or panel surface → use a card component such as [Stat card](stat-card.md)
 - A colourful promo background: not allowed; gradients are near-black only
 
-## Where it's used
-- Home — `templates/home.template.html` (on the `.scroll` viewport)
-- Watchlist — `templates/watchlist.template.html` (on `.scroll`)
-- Portfolio — `templates/portfolio.template.html` (on `.scroll`)
-- Saved searches — `templates/saved-searches.template.html` (on `.scroll`)
-- Card detail — `templates/card-detail.template.html` (on the 260px `.hero-photo` area)
-
 ## Anatomy
 ```text
 .aw-hero-band            gradient background only; no children required

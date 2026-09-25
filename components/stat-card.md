@@ -13,10 +13,6 @@ A small surface tile that shows one labelled metric: a muted label above a bold 
 - A headline value with change and sub-stats → use [Portfolio summary](portfolio-summary.md)
 - A label/value line in a list → use [Detail row](detail-row.md)
 
-## Where it's used
-- Portfolio: three tiles in a row under the portfolio summary. `templates/portfolio.template.html`
-- Gallery: motion demo (fade-up intro). `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-stat-card        column, padding --aw-space-section, gap --aw-space-tight

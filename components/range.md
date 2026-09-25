@@ -13,10 +13,6 @@ A min/max filter: two text inputs with a separator, plus an optional slider trac
 - Free-text query → use [Search](search.md)
 - Choosing from fixed buckets (PSA 9 & above, Raw) → use [Filter option row](option-row.md)
 
-## Where it's used
-- Search results filter sheet (Price range) — `templates/search-results.template.html`
-- Gallery (price filter) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 div.aw-range                        row of inputs, gap --aw-space-block

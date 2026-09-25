@@ -14,10 +14,6 @@ Centred 14px muted supporting copy that explains a success or feedback heading.
 - A note under a sheet's actions → use `.aw-sheet__footnote` in [Sheet](sheet.md)
 - Form helper or error text → use `.aw-field__hint` in [Field](field.md)
 
-## Where it's used
-- Web approach ("You're all set") — `reproductions/web-approach/screen.html`
-- Payment plan (same success screen, behind the sheet) — `reproductions/payment-plan/screen.html`
-
 ## Anatomy
 ```text
 p.aw-feedback-description      centred paragraph, no margins; text supplied by the screen

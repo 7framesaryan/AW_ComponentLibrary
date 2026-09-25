@@ -16,11 +16,6 @@ A selectable pill that narrows a list of results; the active chip shows which fi
 - Many detailed filters (ranges, checkboxes) → use a [Sheet](sheet.md) with [Option row](option-row.md) and [Range](range.md)
 - A home shortcut → use [Quick action](quick-action.md)
 
-## Where it's used
-- Search results: filter row in the glass header, with "Ending soon" active and a `sort` icon. See `templates/search-results.template.html`
-- Watchlist: "All · 12 / Ending soon / Outbid / Winning" segment row. See `templates/watchlist.template.html`
-- Gallery: "All / Baseball / Basketball / Ending soon". See `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-filter-row                  scroll row (pattern)

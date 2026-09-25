@@ -13,9 +13,6 @@ A plain surface container for one watched item in the Watchlist list; the screen
 - A search result with a bid CTA → use [List-result row](list-row.md)
 - A 2-up grid result → use [PLP grid card](grid-card.md)
 
-## Where it's used
-- Watchlist: three cards stacked below a filter chip row (All / Ending soon / Outbid / Winning). `templates/watchlist.template.html`
-
 ## Anatomy
 ```text
 .aw-watchlist-card                 surface + hairline border container, padding --aw-space-block

@@ -14,10 +14,6 @@ A clipped, rounded container for a card photo or thumbnail, with a raised placeh
 - The media in a grid card → use `.aw-grid-card__media` in [PLP grid card](grid-card.md)
 - A round person image → use [Avatar](avatar.md)
 
-## Where it's used
-- Gallery: one 160×120 block with the hero photo, above carousel dots. `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 .aw-image-block          relative flex box, centred, clips children

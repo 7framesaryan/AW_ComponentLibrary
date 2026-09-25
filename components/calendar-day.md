@@ -12,9 +12,6 @@ One selectable day cell (weekday over date number) inside the calendar strip.
 - An auction event row → use [Calendar entry](calendar-entry.md)
 - A generic toggle between options → use [Segmented](segmented.md)
 
-## Where it's used
-- Saved searches: seven cells in the "Auction calendar" strip. `templates/saved-searches.template.html`
-
 ## Anatomy
 ```text
 .aw-calendar-day        column, centred, gap --aw-space-micro, min-width 44px

@@ -14,10 +14,6 @@ A card for one stored search: thumbnail, query name and a new-lots count, in a h
 - A watched item → use [Watchlist card](watchlist-card.md)
 - A filter applied right now to a list → use [Filter chip](filter-chip.md)
 
-## Where it's used
-- Saved searches: "Pinned" horizontal scroll of `--v` cards with a green NEW badge; "All searches" list of `--h` cards with a chevron. `templates/saved-searches.template.html`
-- Gallery: one `--h` card. `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-saved-search--h               row, centred, gap --aw-space-block

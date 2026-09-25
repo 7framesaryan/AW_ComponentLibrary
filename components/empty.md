@@ -13,10 +13,6 @@ A centred icon, title, short body and optional action shown when a list has no r
 - Explaining something before an action → use [Information alert](info-alert.md)
 - Confirming a completed task → use [Success indicator](success-indicator.md) with [Success heading](success-heading.md)
 
-## Where it's used
-- Gallery (Empty / filtered state) — `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 div.aw-empty                   centred column, gap 12px

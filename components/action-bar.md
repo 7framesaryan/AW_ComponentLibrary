@@ -14,9 +14,6 @@ A glass strip pinned to the bottom of a detail or task screen that holds the scr
 - Actions inside a card → use [Button](button.md) (outline bid CTA)
 - A multi-step choice or a form in an overlay → use [Sheet](sheet.md)
 
-## Where it's used
-- Card detail — `templates/card-detail.template.html`, as a template-local `.action-bar` with `.aw-glass-sheet` (not the registered class yet).
-
 ## Anatomy
 ```text
 .aw-action-bar.aw-glass-sheet      glass strip, top hairline
@@ -45,7 +42,7 @@ A glass strip pinned to the bottom of a detail or task screen that holds the scr
 ## Layout & grid
 - Glass chrome is exempt from the column grid; the bar spans the full 402px width.
 - Its 16px padding puts the full-width button exactly on the 4-column span (370px).
-- The CSS sets no positioning. Card detail pins it with a template-local `position:absolute; left:0; right:0; bottom:0` inside `.aw-device`, outside the scroll area.
+- The CSS sets no positioning. Card detail pins it with a template-local `position:absolute; left:0; right:0; bottom:0` inside `.aw-device__screen`, outside the scroll area.
 - Content must clear the bar (Card detail pads the scroll stage by 120px).
 - See bottom-action-bar pattern (`02-design-system/patterns/bottom-action-bar.md`).
 

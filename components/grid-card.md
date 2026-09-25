@@ -13,10 +13,6 @@ A compact listing card for a 2-up product-listing grid: image, title, then price
 - A dense vertical list with a bid CTA → use [List-result row](list-row.md)
 - A labelled metric tile in a 2-up row → use [Stat card](stat-card.md)
 
-## Where it's used
-- Search results: 2-up grid of four cards under the result count. `templates/search-results.template.html`
-- Gallery: single card in "Content objects". `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 article.aw-grid-card          column, padding + gap --aw-space-row

@@ -14,10 +14,6 @@ An overflow dropdown listing secondary actions (icon + label), opened from a gho
 - Moving between app destinations → use [Bottom nav](bottom-nav.md)
 - A confirmation or task that needs more than a tap → use [Sheet](sheet.md)
 
-## Where it's used
-- Component gallery (specimen only) — `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 .aw-menu                   raised panel, vertical list

@@ -13,10 +13,6 @@ One auction event in a calendar list: calendar icon, auction name and date range
 - Picking a day → use [Calendar strip](calendar-strip.md)
 - A past sale of one card → use [Detail row](detail-row.md)
 
-## Where it's used
-- Gallery: one entry in "Content objects" and two inside the "Calendar month" accordion. `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 .aw-calendar-entry           row, centred, space-between, gap + padding --aw-space-block

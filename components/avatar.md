@@ -14,10 +14,6 @@ A 32×32 round image of a person, with a user-icon fallback when no photo exists
 - A circular card thumbnail in a switcher → use [Fast switcher](fast-switcher.md)
 - An icon-only action → use [Icon button](icon-button.md)
 
-## Where it's used
-- Home: user avatar in the top bar; player avatars in "Top players". `templates/home.template.html`
-- Gallery: top bar, top-player rows and a resized motion demo. `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-avatar            32×32 circle, centred, clips content

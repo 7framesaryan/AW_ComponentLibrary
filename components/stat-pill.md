@@ -14,10 +14,6 @@ A raised pill that surfaces one metric as icon, label and a bold value, such as 
 - A price or grade fact on a card → use [Chip](chip.md)
 - A small count on an icon → use [Badge](badge.md)
 
-## Where it's used
-- Gallery: "Watching 12" with a green `trend-up` icon. See `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 span.aw-stat-pill             40px row, gap --aw-space-row

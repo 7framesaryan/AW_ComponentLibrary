@@ -13,12 +13,6 @@ The glass header for interior screens: a back control, a centred title and an ov
 - Auth / onboarding brand row → use [Brand / language header](brand-language-header.md)
 - A title for a block of content inside the screen → use [Section header](section-header.md)
 
-## Where it's used
-- Card detail — `templates/card-detail.template.html` (with `.aw-glass-header-alt`, over the hero photo)
-- Watchlist — `templates/watchlist.template.html` (with `.aw-glass-header`)
-- Portfolio — `templates/portfolio.template.html` (with `.aw-glass-header`)
-- Saved searches — `templates/saved-searches.template.html` (with `.aw-glass-header`, title left-aligned inline)
-
 ## Anatomy
 ```text
 .aw-glass-header-alt.aw-header     glass row, 64px tall

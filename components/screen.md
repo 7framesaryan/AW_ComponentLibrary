@@ -12,14 +12,6 @@ The content container of a mobile screen: it paints the screen background and ad
 - A full-bleed gradient area (behind chrome or a hero image) → use [Hero band](hero-band.md)
 - Glass chrome (top bar, header, bottom nav, action bar): place them outside `.aw-screen` → see [Glass top bar](top-bar.md), [Bottom nav](bottom-nav.md)
 
-## Where it's used
-- Home — `templates/home.template.html`
-- Card detail — `templates/card-detail.template.html`
-- Search results — `templates/search-results.template.html`
-- Watchlist — `templates/watchlist.template.html`
-- Portfolio — `templates/portfolio.template.html`
-- Saved searches — `templates/saved-searches.template.html`
-
 ## Anatomy
 ```text
 .aw-screen                   background + 16px side padding

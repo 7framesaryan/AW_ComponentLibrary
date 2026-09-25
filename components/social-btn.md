@@ -12,10 +12,6 @@ A full-width white button that signs the user in with Google or Apple, using com
 - Email/password sign-in or any other action → use [Button](button.md)
 - A general in-app action with an icon → use [Button](button.md) or [Icon button](icon-button.md)
 
-## Where it's used
-- Gallery: "Social auth & divider" panel with Google, Apple, an "or" divider and a "Sign in" primary. See `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 button.aw-social-btn      full-width centred row, gap --aw-space-row

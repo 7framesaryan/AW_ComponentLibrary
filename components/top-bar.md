@@ -13,10 +13,6 @@ The translucent greeting bar at the top of Home: avatar, greeting and a cluster 
 - Onboarding / auth screens that show the wordmark and language → use [Brand / language header](brand-language-header.md)
 - Titling a content section inside the screen → use [Section header](section-header.md)
 
-## Where it's used
-- Home — `templates/home.template.html`
-- Component gallery (specimen only) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-glass-header.aw-top-bar        glass row, 64px tall

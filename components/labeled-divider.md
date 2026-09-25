@@ -13,10 +13,6 @@ A short text label centred between two 1px rules, used to separate alternative c
 - Titling a section → use [Section header](section-header.md)
 - Long explanatory text → use [Feedback description](feedback-description.md) or [Info alert](info-alert.md)
 
-## Where it's used
-- Component gallery (specimen only, between social buttons and "Sign in") — `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 .aw-labeled-divider      row, centred

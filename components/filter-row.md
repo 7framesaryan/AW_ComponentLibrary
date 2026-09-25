@@ -14,10 +14,6 @@ A single horizontally scrolling row of filter chips with a hidden scrollbar, use
 - A full set of filter options with ranges and checkboxes → use [Sheet](sheet.md) with [Option row](option-row.md)
 - Stating facts such as price or grade → use [Chip](chip.md)
 
-## Where it's used
-- Search results — `templates/search-results.template.html` (inside the glass header, below the search field)
-- Watchlist — `templates/watchlist.template.html` (first block in `.aw-screen`)
-
 ## Anatomy
 ```text
 .aw-filter-row             horizontal scroll row, no wrap, scrollbar hidden

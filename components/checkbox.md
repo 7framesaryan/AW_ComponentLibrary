@@ -13,10 +13,6 @@ A 20px square box that fills green with a check icon when selected; used for mul
 - An immediate on/off setting → use [Switch](switch.md)
 - Switching between views → use [Segmented](segmented.md)
 
-## Where it's used
-- Search results filter sheet (Grade options) — `templates/search-results.template.html`
-- Gallery (standalone and in option rows) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 span.aw-checkbox                   20 x 20 box, 1px border, centred content

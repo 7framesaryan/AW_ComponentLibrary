@@ -1,0 +1,133 @@
+<!doctype html>
+<!--
+  AuctionWire · Link  (registry id: link · class: .aw-link · status: verified)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-link  size .aw-link--sm|--lg   colour .aw-link--primary
+           .aw-link--underline   .aw-link--block   icon: svg.aw-icon child (#aw-i-external-link)
+  Contract: components/link.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+
+  Imported from the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH, page "Link": component set
+  "Link" 483:42676 (color × size × isBlock × isUnderline, plus showAnchorIcon). Every value below is
+  measured from that set. Not imported: color=secondary (outside the AuctionWire palette). The
+  set's legacy vuesax "link" icon is replaced by Solar square-top-up (#aw-i-external-link).
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Link</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-text-accent: #009350;
+    --aw-surface-raised: #27272a;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-regular: 400;
+    --aw-fw-medium: 500;
+    --aw-fs-sm: 14px;   --aw-lh-sm: 20px;
+    --aw-fs-base: 16px; --aw-lh-base: 24px;
+    --aw-fs-lg: 18px;   --aw-lh-lg: 28px;
+    --aw-space-tight: 4px;
+    --aw-space-row: 8px;
+    --aw-link-text: #ecedee;
+    --aw-link-block-primary: #172e20;
+    --aw-link-block-radius: 12px;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+
+  /* — component — */
+  /* ── Link ─────────────────────────────────────────────────────────────── */
+  .aw-link {
+    display: inline-flex; align-items: center; gap: var(--aw-space-tight);
+    padding-right: var(--aw-space-tight);
+    font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); font-weight: var(--aw-fw-regular);
+    color: var(--aw-link-text);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .aw-link .aw-icon { width: 16px; height: 16px; }
+  /* size — md is the default */
+  .aw-link--sm { font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); }
+  .aw-link--sm .aw-icon { width: 12px; height: 12px; }
+  .aw-link--lg { font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); font-weight: var(--aw-fw-medium); }
+  .aw-link--lg .aw-icon { width: 18px; height: 18px; }
+  /* colour */
+  .aw-link--primary { color: var(--aw-text-accent); }
+  /* underline — offset matched to Figma's auto underline at every size (Chrome's auto sits ~2px higher) */
+  .aw-link--underline { text-decoration: underline; text-underline-offset: 0.2em; }
+  /* block — the link sits on a tinted panel */
+  .aw-link--block {
+    padding: var(--aw-space-tight) var(--aw-space-row);
+    background: var(--aw-surface-raised);
+    border-radius: var(--aw-link-block-radius);
+  }
+  .aw-link--block.aw-link--primary { background: var(--aw-link-block-primary); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 24px; max-width: 560px; }
+  .row { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-external-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L12 12M12 6.65625V12H17.3438"/><path d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2"/></symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Link</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Size — sm 14/20 · md 16/24 (default) · lg 18/28 medium</div>
+      <div class="row">
+        <a class="aw-link aw-link--sm" href="#">Terms of Service</a>
+        <a class="aw-link" href="#">Terms of Service</a>
+        <a class="aw-link aw-link--lg" href="#">Terms of Service</a>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Colour — foreground · primary; underline</div>
+      <div class="row">
+        <a class="aw-link" href="#">Forgot password?</a>
+        <a class="aw-link aw-link--primary" href="#">Forgot password?</a>
+        <a class="aw-link aw-link--underline" href="#">Forgot password?</a>
+        <a class="aw-link aw-link--primary aw-link--underline" href="#">Forgot password?</a>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Anchor icon — the link leaves AuctionWire (bidding happens on the source site)</div>
+      <div class="row">
+        <a class="aw-link aw-link--primary" href="#">View on Heritage Auctions<svg class="aw-icon" aria-hidden="true"><use href="#aw-i-external-link"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Block — foreground · primary</div>
+      <div class="row">
+        <a class="aw-link aw-link--block aw-link--sm" href="#">Open listing<svg class="aw-icon" aria-hidden="true"><use href="#aw-i-external-link"/></svg></a>
+        <a class="aw-link aw-link--block aw-link--sm aw-link--primary" href="#">Open listing<svg class="aw-icon" aria-hidden="true"><use href="#aw-i-external-link"/></svg></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

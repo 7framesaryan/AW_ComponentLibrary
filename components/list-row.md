@@ -14,10 +14,6 @@ A dense horizontal result: thumbnail on the left, title, meta, price, countdown 
 - A watched item in the Watchlist → use [Watchlist card](watchlist-card.md)
 - A plain label/value line with a divider → use [Detail row](detail-row.md)
 
-## Where it's used
-- Gallery: one row in "Content objects". `templates/gallery.template.html`
-- Watchlist: only `.aw-list-row__thumb` is borrowed (resized inline to 64×88) inside watchlist cards. `templates/watchlist.template.html`
-
 ## Anatomy
 ```text
 .aw-list-row                  row, padding + gap --aw-space-block, ghost border

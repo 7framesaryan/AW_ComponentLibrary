@@ -1,11 +1,19 @@
 <!doctype html>
 <!--
-  AuctionWire · Badge  (registry id: badge · class: .aw-badge · status: catalogued)
+  AuctionWire · Badge  (registry id: badge · class: .aw-badge · status: verified)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
-  Classes: .aw-badge .aw-badge--positive .aw-badge-dot .aw-badge-anchor .aw-badge--positive-soft
+  Classes: .aw-badge  variant .aw-badge--flat|--faded   colour .aw-badge--primary (legacy alias --positive)
+           size .aw-badge--md|--lg   outline off .aw-badge--no-outline
+           kept from the catalogued badge: .aw-badge--positive-soft  .aw-badge-dot  .aw-badge-anchor
   Composes (rules copied for the specimen): .aw-btn-icon-ghost (icon-button)
-  Contract: Foundations components/badge.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css, icons/sprite/
+  Contract: components/badge.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+
+  Imported from the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH, page 696:52331: component
+  set "Badge" 2250:38501 — 48 variants: variant × color × size × showOutline. Every value below is
+  measured from that set. Not imported: variant=shadow (12 variants) — its drop shadows (blur 15)
+  break the Foundations rule of no soft shadows and no blur above 12.
   THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
   screen builds read that block straight out of this file. Edit it here, nowhere else.
 -->
@@ -18,29 +26,40 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
+    --aw-black: #000000;
+    --aw-surface-raised: #27272a;
     --aw-surface-strong: #3f3f46;
+    --aw-zinc-700: #3f3f46;
     --aw-border-strong: #71717a;
     --aw-text-primary: #ffffff;
     --aw-text-secondary: #d4d4d8;
     --aw-text-accent: #009350;
     --aw-positive: #009350;
     --aw-urgency: #d4183d;
-    --aw-caution: #f5a524;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-regular: 400;
     --aw-fw-semibold: 600;
-    --aw-fw-bold: 700;
-    --aw-fs-caption: 10px;
     --aw-fs-chip: 11px;
     --aw-lh-chip: 16px;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
     --aw-space-micro: 2px;
+    --aw-space-tight: 4px;
     --aw-space-row: 8px;
     --aw-radius-button: 8px;
     --aw-radius-pill: 9999px;
     --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
     --aw-dur-fast: 120ms;
     --aw-badge-soft-positive-bg: #0093501f;
-    --aw-badge-text: #040501;
-    --aw-badge-padding-x: 5px;
+    /* new — measured from the Badge set */
+    --aw-default-flat: #3f3f4666;   /* colors/flat/default-flat */
+    --aw-primary-flat: #2e8b574d;   /* colors/flat/primary-flat */
+    --aw-badge-h-sm: 16px;
+    --aw-badge-h-md: 20px;
+    --aw-badge-h-lg: 24px;
+    --aw-badge-outline-width: 2px;  /* showOutline=on: 2px stroke, outside */
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -72,26 +91,51 @@
 
   /* — component — */
   /* ── Badge (count indicator) ──────────────────────────────────────────── */
+  /* Default = the set's variant=solid, color=default, size=sm, showOutline=on */
   .aw-badge {
     display: inline-flex; align-items: center; justify-content: center;
-    min-width: 18px; height: 18px; padding: 0 var(--aw-badge-padding-x); border-radius: var(--aw-radius-pill);
-    background: var(--aw-caution); color: var(--aw-badge-text);
-    font-size: var(--aw-fs-caption); font-weight: var(--aw-fw-bold);
+    min-width: var(--aw-badge-h-sm); height: var(--aw-badge-h-sm);
+    padding: 0 var(--aw-space-tight);
+    border-radius: var(--aw-radius-pill);
+    background: var(--aw-surface-strong); color: var(--aw-text-primary);
+    outline: var(--aw-badge-outline-width) solid var(--aw-black); outline-offset: 0;
+    font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); font-weight: var(--aw-fw-regular);
+    white-space: nowrap;
   }
+
+  /* size — sm 16 (12/16 text) is the default */
+  .aw-badge--md { min-width: var(--aw-badge-h-md); height: var(--aw-badge-h-md); font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); }
+  .aw-badge--lg { min-width: var(--aw-badge-h-lg); height: var(--aw-badge-h-lg); font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); }
+
+  /* colour — primary. --positive is the catalogued name for the same thing and still works */
+  .aw-badge--primary,
   .aw-badge--positive { background: var(--aw-positive); color: var(--aw-text-primary); }
-  .aw-badge-dot { width: 8px; height: 8px; border-radius: var(--aw-radius-pill); background: var(--aw-urgency); }
+
+  /* variant — flat: translucent fill */
+  .aw-badge--flat { background: var(--aw-default-flat); }
+  .aw-badge--flat:is(.aw-badge--primary, .aw-badge--positive) { background: var(--aw-primary-flat); color: var(--aw-text-accent); }
+
+  /* variant — faded: raised fill; its outline is zinc-700, not the background */
+  .aw-badge--faded { background: var(--aw-surface-raised); outline-color: var(--aw-zinc-700); }
+  .aw-badge--faded:is(.aw-badge--primary, .aw-badge--positive) { background: var(--aw-surface-raised); color: var(--aw-text-accent); }
+
+  /* showOutline=off */
+  .aw-badge--no-outline { outline: 0; }
+
+  /* kept from the catalogued badge — not in the Figma set */
   /* anchor a badge to the top-right of a relatively-positioned host */
   .aw-badge-anchor { position: absolute; top: -4px; right: -4px; }
   /* Soft positive badge (green text on faint green fill) — e.g. "Save 25%". */
-  .aw-badge--positive-soft { min-width: 0; height: auto; padding: var(--aw-space-micro) var(--aw-space-row); background: var(--aw-badge-soft-positive-bg); color: var(--aw-text-accent); font-size: var(--aw-fs-chip); line-height: var(--aw-lh-chip); font-weight: var(--aw-fw-semibold); }
+  .aw-badge--positive-soft { min-width: 0; height: auto; padding: var(--aw-space-micro) var(--aw-space-row); outline: 0; background: var(--aw-badge-soft-positive-bg); color: var(--aw-text-accent); font-size: var(--aw-fs-chip); line-height: var(--aw-lh-chip); font-weight: var(--aw-fw-semibold); }
+  .aw-badge-dot { width: 8px; height: 8px; border-radius: var(--aw-radius-pill); background: var(--aw-urgency); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }
   h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
-  .spec { display: grid; gap: 22px; max-width: 402px; }
-  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .spec { display: grid; gap: 22px; max-width: 520px; }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
   .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+  .surface { padding: 12px; border-radius: 8px; background: #18181b; }
 </style>
 </head>
 <body class="aw-root">
@@ -109,17 +153,48 @@
   <h1>AuctionWire · Badge</h1>
   <div class="spec">
     <div>
-      <div class="cap">Count (amber, default) · positive · positive-soft · dot</div>
-      <div class="row">
-        <span class="aw-badge">3</span>
-        <span class="aw-badge aw-badge--positive">12</span>
-        <span class="aw-badge aw-badge--positive-soft">Save 25%</span>
-        <span class="aw-badge-dot"></span>
+      <div class="cap">Variant — solid (default) · flat · faded — colour default (on a surface so the 2px outline shows)</div>
+      <div class="row surface">
+        <span class="aw-badge">5</span>
+        <span class="aw-badge aw-badge--flat">5</span>
+        <span class="aw-badge aw-badge--faded">5</span>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Variant — solid · flat · faded — colour primary</div>
+      <div class="row surface">
+        <span class="aw-badge aw-badge--primary">5</span>
+        <span class="aw-badge aw-badge--flat aw-badge--primary">5</span>
+        <span class="aw-badge aw-badge--faded aw-badge--primary">5</span>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Size — sm 16 · md 20 · lg 24 (and a two-digit count)</div>
+      <div class="row surface">
+        <span class="aw-badge aw-badge--primary">5</span>
+        <span class="aw-badge aw-badge--primary aw-badge--md">5</span>
+        <span class="aw-badge aw-badge--primary aw-badge--lg">5</span>
+        <span class="aw-badge aw-badge--primary aw-badge--md">18</span>
+      </div>
+    </div>
+    <div>
+      <div class="cap">showOutline off — solid · flat · faded</div>
+      <div class="row surface">
+        <span class="aw-badge aw-badge--no-outline">5</span>
+        <span class="aw-badge aw-badge--flat aw-badge--primary aw-badge--no-outline">5</span>
+        <span class="aw-badge aw-badge--faded aw-badge--no-outline">5</span>
       </div>
     </div>
     <div>
       <div class="cap">Anchored on an icon button (.aw-badge-anchor)</div>
-      <span style="position:relative;display:inline-flex"><button type="button" class="aw-btn-icon-ghost" aria-label="Notifications, 3 new"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-bell"/></svg></button><span class="aw-badge aw-badge-anchor">3</span></span>
+      <span style="position:relative;display:inline-flex"><button type="button" class="aw-btn-icon-ghost" aria-label="Notifications, 3 new"><svg class="aw-icon" style="width:18px;height:18px" aria-hidden="true"><use href="#aw-i-bell"/></svg></button><span class="aw-badge aw-badge--primary aw-badge-anchor" aria-hidden="true">3</span></span>
+    </div>
+    <div>
+      <div class="cap">Kept from the catalogued badge (not in the Figma set) — positive-soft · dot</div>
+      <div class="row">
+        <span class="aw-badge aw-badge--positive-soft">Save 25%</span>
+        <span class="aw-badge-dot"></span>
+      </div>
     </div>
   </div>
 </body>

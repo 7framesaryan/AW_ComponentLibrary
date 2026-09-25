@@ -14,10 +14,6 @@ A centred 24px bold heading that states the outcome on a confirmation screen.
 - A sheet title → use `.aw-sheet__title` in [Sheet](sheet.md)
 - An alert title → use [Information alert](info-alert.md)
 
-## Where it's used
-- Web approach ("You're all set") — `reproductions/web-approach/screen.html`
-- Payment plan (same success screen, behind the sheet) — `reproductions/payment-plan/screen.html`
-
 ## Anatomy
 ```text
 h1.aw-success-heading              centred heading, no margins, 32px line box

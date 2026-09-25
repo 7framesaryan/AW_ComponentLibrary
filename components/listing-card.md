@@ -16,11 +16,6 @@ The main content object: one auction listing with photo, title, price and grade,
 - A ranked player → use [Top-player card](top-player.md)
 - A stored search → use [Saved-search card](saved-search.md)
 
-## Where it's used
-- Home: "Ending soon" carousel, default and watched cards. `templates/home.template.html`
-- Gallery: default and watched cards with a working heart toggle. `templates/gallery.template.html`
-- Watchlist: only the `.aw-listing-card__fav` heart button is borrowed inside watchlist cards. `templates/watchlist.template.html`
-
 ## Anatomy
 ```text
 article.aw-listing-card               black card, column, centred, gap --aw-space-block

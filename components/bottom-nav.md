@@ -13,13 +13,6 @@ The floating glass pill at the bottom of every top-level screen, holding the fiv
 - Switching views inside one screen (List / Chart) → use [Segmented](segmented.md)
 - Filtering a list → use [Filter chip row](filter-row.md)
 
-## Where it's used
-- Home — `templates/home.template.html`
-- Watchlist — `templates/watchlist.template.html`
-- Portfolio — `templates/portfolio.template.html`
-- Saved searches — `templates/saved-searches.template.html`
-- Component gallery (specimen only) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .float-nav (template-local)         absolute wrapper, centres the pill near the bottom
@@ -49,7 +42,7 @@ The floating glass pill at the bottom of every top-level screen, holding the fiv
 
 ## Layout & grid
 - Glass chrome is exempt from the column grid. The CSS sets no width or position.
-- Templates set `style="width:370px"` (matching the 4-column content width) and wrap the pill in a template-local `.float-nav { position:absolute; left:0; right:0; bottom:20px; display:flex; justify-content:center }` placed inside `.aw-device`, outside the scroll area.
+- Templates set `style="width:370px"` (matching the 4-column content width) and wrap the pill in a template-local `.float-nav { position:absolute; left:0; right:0; bottom:20px; display:flex; justify-content:center }` placed inside `.aw-device__screen`, outside the scroll area.
 - Content must clear the floating pill: use `--aw-inset-bottom-nav` (100px). The templates instead pad the scroll stage by 120px.
 - Order is fixed: Home · Watchlist · Saved · Portfolio · More, with icons `home`, `heart`, `bookmark`, `portfolio`, `more`.
 

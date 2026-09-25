@@ -11,7 +11,8 @@
       "button",
       "icon-button",
       "quick-action",
-      "social-btn"
+      "social-btn",
+      "link"
     ],
     "chips-and-badges": [
       "chip",
@@ -60,7 +61,8 @@
       "section-header",
       "filter-row",
       "action-bar",
-      "brand-language-header"
+      "brand-language-header",
+      "tabs"
     ],
     "overlays-and-feedback": [
       "sheet",
@@ -69,7 +71,8 @@
       "info-alert",
       "success-indicator",
       "success-heading",
-      "feedback-description"
+      "feedback-description",
+      "tooltip"
     ],
     "layout-and-surfaces": [
       "device",
@@ -810,8 +813,8 @@
       "variants": {
         "default": ".aw-device"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; not independently verified against live Figma"
+      "figmaSource": "B7mJJRaFlVAfLKPTjz48aK 15531:150180 (iPhone 17 Cosmic Orange)",
+      "verification": "artwork exported from live Figma 2026-09-24; screen 402x874 at (18,16) matches the Figma Screen layer"
     },
     "screen": {
       "name": "Screen",
@@ -1066,6 +1069,68 @@
       },
       "figmaSource": null,
       "verification": "catalogued-from-css; page hero gradient behind screen content"
+    },
+    "tabs": {
+      "name": "Tabs",
+      "category": "navigation-and-chrome",
+      "status": "verified",
+      "guide": "components/tabs.md",
+      "class": "aw-tabs",
+      "files": [
+        "components/tabs.html"
+      ],
+      "contract": "components/tabs.md",
+      "variants": {
+        "chips": ".aw-tabs.aw-tabs--chips",
+        "tab": ".aw-tabs.aw-tabs--tab"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#7026:8517 (component set \"Tabs\", Style = Chips | Tab; items: \"Main\" 5711:5443, \"Tabs\" 6861:1767)",
+      "verification": "imported from the live Figma component sets 2026-09-24; every value measured from them; pixel-diffed at 2x against the Figma export (chips 0.01%, tab row 0.78% differing px: Figma rounds label widths to whole pixels)"
+    },
+    "tooltip": {
+      "name": "Tooltip",
+      "category": "overlays-and-feedback",
+      "status": "verified",
+      "guide": "components/tooltip.md",
+      "class": "aw-tooltip",
+      "files": [
+        "components/tooltip.html"
+      ],
+      "contract": "components/tooltip.md",
+      "variants": {
+        "default": ".aw-tooltip",
+        "sm": ".aw-tooltip.aw-tooltip--sm",
+        "lg": ".aw-tooltip.aw-tooltip--lg",
+        "arrowTop": ".aw-tooltip.aw-tooltip--arrow-top",
+        "arrowBottom": ".aw-tooltip.aw-tooltip--arrow-bottom",
+        "arrowLeft": ".aw-tooltip.aw-tooltip--arrow-left",
+        "arrowRight": ".aw-tooltip.aw-tooltip--arrow-right",
+        "arrowStart": ".aw-tooltip.aw-tooltip--arrow-start",
+        "arrowEnd": ".aw-tooltip.aw-tooltip--arrow-end"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2708:977 (component set \"Tooltip\"; sizes from \"tooltip-composition\" 2708:607, arrows from \"tooltip-arrowPosition\" 2784:3400)",
+      "verification": "imported from the live Figma component sets 2026-09-24; every value measured from them; all 12 arrow positions pixel-diffed at 2x against the Figma export (0.32% differing px, text anti-aliasing only)"
+    },
+    "link": {
+      "name": "Link",
+      "category": "actions",
+      "status": "verified",
+      "guide": "components/link.md",
+      "class": "aw-link",
+      "files": [
+        "components/link.html"
+      ],
+      "contract": "components/link.md",
+      "variants": {
+        "default": ".aw-link",
+        "sm": ".aw-link.aw-link--sm",
+        "lg": ".aw-link.aw-link--lg",
+        "primary": ".aw-link.aw-link--primary",
+        "underline": ".aw-link.aw-link--underline",
+        "block": ".aw-link.aw-link--block"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#483:42676 (component set \"Link\", 22 variants: color × size × isBlock × isUnderline)",
+      "verification": "imported from the live Figma component set 2026-09-24; every value measured from it; 18 variants pixel-diffed at 2x against the Figma export (0.3% plain and block, 0.6% underlined; the anchor icon is Solar, not the set's vuesax icon)"
     }
   }
 }

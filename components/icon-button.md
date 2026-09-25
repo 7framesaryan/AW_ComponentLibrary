@@ -15,15 +15,6 @@ A square button that holds only an icon: solid green for a page-title create act
 - Toggling List/Chart or similar views → use [Segmented](segmented.md)
 - Primary navigation between tabs → use [Nav item](nav-item.md)
 
-## Where it's used
-- Home top bar: ghost bell and scan. See `templates/home.template.html`
-- Card detail header: ghost back (rotated chevron) and more. See `templates/card-detail.template.html`
-- Search results: ghost back and filter in the header, ghost close in the filter sheet. See `templates/search-results.template.html`
-- Watchlist header: ghost back and more. See `templates/watchlist.template.html`
-- Portfolio header: ghost settings. See `templates/portfolio.template.html`
-- Saved searches header: solid green plus. See `templates/saved-searches.template.html`
-- Gallery: both variants, the bell with an anchored badge, the top bar and the header. See `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 button.aw-btn-icon        centred inline-flex square

@@ -14,10 +14,6 @@ An expandable group with a tappable header and chevron; used for the auction cal
 - Switching between views → use [Segmented](segmented.md)
 - A title with a "See all" action → use [Section header](section-header.md)
 
-## Where it's used
-- Gallery (Calendar month, open, two calendar entries) — `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 div.aw-accordion                      card: surface, hairline border, clips content

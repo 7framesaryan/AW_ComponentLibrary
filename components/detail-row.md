@@ -15,10 +15,6 @@ A full-width list line with stacked meta or a label on the left, a value on the 
 - A search result with image and CTA → use [List-result row](list-row.md)
 - An auction event → use [Calendar entry](calendar-entry.md)
 
-## Where it's used
-- Card detail: "Price history" (3 rows) and "Population" (3 rows). `templates/card-detail.template.html`
-- Portfolio: "Holdings" list (3 rows). `templates/portfolio.template.html`
-
 ## Anatomy
 ```text
 .aw-detail-row                  row, centred, space-between, vertical padding --aw-space-block, bottom border

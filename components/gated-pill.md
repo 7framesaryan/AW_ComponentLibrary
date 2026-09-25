@@ -14,9 +14,6 @@ A raised pill with a label and an amber lock that marks a fact hidden behind a s
 - Showing auction state → use [Status chip](status-chip.md)
 - Asking the user to subscribe → use [Button](button.md) or the listing card's subscribe line
 
-## Where it's used
-- Not used in a sample screen yet. The CSS places it in the listing card's `.aw-listing-card__pills` row.
-
 ## Anatomy
 ```text
 span.aw-gated-pill        24px row, gap --aw-space-tight

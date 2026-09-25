@@ -13,10 +13,6 @@ A 1px horizontal rule that separates groups of content inside a card or between 
 - Rows in a list that already draw their own bottom border → use [Detail row](detail-row.md) or [Option row](option-row.md)
 - Starting a new titled section → use [Section header](section-header.md)
 
-## Where it's used
-- Home — `templates/home.template.html` (inside the portfolio summary, margin overridden to `2px 0`)
-- Card detail — `templates/card-detail.template.html` (inside the current-bid summary, margin `2px 0`)
-
 ## Anatomy
 ```text
 .aw-divider              1px rule, no border, vertical margin

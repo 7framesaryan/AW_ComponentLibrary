@@ -14,10 +14,6 @@ A raised inline panel with an info icon, a bold title and muted body text that e
 - A decision the user must make → use [Sheet](sheet.md)
 - Ending-soon or unverified caution on a lot → use [Status chip](status-chip.md)
 
-## Where it's used
-- Web approach ("You're all set" screen, above the trial CTA) — `reproductions/web-approach/screen.html`
-- Payment plan (same screen, and again inside the payment sheet under the plan options) — `reproductions/payment-plan/screen.html`
-
 ## Anatomy
 ```text
 div.aw-info-alert                    row, top-aligned, gap 12px, 12px padding

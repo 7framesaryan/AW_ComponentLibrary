@@ -21,6 +21,7 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Icon button](icon-button.md) | `.aw-btn-icon` | catalogued | [icon-button.html](icon-button.html) | A square button that holds only an icon: solid green for a page-title create action, or ghost grey for header and toolbar controls. |
 | [Quick action](quick-action.md) | `.aw-quick-action` | catalogued | [quick-action.html](quick-action.html) | A pill with a green-tinted icon and a short label that jumps to a frequent task from the home screen. |
 | [Social auth button](social-btn.md) | `.aw-social-btn` | catalogued | [social-btn.html](social-btn.html) | A full-width white button that signs the user in with Google or Apple, using component-owned brand colours. |
+| [Link](link.md) | `.aw-link` | verified | [link.html](link.html) | An inline text link that goes somewhere, in white or green, optionally underlined, on a tinted block, or with an anchor icon when it leaves AuctionWire. |
 
 ## Chips & badges
 
@@ -82,6 +83,7 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Filter chip row](filter-row.md) | `.aw-filter-row` | catalogued | [filter-row.html](filter-row.html) | A single horizontally scrolling row of filter chips with a hidden scrollbar, used to filter the list below it. |
 | [Bottom action bar](action-bar.md) | `.aw-action-bar` | catalogued | [action-bar.html](action-bar.html) | A glass strip pinned to the bottom of a detail or task screen that holds the screen's primary action. |
 | [Brand / language header](brand-language-header.md) | `.aw-brand-language-header` | verified | [brand-language-header.html](brand-language-header.html) | A 32px row with the AuctionWire wordmark in the centre and a flag + language label on each side, used at the top of onboarding and account-confirmation screens. |
+| [Tabs](tabs.md) | `.aw-tabs` | verified | [tabs.html](tabs.html) | A row of tabs that switches between views of the same screen: small chips on a dark track, or text tabs with a green underline. |
 
 ## Overlays & feedback
 
@@ -94,12 +96,13 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Success indicator](success-indicator.md) | `.aw-success-indicator` | verified | [success-indicator.html](success-indicator.html) | A 54px green-tinted circle with a check glyph that marks a completed step. |
 | [Success heading](success-heading.md) | `.aw-success-heading` | verified | [success-heading.html](success-heading.html) | A centred 24px bold heading that states the outcome on a confirmation screen. |
 | [Feedback description](feedback-description.md) | `.aw-feedback-description` | verified | [feedback-description.html](feedback-description.html) | Centred 14px muted supporting copy that explains a success or feedback heading. |
+| [Tooltip](tooltip.md) | `.aw-tooltip` | verified | [tooltip.html](tooltip.html) | A small green label that explains or confirms something about the element it points at, with an optional arrow on any edge. |
 
 ## Layout & surfaces
 
 | Component | Class | Status | Code | What it is |
 |---|---|---|---|---|
-| [Device frame](device.md) | `.aw-device` | catalogued | [device.html](device.html) | The 402px phone-shaped web preview surface that clips a whole screen: scroll area, glass chrome and floating nav all live inside it. |
+| [Device frame](device.md) | `.aw-device` | catalogued | [device.html](device.html) | The fixed iPhone 17 mockup every design renders inside: Figma's own render of the phone, its background and status bar, 438 × 905 with a 402 × 874 screen, the same size on every display. |
 | [Screen](screen.md) | `.aw-screen` | catalogued | [screen.html](screen.html) | The content container of a mobile screen: it paints the screen background and adds the 16px side margin that content sits inside. |
 | [Hero band](hero-band.md) | `.aw-hero-band` | catalogued | [hero-band.html](hero-band.html) | A full-bleed background that paints the near-black hero gradient behind a page title, glass chrome or a hero image. |
 | [Divider](divider.md) | `.aw-divider` | catalogued | [divider.html](divider.html) | A 1px horizontal rule that separates groups of content inside a card or between blocks. |

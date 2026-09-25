@@ -13,12 +13,6 @@ The row that opens a content section: a left title and an optional right action 
 - Separating two blocks without a title → use [Divider](divider.md)
 - Text between two rules ("or") → use [Labeled divider](labeled-divider.md)
 
-## Where it's used
-- Home — `templates/home.template.html` ("Ending soon", "Top players")
-- Card detail — `templates/card-detail.template.html` ("Price history", "Population", no action)
-- Portfolio — `templates/portfolio.template.html` ("Holdings" with a segmented List / Grid toggle)
-- Saved searches — `templates/saved-searches.template.html` ("Auction calendar", "Pinned", "All searches")
-
 ## Anatomy
 ```text
 .aw-section-header                 row, space-between, vertically centred

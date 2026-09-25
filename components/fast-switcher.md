@@ -13,10 +13,6 @@ A centred strip of circular card thumbnails where the focal one is larger, fully
 - A person image → use [Avatar](avatar.md)
 - Switching views → use [Segmented](segmented.md)
 
-## Where it's used
-- Gallery: five empty thumbnails, the middle one focal. `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 .aw-fast-switcher                       row, centred, gap --aw-space-block

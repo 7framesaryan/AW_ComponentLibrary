@@ -14,9 +14,6 @@ A horizontal band of day cells for picking a date in the auction calendar, with 
 - A full expandable month → use [Accordion](accordion.md) holding calendar entries
 - Filtering a list by category → use Filter chip row (`02-design-system/patterns/filter-chip-row.md`)
 
-## Where it's used
-- Saved searches: "Auction calendar" section, MON 10 to SUN 16 with TUE active. `templates/saved-searches.template.html`
-
 ## Anatomy
 ```text
 .aw-calendar-strip          row, gap --aw-space-row, padding --aw-space-block, scrolls horizontally

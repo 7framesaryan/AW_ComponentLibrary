@@ -14,11 +14,6 @@ A blurred-glass search field (magnifier icon plus text input) that sits over scr
 - A numeric min/max filter → use [Range](range.md)
 - Picking from a fixed set of filter values → use [Filter chip](filter-chip.md) or [Filter option row](option-row.md)
 
-## Where it's used
-- Home (large, placeholder prompt) — `templates/home.template.html`
-- Search results (compact, in the glass header, `flex:1` between two ghost icon buttons) — `templates/search-results.template.html`
-- Gallery (large, compact, focused) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 label.aw-search                          row container, gap --aw-space-row

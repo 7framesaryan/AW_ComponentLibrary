@@ -14,10 +14,6 @@ A 54px green-tinted circle with a check glyph that marks a completed step.
 - A count or "NEW" marker → use [Badge](badge.md)
 - No results → use [Empty state](empty.md)
 
-## Where it's used
-- Web approach ("You're all set") — `reproductions/web-approach/screen.html`
-- Payment plan (same success screen, behind the sheet) — `reproductions/payment-plan/screen.html`
-
 ## Anatomy
 ```text
 div.aw-success-indicator              54 x 54 round tile, centred content, aria-hidden

@@ -14,10 +14,6 @@ A pill with a green-tinted icon and a short label that jumps to a frequent task 
 - The main action of a surface → use [Button](button.md)
 - A header control with no label → use [Icon button](icon-button.md)
 
-## Where it's used
-- Home: a row of three (Scan card, Saved searches, Calendar) under the search field. See `templates/home.template.html`
-- Gallery: a single "Scan card" pill. See `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 .aw-quick-action              pill, inline-flex row, gap --aw-space-row

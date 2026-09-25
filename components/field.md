@@ -15,10 +15,6 @@ A labelled text input with an optional hint line, for forms and auth screens.
 - On/off preferences → use [Switch](switch.md)
 - Choosing one or more fixed options → use [Filter option row](option-row.md)
 
-## Where it's used
-- Gallery (default and error) — `templates/gallery.template.html`
-- Not used in a sample screen yet. The search-results filter sheet borrows only `.aw-field__label` as a section label.
-
 ## Anatomy
 ```text
 label.aw-field                    column, gap --aw-space-tight

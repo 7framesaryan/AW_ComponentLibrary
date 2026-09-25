@@ -1,0 +1,134 @@
+<!doctype html>
+<!--
+  AuctionWire · Tabs  (registry id: tabs · class: .aw-tabs · status: verified)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-tabs  style .aw-tabs--chips|--tab   item .aw-tabs__item (+ .is-active)
+  Contract: components/tabs.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+
+  Imported from the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH, page "Tabs": component
+  sets "Tabs" 7026:8517 (Style = Chips | Tab), "Main" 5711:5443 (the chip: Default | Selected |
+  Hover) and "Tabs" 6861:1767 (the tab: Default | Selected | Hover). Every value below is
+  measured from those sets.
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Tabs</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-text-high: #fafafa;
+    --aw-text-accent: #009350;
+    --aw-positive: #009350;
+    --aw-surface-translucent: #00000066;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-regular: 400;
+    --aw-fw-medium: 500;
+    --aw-fs-xs: 12px;  --aw-lh-xs: 16px;
+    --aw-fs-sm: 14px;  --aw-lh-sm: 20px;
+    --aw-space-micro: 2px;
+    --aw-space-tight: 4px;
+    --aw-space-carousel: 10px;
+    --aw-space-block: 12px;
+    --aw-space-section: 16px;
+    --aw-radius-sm: 4px;
+    --aw-dur-fast: 120ms;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-tabs-chip-h: 32px;
+    --aw-tabs-chip-min-w: 82px;
+    --aw-tabs-chip-radius: 5px;
+    --aw-tabs-chip-hover: #2e8b5733;
+    --aw-tabs-tab-selected: #111714;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
+
+  /* — component — */
+  /* ── Tabs ─────────────────────────────────────────────────────────────── */
+  .aw-tabs { display: flex; align-items: center; }
+  .aw-tabs__item {
+    display: inline-flex; align-items: center; justify-content: center;
+    flex: none; white-space: nowrap;
+    font-family: inherit;
+    transition: background-color var(--aw-dur-fast) var(--aw-ease-out), color var(--aw-dur-fast) var(--aw-ease-out);
+  }
+
+  /* style — Chips: a dark track of small chips; the selected chip is solid green */
+  .aw-tabs--chips {
+    display: inline-flex; gap: var(--aw-space-section);
+    padding: var(--aw-space-tight);
+    background: var(--aw-surface-translucent);
+    border-radius: var(--aw-radius-sm);
+  }
+  .aw-tabs--chips .aw-tabs__item {
+    height: var(--aw-tabs-chip-h); min-width: var(--aw-tabs-chip-min-w);
+    padding: 0 var(--aw-space-carousel);
+    border-radius: var(--aw-tabs-chip-radius);
+    font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); font-weight: var(--aw-fw-regular);
+    color: var(--aw-text-primary);
+  }
+  .aw-tabs--chips .aw-tabs__item:hover { background: var(--aw-tabs-chip-hover); }
+  .aw-tabs--chips .aw-tabs__item.is-active { background: var(--aw-positive); }
+
+  /* style — Tab: text tabs; the selected tab gets a dark panel and a 2px green underline */
+  .aw-tabs--tab .aw-tabs__item {
+    padding: var(--aw-space-block) var(--aw-space-section) var(--aw-space-section);
+    font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular);
+    color: var(--aw-text-high);
+  }
+  .aw-tabs--tab .aw-tabs__item:hover { color: var(--aw-text-accent); }
+  .aw-tabs--tab .aw-tabs__item.is-active {
+    background: var(--aw-tabs-tab-selected);
+    border-bottom: var(--aw-space-micro) solid var(--aw-positive);
+    font-weight: var(--aw-fw-medium);
+    color: var(--aw-text-accent);
+  }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 28px; max-width: 700px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <h1>AuctionWire · Tabs</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Style — Chips (first chip selected; hover a chip for the hover fill)</div>
+      <div class="aw-tabs aw-tabs--chips" role="tablist" aria-label="Watchlist filter">
+        <button type="button" class="aw-tabs__item is-active" role="tab" aria-selected="true">All</button>
+        <button type="button" class="aw-tabs__item" role="tab" aria-selected="false">Matches</button>
+        <button type="button" class="aw-tabs__item" role="tab" aria-selected="false">Ending</button>
+        <button type="button" class="aw-tabs__item" role="tab" aria-selected="false">No match</button>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Style — Tab (first tab selected; hover a tab for the green label)</div>
+      <div class="aw-tabs aw-tabs--tab" role="tablist" aria-label="Portfolio">
+        <button type="button" class="aw-tabs__item is-active" role="tab" aria-selected="true">Owned Cards</button>
+        <button type="button" class="aw-tabs__item" role="tab" aria-selected="false">Sold History</button>
+        <button type="button" class="aw-tabs__item" role="tab" aria-selected="false">Watching</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

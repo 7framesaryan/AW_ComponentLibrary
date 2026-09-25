@@ -13,10 +13,6 @@ A 20px round control for picking exactly one option from a group; the default fi
 - An immediate on/off setting → use [Switch](switch.md)
 - Two to four compact view choices in a row → use [Segmented](segmented.md)
 
-## Where it's used
-- Payment plan sheet (ring variant inside plan options) — `reproductions/payment-plan/screen.html`
-- Gallery (default, checked and unchecked) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 span.aw-radio                   20 x 20 circle, 1px border

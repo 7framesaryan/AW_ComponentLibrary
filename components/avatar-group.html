@@ -1,0 +1,145 @@
+<!doctype html>
+<!--
+  AuctionWire · Avatar group  (registry id: avatar-group · class: .aw-avatar-group · status: verified)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-avatar-group  item .aw-avatar-group__item (a photo <img>, initials, or the "+N" count)
+           size .aw-avatar-group--sm|--lg   color .aw-avatar-group--primary
+           radius .aw-avatar-group--r-none|--r-sm|--r-md|--r-lg
+  Contract: components/avatar-group.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+
+  Imported from the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH, page 2545:33395, component
+  set "Avatar Group" 2545:33494 — 30 variants: radius (none|sm|md|lg|full) × size (sm|md|lg) ×
+  color (default|primary) × isGrid (off only). Booleans: Avatar n.2 · n.3 · n.4 (hide avatars) and
+  maxCount (the "+N" item). Every value below is measured from that set, dark mode.
+  The single avatar is components/avatar.html (.aw-avatar); this file does not change it.
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Avatar group</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-black: #000000;
+    --aw-surface-strong: #3f3f46;
+    --aw-text-primary: #ffffff;
+    --aw-positive: #009350;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-regular: 400;
+    --aw-fs-xs: 12px;  --aw-lh-xs: 16px;
+    --aw-fs-sm: 14px;  --aw-lh-sm: 20px;
+    --aw-space-row: 8px;
+    --aw-radius-pill: 9999px;
+    --aw-avatar-group-size-sm: 32px;
+    --aw-avatar-group-size-md: 40px;
+    --aw-avatar-group-size-lg: 56px;
+    --aw-avatar-group-ring-gap: 2px;
+    --aw-avatar-group-ring: 4px;
+    --aw-avatar-group-radius-sm: 8px;
+    --aw-avatar-group-radius-md: 12px;
+    --aw-avatar-group-radius-lg: 14px;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *, *::before, *::after { box-sizing: border-box; }
+  .aw-root { background: var(--aw-bg); color: var(--aw-text-primary); font-family: var(--aw-font-sans); -webkit-font-smoothing: antialiased; }
+
+  /* — component — */
+  /* ── Avatar group ─────────────────────────────────────────────────────── */
+  .aw-avatar-group { display: inline-flex; align-items: center; }
+  .aw-avatar-group__item {
+    position: relative; flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: var(--aw-avatar-group-size-md); height: var(--aw-avatar-group-size-md);
+    border-radius: var(--aw-radius-pill);
+    background: var(--aw-surface-strong);
+    /* the set's two outside strokes: a 2px background gap, then the colour ring to 4px */
+    box-shadow: 0 0 0 var(--aw-avatar-group-ring-gap) var(--aw-black), 0 0 0 var(--aw-avatar-group-ring) var(--aw-surface-strong);
+    font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); font-weight: var(--aw-fw-regular);
+    color: var(--aw-text-primary);
+    overflow: hidden;
+  }
+  .aw-avatar-group__item + .aw-avatar-group__item { margin-left: calc(var(--aw-space-row) * -1); }
+  .aw-avatar-group__item img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+
+  /* size — md (40) is the default */
+  .aw-avatar-group--sm .aw-avatar-group__item { width: var(--aw-avatar-group-size-sm); height: var(--aw-avatar-group-size-sm); }
+  .aw-avatar-group--lg .aw-avatar-group__item {
+    width: var(--aw-avatar-group-size-lg); height: var(--aw-avatar-group-size-lg);
+    font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm);
+  }
+
+  /* color — default is colors/base/default, primary is colors/base/primary */
+  .aw-avatar-group--primary .aw-avatar-group__item {
+    background: var(--aw-positive);
+    box-shadow: 0 0 0 var(--aw-avatar-group-ring-gap) var(--aw-black), 0 0 0 var(--aw-avatar-group-ring) var(--aw-positive);
+  }
+
+  /* radius — full (pill) is the default */
+  .aw-avatar-group--r-none .aw-avatar-group__item { border-radius: 0; }
+  .aw-avatar-group--r-sm .aw-avatar-group__item { border-radius: var(--aw-avatar-group-radius-sm); }
+  .aw-avatar-group--r-md .aw-avatar-group__item { border-radius: var(--aw-avatar-group-radius-md); }
+  .aw-avatar-group--r-lg .aw-avatar-group__item { border-radius: var(--aw-avatar-group-radius-lg); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <h1>AuctionWire · Avatar group</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Size — sm 32 · md 40 (default) · lg 56; 8px overlap, 5 avatars + "+N"</div>
+      <div class="row">
+        <div class="aw-avatar-group aw-avatar-group--sm" role="group" aria-label="9 bidders">
+          <span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">MK</span><span class="aw-avatar-group__item">RT</span><span class="aw-avatar-group__item">LB</span><span class="aw-avatar-group__item">+4</span>
+        </div>
+        <div class="aw-avatar-group" role="group" aria-label="9 bidders">
+          <span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">MK</span><span class="aw-avatar-group__item">RT</span><span class="aw-avatar-group__item">LB</span><span class="aw-avatar-group__item">+4</span>
+        </div>
+        <div class="aw-avatar-group aw-avatar-group--lg" role="group" aria-label="9 bidders">
+          <span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">MK</span><span class="aw-avatar-group__item">RT</span><span class="aw-avatar-group__item">LB</span><span class="aw-avatar-group__item">+4</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Color — default (zinc ring) · primary (green ring and fill)</div>
+      <div class="row">
+        <div class="aw-avatar-group" role="group" aria-label="6 watchers">
+          <span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">MK</span><span class="aw-avatar-group__item">+3</span>
+        </div>
+        <div class="aw-avatar-group aw-avatar-group--primary" role="group" aria-label="6 watchers">
+          <span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">MK</span><span class="aw-avatar-group__item">+3</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Radius — none 0 · sm 8 · md 12 · lg 14 · full (default)</div>
+      <div class="row">
+        <div class="aw-avatar-group aw-avatar-group--sm aw-avatar-group--r-none" role="group" aria-label="4 bidders"><span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">+2</span></div>
+        <div class="aw-avatar-group aw-avatar-group--sm aw-avatar-group--r-sm" role="group" aria-label="4 bidders"><span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">+2</span></div>
+        <div class="aw-avatar-group aw-avatar-group--sm aw-avatar-group--r-md" role="group" aria-label="4 bidders"><span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">+2</span></div>
+        <div class="aw-avatar-group aw-avatar-group--sm aw-avatar-group--r-lg" role="group" aria-label="4 bidders"><span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">+2</span></div>
+        <div class="aw-avatar-group aw-avatar-group--sm" role="group" aria-label="4 bidders"><span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">+2</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Fewer avatars (Avatar n.2–n.4 off) · no "+N" (maxCount off)</div>
+      <div class="row">
+        <div class="aw-avatar-group" role="group" aria-label="3 bidders"><span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">+2</span></div>
+        <div class="aw-avatar-group" role="group" aria-label="3 bidders"><span class="aw-avatar-group__item">AS</span><span class="aw-avatar-group__item">JG</span><span class="aw-avatar-group__item">MK</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

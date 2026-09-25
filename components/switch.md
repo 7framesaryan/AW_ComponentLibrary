@@ -13,10 +13,6 @@ A labelled on/off toggle whose track turns green when on.
 - Picking one of several options → use [Radio](radio.md) or [Segmented](segmented.md)
 - Choosing a subscription plan → use [Plan option](plan-option.md)
 
-## Where it's used
-- Gallery (off "Alerts", on "Auto-bid") — `templates/gallery.template.html`
-- Not used in a sample screen yet.
-
 ## Anatomy
 ```text
 label.aw-switch                  inline row, gap --aw-space-row

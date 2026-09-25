@@ -14,10 +14,6 @@ A full-width row with a label on the left and a checkbox or radio on the right; 
 - A read-only label/value pair → use [Detail row](detail-row.md)
 - An on/off setting row → use [Switch](switch.md)
 
-## Where it's used
-- Search results filter sheet (Grade) — `templates/search-results.template.html`
-- Gallery (filter option list) — `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 div.aw-option-row                 space-between row, bottom hairline

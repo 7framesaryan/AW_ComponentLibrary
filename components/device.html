@@ -3,30 +3,35 @@
   AuctionWire · Device frame  (registry id: device · class: .aw-device · status: catalogued)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
-  Classes: .aw-device
-  Composes (rules copied for the specimen): .aw-screen (screen), .aw-hero-band (hero-band)
-  Contract: Foundations components/device.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Classes: .aw-device, .aw-device__screen
+  Contract: components/device.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Artwork: Figma's own 2x render of the iPhone 17 frame (AW Mobile V3, node 15531:150179), stored once
+  as --aw-device-frame / --aw-device-chrome in Foundations src/assets.css. Fixed: nothing regenerates
+  it; screens just render inside it. This specimen links that file from the Foundations folder next door.
   THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
   screen builds read that block straight out of this file. Edit it here, nowhere else.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=470">
 <title>AuctionWire · Device frame</title>
+<link rel="stylesheet" href="../../AW_DesignLanguage/02-design-system/src/assets.css">
 <style>
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
     --aw-text-primary: #ffffff;
-    --aw-zinc-800: #27272a;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --aw-fw-bold: 700;
     --aw-fs-xl: 20px;
     --aw-lh-xl: 28px;
     --aw-space-section: 16px;
-    --aw-radius-screen: 60px;
-    --aw-grad-hero: linear-gradient(180deg, #171a17 0%, #121412 100%);
+    --aw-inset-status-bar: 62px;
+    --aw-device-width: 438px;
+    --aw-device-height: 905px;
+    --aw-screen-width: 402px;
+    --aw-screen-height: 874px;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -42,46 +47,54 @@
   }
   .aw-page-title    { font-size: var(--aw-fs-xl);   line-height: var(--aw-lh-xl);   font-weight: var(--aw-fw-bold);     color: var(--aw-text-primary); }
 
-  /* — composed components it sits with (from components/) — */
-  .aw-screen {
-    background: var(--aw-bg);
-    min-height: 100%;
-    padding: 0 var(--aw-space-section);
-  }
-  .aw-hero-band { background: var(--aw-grad-hero); }
-
   /* — component — */
-  /* ── Device / screen frame (web preview surface) ──────────────────────── */
+  /* ── Device mockup: iPhone 17, fixed size (never responsive) ──────────── */
+  /* The phone is always 438 × 905 and its screen always 402 × 874, on every display: it never
+     shrinks, stretches or reflows with the window. The artwork is Figma's own 2x render of
+     15531:150179 (Foundations src/assets.css): --aw-device-frame (phone + screen background) sits
+     behind the design, --aw-device-chrome (status bar, dynamic island, home indicator) on top. */
   .aw-device {
-    width: 402px;
-    max-width: 100%;
-    background: var(--aw-bg);
-    border-radius: var(--aw-radius-screen);
-    border: 1px solid var(--aw-zinc-800);
-    overflow: hidden;
     position: relative;
+    flex: none;
+    width: var(--aw-device-width);
+    min-width: var(--aw-device-width);
+    height: var(--aw-device-height);
+    background: var(--aw-device-frame) 0 0 / var(--aw-device-width) var(--aw-device-height) no-repeat;
+  }
+  .aw-device::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    background: var(--aw-device-chrome) 0 0 / var(--aw-device-width) var(--aw-device-height) no-repeat;
+  }
+  /* The screen: where the design goes. Offsets and the corner curve are the Figma screen's.
+     Transparent on purpose: the Figma background image shows through wherever the design
+     doesn't paint its own background. */
+  .aw-device__screen {
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    width: var(--aw-screen-width);
+    height: var(--aw-screen-height);
+    overflow: hidden;
+    clip-path: path("M302.8 0C337.52 0 354.89 0 368.15 6.76C379.81 12.7 389.3 22.19 395.24 33.85C402 47.12 402 64.48 402 99.2V774.8C402 809.53 402 826.89 395.24 840.15C389.3 851.82 379.81 861.3 368.15 867.24C354.89 874 337.52 874 302.8 874H99.2C64.48 874 47.12 874 33.85 867.24C22.19 861.3 12.7 851.82 6.76 840.15C0 826.89 0 809.53 0 774.8V99.2C0 64.48 0 47.12 6.76 33.85C12.7 22.19 22.19 12.7 33.85 6.76C47.12 0 64.48 0 99.2 0H302.8Z");
   }
 
   /* — specimen scaffold (not part of the component) — */
-  body { margin: 0; padding: 28px; min-height: 100vh; }
+  body { margin: 0; padding: 16px; min-height: 100vh; }
   h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
-  .spec { display: grid; gap: 22px; max-width: 402px; }
-  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .stack { display: flex; flex-direction: column; gap: 12px; }
   .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
 </style>
 </head>
 <body class="aw-root">
   <h1>AuctionWire · Device frame</h1>
-  <div class="spec">
-    <div>
-      <div class="cap">402px preview frame (60px screen radius) with a hero band and a screen inside</div>
-      <div class="aw-device" style="height:420px">
-        <div class="aw-hero-band" style="height:100%">
-          <div class="aw-screen" style="background:transparent;padding-top:64px">
-            <div class="aw-page-title">Watchlist</div>
-          </div>
-        </div>
+  <div class="cap">iPhone 17 mockup, 438 × 905 · screen 402 × 874 · the Figma background shows through the screen</div>
+  <div class="aw-device">
+    <div class="aw-device__screen">
+      <div style="padding:calc(var(--aw-inset-status-bar) + 24px) var(--aw-space-section) 0">
+        <div class="aw-page-title">Watchlist</div>
       </div>
     </div>
   </div>

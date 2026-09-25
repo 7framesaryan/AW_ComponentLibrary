@@ -14,12 +14,6 @@ A pill with a leading dot that shows an auction's state (live, upcoming or ended
 - A count or "NEW" marker → use [Badge](badge.md)
 - A countdown timer → use `.aw-urgency` text (red), not a chip
 
-## Where it's used
-- Card detail: "Live Now" in the meta row. See `templates/card-detail.template.html`
-- Search results: "Live", "Soon", "Ended" on 2-up grid cards. See `templates/search-results.template.html`
-- Watchlist: "Live" and "Outbid" beside the countdown. See `templates/watchlist.template.html`
-- Gallery: all three variants, plus grid cards and calendar entries. See `templates/gallery.template.html`
-
 ## Anatomy
 ```text
 span.aw-status-chip       24px pill, inline-flex, gap --aw-space-tight
