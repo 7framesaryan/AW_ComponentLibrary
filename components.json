@@ -108,7 +108,7 @@
         "full": ".aw-btn.aw-btn--full"
       },
       "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2209:26195 (component set \"Button\", 270 variants)",
-      "verification": "imported from the live Figma component set 2026-09-22; every value measured from it"
+      "verification": "imported from the live Figma component set 2026-09-22; every value measured from it; label type and colours re-measured in dark mode 2026-09-28 (medium, size-scaled, green secondary/tertiary, #71717a disabled)"
     },
     "chip": {
       "name": "Chip",
@@ -214,7 +214,7 @@
     "radio": {
       "name": "Radio",
       "category": "inputs-and-controls",
-      "status": "catalogued",
+      "status": "verified",
       "guide": "components/radio.md",
       "class": "aw-radio",
       "files": [
@@ -225,8 +225,8 @@
         "default": ".aw-radio",
         "ring": ".aw-radio.aw-radio--ring"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; ring variant added from payment-plan screenshot reconstruction (unverified vs live Figma)"
+      "figmaSource": "Figma tyqrAWDfmJ8E7yLRmap6VH · component set \"Radio\" (size=md)",
+      "verification": "measured in dark mode 2026-09-28; ring is the default, --ring kept as an alias"
     },
     "search": {
       "name": "Search",
@@ -538,7 +538,7 @@
     "sheet": {
       "name": "Sheet",
       "category": "overlays-and-feedback",
-      "status": "catalogued",
+      "status": "verified",
       "guide": "components/sheet.md",
       "class": "aw-sheet",
       "files": [
@@ -549,13 +549,13 @@
         "default": ".aw-sheet",
         "modal": ".aw-sheet.aw-sheet--modal"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; modal (near-black) variant added from payment-plan screenshot reconstruction (unverified vs live Figma)"
+      "figmaSource": "Figma B7mJJRaFlVAfLKPTjz48aK · 15780:33003 (AW Mob V3 · Paywall B), built from AW Design System variables",
+      "verification": "matched to the Paywall B sheets 2026-09-28; modal is an alias; the AW Design System file has no sheet component"
     },
     "field": {
       "name": "Field",
       "category": "inputs-and-controls",
-      "status": "catalogued",
+      "status": "verified",
       "guide": "components/field.md",
       "class": "aw-field",
       "files": [
@@ -565,8 +565,8 @@
       "variants": {
         "default": ".aw-field"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; not independently verified against live Figma"
+      "figmaSource": "Figma tyqrAWDfmJ8E7yLRmap6VH · component set \"Input\" (bordered, lg, md, labelPlacement=outside)",
+      "verification": "measured in dark mode 2026-09-28"
     },
     "social-btn": {
       "name": "Social auth button",
@@ -955,7 +955,7 @@
     "plan-option": {
       "name": "Plan option",
       "category": "inputs-and-controls",
-      "status": "provisional",
+      "status": "verified",
       "guide": "components/plan-option.md",
       "class": "aw-plan-option",
       "files": [
@@ -965,10 +965,11 @@
       "contract": "components/plan-option.md",
       "variants": {
         "default": ".aw-plan-option",
-        "selected": ".aw-plan-option.is-selected"
+        "selected": ".aw-plan-option.is-selected",
+        "discounted": ".aw-plan-option .aw-plan-option__was"
       },
-      "figmaSource": null,
-      "verification": "screenshot-reconstruction from user-supplied image (reproductions/payment-plan); NOT verified against live Figma; measurements inferred",
+      "figmaSource": "Figma B7mJJRaFlVAfLKPTjz48aK · 15780:33003 (AW Mob V3 · Paywall B), built from AW Design System variables",
+      "verification": "matched to the Paywall B plan rows 2026-09-28; the AW Design System file has no plan-option component",
       "evidence": "reproductions/payment-plan/qa.md"
     },
     "icon-button": {
@@ -1024,7 +1025,7 @@
     "divider": {
       "name": "Divider",
       "category": "layout-and-surfaces",
-      "status": "catalogued",
+      "status": "verified",
       "guide": "components/divider.md",
       "class": "aw-divider",
       "files": [
@@ -1035,8 +1036,8 @@
         "default": ".aw-divider",
         "primary": ".aw-divider.aw-divider--primary"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css"
+      "figmaSource": "Figma tyqrAWDfmJ8E7yLRmap6VH · component set \"Divider\"",
+      "verification": "measured in dark mode 2026-09-28 (colors/layout/divider)"
     },
     "gated-pill": {
       "name": "Gated pill",

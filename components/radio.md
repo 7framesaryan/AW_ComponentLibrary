@@ -1,8 +1,10 @@
 # Radio
 
-`.aw-radio` · inputs-and-controls · status: **catalogued** · registry id `radio`
+`.aw-radio` · inputs-and-controls · status: **verified** · registry id `radio`
 
-A 20px round control for picking exactly one option from a group; the default fills solid green, the ring variant shows a green centre dot.
+A 20px ring for picking exactly one option from a group: a 2px grey ring when off, a green ring with an 8px green centre dot when on.
+
+Measured from the AW Design System Figma file (`tyqrAWDfmJ8E7yLRmap6VH`, component set **Radio**, `size=md`). The ring is the only look the set has, so it is now the default; `.aw-radio--ring` stays as an alias for older markup.
 
 ## When to use
 - Single-choice lists where only one option can be active.
@@ -15,33 +17,32 @@ A 20px round control for picking exactly one option from a group; the default fi
 
 ## Anatomy
 ```text
-span.aw-radio                   20 x 20 circle, 1px border
-└── span.aw-radio__dot          inner dot; required for --ring (--aw-radio-dot-size, 10px)
+span.aw-radio                   20 x 20 ring, 2px border
+└── span.aw-radio__dot          8px centre dot (--aw-radio-dot-size); always include it
 ```
-The gallery default radio uses an inline-styled 8px `currentColor` dot, not `.aw-radio__dot`.
 
 ## Variants
 | Class | Use |
 |---|---|
-| `.aw-radio` | Default. Checked = solid green disc. |
-| `.aw-radio.aw-radio--ring` | Ring (donut). Checked = transparent centre, green border and green `__dot`. Used by plan option. Provisional: from a screenshot reconstruction. |
+| `.aw-radio` | The radio. Checked = green ring + green centre dot. |
+| `.aw-radio.aw-radio--ring` | Alias kept for older markup; renders exactly like `.aw-radio`. |
 
 ## States
 | State | How to apply | What changes |
 |---|---|---|
-| Unchecked | none | Transparent fill, 1px `--aw-border-strong` border |
-| Checked (default) | add `.is-checked` | Fill and border `--aw-positive` (#009350) |
-| Checked (ring) | add `.is-checked` to `.aw-radio--ring` | Fill stays transparent; border `--aw-positive`; `.aw-radio__dot` fills `--aw-positive` |
-| Disabled | Not specified | Not specified |
+| Unchecked | none | Transparent centre, 2px `--aw-zinc-700` (#3f3f46) ring (Figma `colors/base/default`) |
+| Checked | add `.is-checked` | Ring `--aw-positive` (#009350); `.aw-radio__dot` fills `--aw-positive` |
+| Hover / focus / invalid / disabled | Not specified | The Figma set has these variants; they are not coded yet |
 
 ## Tokens
 | Property | Token |
 |---|---|
-| Border (unchecked) | `--aw-border-strong` (#71717a), 1px |
+| Ring width | `--aw-radio-border-width` (2px) |
+| Ring (unchecked) | `--aw-zinc-700` (#3f3f46) |
+| Ring and dot (checked) | `--aw-positive` (#009350) |
+| Dot size | `--aw-radio-dot-size` (8px) |
 | Radius | `--aw-radius-pill` |
-| Checked fill / border | `--aw-positive` (#009350) |
-| Inner content colour | `--aw-zinc-50` (#fafafa) |
-| Ring dot size | `--aw-radio-dot-size` (10px, inferred) |
+| Motion | `--aw-dur-fast`, `--aw-ease-out` on the ring and dot colour |
 
 ## Layout & grid
 - Fixed 20 x 20; never sized to a column.
@@ -60,7 +61,7 @@ The gallery default radio uses an inline-styled 8px `currentColor` dot, not `.aw
 
 ## Example
 ```html
-<span class="aw-radio aw-radio--ring is-checked" data-aw-component="radio" data-aw-variant="ring" aria-hidden="true"><span class="aw-radio__dot"></span></span>
+<span class="aw-radio is-checked" data-aw-component="radio" aria-hidden="true"><span class="aw-radio__dot"></span></span>
 ```
 
 ## Related
@@ -68,7 +69,6 @@ The gallery default radio uses an inline-styled 8px `currentColor` dot, not `.aw
 - color (`02-design-system/foundations/color.md`)
 
 ## Open questions
-- Ring variant dot size (10px) and ring stroke are inferred from a screenshot (payment-plan gap P3); confirm against Figma.
-- The default checked radio has no class for its inner dot; the gallery uses an inline 8px span. Should `.aw-radio__dot` be used for the default too?
-- Disabled state is not specified.
-- No sample screen uses the default (non-ring) radio.
+- The Figma set has no "selected, not hovered" variant: every `isSelected=True` variant is also `isHovered=True`. The code treats that look as the plain checked state.
+- Hover, focus, invalid and disabled variants exist in Figma but are not coded yet.
+

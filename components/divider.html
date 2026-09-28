@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  AuctionWire · Divider  (registry id: divider · class: .aw-divider · status: catalogued)
+  AuctionWire · Divider  (registry id: divider · class: .aw-divider · status: verified)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
   Classes: .aw-divider .aw-divider--primary
@@ -26,6 +26,7 @@
     --aw-fs-xs: 12px;
     --aw-lh-xs: 16px;
     --aw-space-section: 16px;
+    --aw-border-ghost: #ffffff26;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -43,7 +44,8 @@
 
   /* — component — */
   /* ── Divider ──────────────────────────────────────────────────────────── */
-  .aw-divider { height: 1px; background: var(--aw-border-subtle); border: 0; margin: var(--aw-space-section) 0; }
+  /* Figma "Divider" = colors/layout/divider (white @ 15%) → --aw-border-ghost */
+  .aw-divider { height: 1px; background: var(--aw-border-ghost); border: 0; margin: var(--aw-space-section) 0; }
   .aw-divider--primary { background: var(--aw-border-primary-soft); }
 
   /* — specimen scaffold (not part of the component) — */

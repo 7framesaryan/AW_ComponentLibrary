@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  AuctionWire · Radio  (registry id: radio · class: .aw-radio · status: catalogued)
+  AuctionWire · Radio  (registry id: radio · class: .aw-radio · status: verified)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
   Classes: .aw-radio .aw-radio__dot .aw-radio--ring
@@ -17,13 +17,15 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-border-strong: #71717a;
-    --aw-text-primary: #ffffff;
+        --aw-text-primary: #ffffff;
     --aw-positive: #009350;
-    --aw-zinc-50: #fafafa;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --aw-radius-pill: 9999px;
-    --aw-radio-dot-size: 10px;
+    --aw-radio-dot-size: 8px;
+    --aw-zinc-700: #3f3f46;
+    --aw-radio-border-width: 2px;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-fast: 120ms;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -39,21 +41,21 @@
   }
 
   /* — component — */
-  /* ── Checkbox / Radio ─────────────────────────────────────────────────── */
-  /* split from the shared rule ".aw-checkbox, .aw-radio" */
+  /* ── Radio ──────────────────────────────────────────────────────────── */
+  /* Measured from the AW Design System Figma set "Radio" (tyqrAWDfmJ8E7yLRmap6VH):
+     20px ring, 2px stroke; checked = green stroke + 8px green centre dot. */
   .aw-radio {
-    width: 20px; height: 20px; border: 1px solid var(--aw-border-strong);
-    background: transparent; display: inline-flex; align-items: center; justify-content: center;
-    color: var(--aw-zinc-50);
+    width: 20px; height: 20px; flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: var(--aw-radio-border-width) solid var(--aw-zinc-700);
+    border-radius: var(--aw-radius-pill); background: transparent;
+    transition: border-color var(--aw-dur-fast) var(--aw-ease-out);
   }
-  .aw-radio { border-radius: var(--aw-radius-pill); }
-  /* split from the shared rule ".aw-checkbox.is-checked, .aw-radio.is-checked" */
-  .aw-radio.is-checked { background: var(--aw-positive); border-color: var(--aw-positive); }
-  /* Radio ring variant: keeps a transparent centre with an inner dot when checked
-     (donut), instead of the default solid-fill checked state. */
-  .aw-radio__dot { width: var(--aw-radio-dot-size); height: var(--aw-radio-dot-size); border-radius: var(--aw-radius-pill); background: transparent; }
-  .aw-radio--ring.is-checked { background: transparent; border-color: var(--aw-positive); }
-  .aw-radio--ring.is-checked .aw-radio__dot { background: var(--aw-positive); }
+  .aw-radio__dot { width: var(--aw-radio-dot-size); height: var(--aw-radio-dot-size); border-radius: var(--aw-radius-pill); background: transparent; transition: background-color var(--aw-dur-fast) var(--aw-ease-out); }
+  .aw-radio.is-checked { border-color: var(--aw-positive); }
+  .aw-radio.is-checked .aw-radio__dot { background: var(--aw-positive); }
+  /* .aw-radio--ring is kept as an alias for older markup; the ring IS the default now. */
+  .aw-radio--ring.is-checked { border-color: var(--aw-positive); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }
@@ -68,14 +70,10 @@
   <h1>AuctionWire · Radio</h1>
   <div class="spec">
     <div>
-      <div class="cap">Default — solid fill when checked</div>
-      <div class="row"><span class="aw-radio is-checked"></span><span class="aw-radio"></span></div>
-    </div>
-    <div>
-      <div class="cap">Ring (.aw-radio--ring) — donut when checked</div>
-      <div class="row">
-        <span class="aw-radio aw-radio--ring is-checked" aria-hidden="true"><span class="aw-radio__dot"></span></span>
-        <span class="aw-radio aw-radio--ring" aria-hidden="true"><span class="aw-radio__dot"></span></span>
+      <div class="cap">Checked &amp; unchecked (Figma Radio · size=md)</div>
+      <div class="row" role="radiogroup" aria-label="Example">
+        <span class="aw-radio is-checked" role="radio" aria-checked="true"><span class="aw-radio__dot"></span></span>
+        <span class="aw-radio" role="radio" aria-checked="false"><span class="aw-radio__dot"></span></span>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  AuctionWire · Field  (registry id: field · class: .aw-field · status: catalogued)
+  AuctionWire · Field  (registry id: field · class: .aw-field · status: verified)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
   Classes: .aw-field .aw-field__label .aw-field__input .aw-field__hint
@@ -36,6 +36,16 @@
     --aw-radius-search-lg: 12px;
     --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
     --aw-dur-fast: 120ms;
+    --aw-text-secondary: #d4d4d8;
+    --aw-border-hairline: #52525b;
+    --aw-layout-foreground: #ecedee;
+    --aw-fw-regular: 400;
+    --aw-lh-xs: 16px;
+    --aw-fs-base: 16px;
+    --aw-lh-base: 24px;
+    --aw-space-block: 12px;
+    --aw-field-h: 46px;
+    --aw-field-border-width: 2px;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -52,21 +62,25 @@
 
   /* — component — */
   /* ── Text field (forms / auth) ────────────────────────────────────────── */
-  .aw-field { display: flex; flex-direction: column; gap: var(--aw-space-tight); }
-  .aw-field__label { font-size: var(--aw-fs-xs); font-weight: var(--aw-fw-medium); color: var(--aw-text-muted); }
+  /* Measured from the AW Design System Figma set "Input" (variant=bordered, size=lg, radius=md,
+     labelPlacement=outside): label 12/16 regular above a transparent field with a 2px border. */
+  .aw-field { display: flex; flex-direction: column; gap: var(--aw-space-block); }
+  .aw-field__label { font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); font-weight: var(--aw-fw-regular); color: var(--aw-text-secondary); transition: color var(--aw-dur-fast) var(--aw-ease-out); }
   .aw-field__input {
-    height: 48px; padding: 0 var(--aw-space-section);
+    width: 100%; height: var(--aw-field-h); padding: 0 var(--aw-space-block);
     border-radius: var(--aw-radius-search-lg);
-    background: var(--aw-surface); border: 1px solid var(--aw-border-strong);
-    color: var(--aw-text-primary); font-size: var(--aw-fs-sm); outline: none;
+    background: transparent; border: var(--aw-field-border-width) solid var(--aw-border-hairline);
+    color: var(--aw-layout-foreground); font-family: inherit; font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); outline: none;
     transition: border-color var(--aw-dur-fast) var(--aw-ease-out);
   }
-  .aw-field__input::placeholder { color: var(--aw-text-disabled); }
-  .aw-field__input:focus { border-color: var(--aw-border-primary); box-shadow: inset 0 0 0 1px var(--aw-border-primary); }
+  .aw-field__input::placeholder { color: var(--aw-text-muted); }
+  .aw-field__input:focus { border-color: var(--aw-border-primary); }
+  .aw-field:focus-within .aw-field__label, .aw-field.is-active .aw-field__label { color: var(--aw-text-accent); }
+  .aw-field.is-active .aw-field__input { border-color: var(--aw-border-primary); }
   .aw-field.is-error .aw-field__input { border-color: var(--aw-border-danger); }
   .aw-field__hint { font-size: var(--aw-fs-caption); color: var(--aw-text-muted); }
   .aw-field.is-error .aw-field__hint { color: var(--aw-text-danger); }
-  .aw-field__input[disabled] { background: var(--aw-surface); color: var(--aw-text-disabled); border-color: var(--aw-border-subtle); }
+  .aw-field__input[disabled] { color: var(--aw-text-disabled); border-color: var(--aw-border-subtle); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }
@@ -80,21 +94,13 @@
 <body class="aw-root">
   <h1>AuctionWire · Field</h1>
   <div class="spec">
-    <div>
-      <div class="cap">Default</div>
-      <label class="aw-field"><span class="aw-field__label">Email</span><input class="aw-field__input" placeholder="you@example.com"><span class="aw-field__hint">We'll send a sign-in code.</span></label>
-    </div>
-    <div>
-      <div class="cap">Focus (click into it)</div>
-      <label class="aw-field"><span class="aw-field__label">Max bid</span><input class="aw-field__input" value="$4,000"></label>
-    </div>
-    <div>
-      <div class="cap">Error (.is-error)</div>
+    <div class="stack">
+      <div class="cap">Empty (placeholder) · filled · active · error · disabled — Figma Input bordered / lg / outside label</div>
+      <label class="aw-field"><span class="aw-field__label">Promo code</span><input class="aw-field__input" placeholder="Enter promo code"></label>
+      <label class="aw-field"><span class="aw-field__label">Email address</span><input class="aw-field__input" value="alex.wills@acme.com"></label>
+      <label class="aw-field is-active"><span class="aw-field__label">Promo code</span><input class="aw-field__input" value="COLLECTOR20"></label>
       <label class="aw-field is-error"><span class="aw-field__label">Max bid</span><input class="aw-field__input" value="$50"><span class="aw-field__hint">Must be higher than the current bid ($3,850)</span></label>
-    </div>
-    <div>
-      <div class="cap">Disabled</div>
-      <label class="aw-field"><span class="aw-field__label">Auction house</span><input class="aw-field__input" value="Heritage" disabled></label>
+      <label class="aw-field"><span class="aw-field__label">Username</span><input class="aw-field__input" value="collector" disabled></label>
     </div>
   </div>
 </body>

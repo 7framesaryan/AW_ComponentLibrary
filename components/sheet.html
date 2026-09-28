@@ -57,8 +57,10 @@
     --aw-glass-blur-sheet: 30px;
     --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
     --aw-dur-fast: 120ms;
-    --aw-sheet-modal-surface: #0a0a0b;
-    --aw-radius-sheet: 24px;
+    --aw-sheet-modal-surface: #18181b;
+    --aw-radius-sheet: 14px;
+    --aw-layout-foreground: #ecedee;
+    --aw-space-section-lg: 40px;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -130,19 +132,22 @@
   .aw-option-row__label { font-size: var(--aw-fs-sm); color: var(--aw-text-body); }
 
   /* — component — */
-  /* ── Filter sheet / modal (bottom sheet) ──────────────────────────────── */
+  /* ── Bottom sheet ─────────────────────────────────────────────────────── */
+  /* Matches the AW Mob V3 "Paywall B" sheets (Figma B7mJJRaFlVAfLKPTjz48aK · 15780:33003), built from
+     AW Design System tokens: colors/content/content1 surface, colors/layout/divider top edge,
+     rounded-large (14) top corners, 12 / 24 / 40 padding, 16px between children. */
   .aw-sheet {
-    border-radius: var(--aw-radius-hero) var(--aw-radius-hero) 0 0;
-    background: var(--aw-surface-raised);
+    display: flex; flex-direction: column; gap: var(--aw-space-section);
+    border-radius: var(--aw-radius-sheet) var(--aw-radius-sheet) 0 0;
+    background: var(--aw-sheet-modal-surface);
     border-top: 1px solid var(--aw-border-ghost);
-    padding: var(--aw-space-section);
+    padding: var(--aw-space-block) var(--aw-space-section-sm) var(--aw-space-section-lg);
   }
-  .aw-sheet__handle { width: 36px; height: 4px; border-radius: var(--aw-radius-pill); background: var(--aw-zinc-600); margin: 0 auto var(--aw-space-section); }
-  /* Modal sheet variant: near-black fill for payment / confirmation sheets,
-     distinct from the raised-grey filter sheet. Larger top radius. */
-  .aw-sheet--modal { background: var(--aw-sheet-modal-surface); border-top: 0; border-radius: var(--aw-radius-sheet) var(--aw-radius-sheet) 0 0; padding: var(--aw-space-section-sm) var(--aw-space-section-sm) var(--aw-space-header-pad); }
-  .aw-sheet__title { margin: 0 0 var(--aw-space-section-sm); text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); font-weight: var(--aw-fw-bold); color: var(--aw-text-primary); }
-  .aw-sheet__footnote { margin: var(--aw-space-block) 0 0; text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); }
+  .aw-sheet__handle { flex: none; align-self: center; width: 36px; height: 4px; border-radius: var(--aw-radius-pill); background: var(--aw-zinc-600); }
+  /* .aw-sheet--modal is kept as an alias for older markup: every sheet now uses the Figma look. */
+  .aw-sheet--modal { }
+  .aw-sheet__title { margin: 0; text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); font-weight: var(--aw-fw-bold); color: var(--aw-layout-foreground); }
+  .aw-sheet__footnote { margin: 0; text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  AuctionWire · Plan option  (registry id: plan-option · class: .aw-plan-option · status: provisional)
+  AuctionWire · Plan option  (registry id: plan-option · class: .aw-plan-option · status: verified)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
   Classes: .aw-plan-option .aw-plan-option__body .aw-plan-option__name-row .aw-plan-option__name .aw-plan-option__sub .aw-plan-option__price .aw-plan-option__amount .aw-plan-option__period
@@ -18,40 +18,39 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-border-strong: #71717a;
     --aw-text-primary: #ffffff;
     --aw-text-muted: #a1a1aa;
-    --aw-text-accent: #009350;
+    --aw-text-disabled: #71717a;
+    --aw-layout-foreground: #ecedee;
     --aw-positive: #009350;
-    --aw-caution: #f5a524;
-    --aw-zinc-50: #fafafa;
+    --aw-zinc-700: #3f3f46;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-fw-regular: 400;
     --aw-fw-semibold: 600;
     --aw-fw-bold: 700;
-    --aw-fs-caption: 10px;
-    --aw-fs-chip: 11px;
-    --aw-lh-chip: 16px;
     --aw-fs-xs: 12px;
     --aw-lh-xs: 16px;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
     --aw-fs-base: 16px;
     --aw-lh-base: 24px;
-    --aw-fs-lg: 18px;
-    --aw-lh-lg: 28px;
-    --aw-space-micro: 2px;
+    --aw-fs-xl: 20px;
+    --aw-lh-xl: 28px;
+    --aw-space-tight: 4px;
     --aw-space-row: 8px;
     --aw-space-block: 12px;
     --aw-space-section: 16px;
     --aw-radius-pill: 9999px;
     --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
     --aw-dur-fast: 120ms;
-    --aw-plan-surface: #131316;
-    --aw-plan-surface-selected: #04140b;
-    --aw-plan-border: #2a2a30;
-    --aw-radius-plan: 16px;
-    --aw-badge-soft-positive-bg: #0093501f;
-    --aw-radio-dot-size: 10px;
-    --aw-badge-text: #040501;
-    --aw-badge-padding-x: 5px;
+    --aw-plan-surface: #18181b;
+    --aw-plan-surface-selected: #172e20;
+    --aw-plan-border: #3f3f46;
+    --aw-radius-plan: 12px;
+    --aw-radio-border-width: 2px;
+    --aw-radio-dot-size: 8px;
+    --aw-chip-h-sm: 24px;
+    --aw-chip-h-md: 28px;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -69,40 +68,55 @@
   button { font: inherit; cursor: pointer; background: none; border: 0; color: inherit; }
 
   /* — composed components it sits with (from components/) — */
-  /* split from the shared rule ".aw-checkbox, .aw-radio" */
+  /* ── Radio ──────────────────────────────────────────────────────────── */
+  /* Measured from the AW Design System Figma set "Radio" (tyqrAWDfmJ8E7yLRmap6VH):
+     20px ring, 2px stroke; checked = green stroke + 8px green centre dot. */
   .aw-radio {
-    width: 20px; height: 20px; border: 1px solid var(--aw-border-strong);
-    background: transparent; display: inline-flex; align-items: center; justify-content: center;
-    color: var(--aw-zinc-50);
-  }
-  .aw-radio { border-radius: var(--aw-radius-pill); }
-  /* split from the shared rule ".aw-checkbox.is-checked, .aw-radio.is-checked" */
-  .aw-radio.is-checked { background: var(--aw-positive); border-color: var(--aw-positive); }
-  /* Radio ring variant: keeps a transparent centre with an inner dot when checked
-     (donut), instead of the default solid-fill checked state. */
-  .aw-radio__dot { width: var(--aw-radio-dot-size); height: var(--aw-radio-dot-size); border-radius: var(--aw-radius-pill); background: transparent; }
-  .aw-radio--ring.is-checked { background: transparent; border-color: var(--aw-positive); }
-  .aw-radio--ring.is-checked .aw-radio__dot { background: var(--aw-positive); }
-  .aw-badge {
+    width: 20px; height: 20px; flex: none;
     display: inline-flex; align-items: center; justify-content: center;
-    min-width: 18px; height: 18px; padding: 0 var(--aw-badge-padding-x); border-radius: var(--aw-radius-pill);
-    background: var(--aw-caution); color: var(--aw-badge-text);
-    font-size: var(--aw-fs-caption); font-weight: var(--aw-fw-bold);
+    border: var(--aw-radio-border-width) solid var(--aw-zinc-700);
+    border-radius: var(--aw-radius-pill); background: transparent;
+    transition: border-color var(--aw-dur-fast) var(--aw-ease-out);
   }
-  /* Soft positive badge (green text on faint green fill) — e.g. "Save 25%". */
-  .aw-badge--positive-soft { min-width: 0; height: auto; padding: var(--aw-space-micro) var(--aw-space-row); background: var(--aw-badge-soft-positive-bg); color: var(--aw-text-accent); font-size: var(--aw-fs-chip); line-height: var(--aw-lh-chip); font-weight: var(--aw-fw-semibold); }
+  .aw-radio__dot { width: var(--aw-radio-dot-size); height: var(--aw-radio-dot-size); border-radius: var(--aw-radius-pill); background: transparent; transition: background-color var(--aw-dur-fast) var(--aw-ease-out); }
+  .aw-radio.is-checked { border-color: var(--aw-positive); }
+  .aw-radio.is-checked .aw-radio__dot { background: var(--aw-positive); }
+  /* .aw-radio--ring is kept as an alias for older markup; the ring IS the default now. */
+  .aw-radio--ring.is-checked { border-color: var(--aw-positive); }
+  .aw-chip {
+    display: inline-flex; align-items: center; gap: var(--aw-space-tight);
+    height: var(--aw-chip-h-md); padding: 0 var(--aw-space-row);
+    border-radius: var(--aw-radius-pill);
+    background: var(--aw-surface-strong); color: var(--aw-text-primary);
+    outline-offset: 0;
+    font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular);
+    white-space: nowrap;
+  }
+  .aw-chip--sm { height: var(--aw-chip-h-sm); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); }
+  .aw-chip--primary { background: var(--aw-positive); color: var(--aw-text-primary); }
 
   /* — component — */
-  /* Plan option — selectable subscription plan card. */
-  .aw-plan-option { display: flex; align-items: center; gap: var(--aw-space-block); width: 100%; padding: var(--aw-space-section); border-radius: var(--aw-radius-plan); border: 1px solid var(--aw-plan-border); background: var(--aw-plan-surface); font-family: var(--aw-font-sans); text-align: left; cursor: pointer; transition: border-color var(--aw-dur-fast) var(--aw-ease-out), background-color var(--aw-dur-fast) var(--aw-ease-out); }
-  .aw-plan-option.is-selected { border-color: var(--aw-positive); background: var(--aw-plan-surface-selected); }
-  .aw-plan-option__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--aw-space-micro); }
+  /* Plan option — selectable subscription plan card.
+     Matches the AW Mob V3 "Paywall B" plan rows (Figma B7mJJRaFlVAfLKPTjz48aK · 15780:33003),
+     which are built from AW Design System tokens: colors/content/content1 surface, colors/base/default-200
+     border, colors/base/primary-50 + 2px primary border when selected, rounded-medium (12) corners. */
+  .aw-plan-option {
+    display: flex; align-items: center; gap: var(--aw-space-block); width: 100%;
+    padding: var(--aw-space-section); border-radius: var(--aw-radius-plan);
+    border: 1px solid var(--aw-plan-border); background: var(--aw-plan-surface);
+    font-family: var(--aw-font-sans); text-align: left; color: var(--aw-layout-foreground);
+    transition: border-color var(--aw-dur-fast) var(--aw-ease-out), background-color var(--aw-dur-fast) var(--aw-ease-out), box-shadow var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  /* 2px selected border drawn as 1px border + 1px inset ring, so content never shifts */
+  .aw-plan-option.is-selected { border-color: var(--aw-positive); box-shadow: inset 0 0 0 1px var(--aw-positive); background: var(--aw-plan-surface-selected); }
+  .aw-plan-option__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--aw-space-tight); }
   .aw-plan-option__name-row { display: flex; align-items: center; gap: var(--aw-space-row); }
-  .aw-plan-option__name { font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); font-weight: var(--aw-fw-bold); color: var(--aw-text-primary); }
+  .aw-plan-option__name { font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); font-weight: var(--aw-fw-semibold); color: var(--aw-layout-foreground); }
   .aw-plan-option__sub { font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); }
-  .aw-plan-option__price { display: flex; flex-direction: column; align-items: flex-end; gap: var(--aw-space-micro); flex: none; }
-  .aw-plan-option__amount { font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); font-weight: var(--aw-fw-bold); color: var(--aw-text-primary); }
-  .aw-plan-option__period { font-size: var(--aw-fs-chip); line-height: var(--aw-lh-chip); color: var(--aw-text-muted); }
+  .aw-plan-option__price { display: flex; align-items: baseline; gap: var(--aw-space-tight); flex: none; font-variant-numeric: tabular-nums; }
+  .aw-plan-option__was { font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); color: var(--aw-text-disabled); text-decoration: line-through; }
+  .aw-plan-option__amount { font-size: var(--aw-fs-xl); line-height: var(--aw-lh-xl); font-weight: var(--aw-fw-bold); color: var(--aw-layout-foreground); }
+  .aw-plan-option__period { font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }
@@ -117,23 +131,33 @@
   <h1>AuctionWire · Plan option</h1>
   <div class="spec">
     <div>
-      <div class="cap">Selected (.is-selected) &amp; unselected</div>
-      <div class="stack" role="radiogroup" aria-label="Plan">
+      <div class="cap">Monthly selected (default) &amp; Annual with a savings chip — Figma Paywall B</div>
+      <div class="stack" role="radiogroup" aria-label="Billing plan">
         <button type="button" class="aw-plan-option is-selected" role="radio" aria-checked="true">
-          <span class="aw-radio aw-radio--ring is-checked" aria-hidden="true"><span class="aw-radio__dot"></span></span>
-          <span class="aw-plan-option__body">
-            <span class="aw-plan-option__name-row"><span class="aw-plan-option__name">Yearly</span><span class="aw-badge aw-badge--positive-soft">Save 25%</span></span>
-            <span class="aw-plan-option__sub">Just $7.50/mo · billed yearly</span>
-          </span>
-          <span class="aw-plan-option__price"><span class="aw-plan-option__amount">$89.99</span><span class="aw-plan-option__period">per year</span></span>
-        </button>
-        <button type="button" class="aw-plan-option" role="radio" aria-checked="false">
-          <span class="aw-radio aw-radio--ring" aria-hidden="true"><span class="aw-radio__dot"></span></span>
+          <span class="aw-radio is-checked" aria-hidden="true"><span class="aw-radio__dot"></span></span>
           <span class="aw-plan-option__body">
             <span class="aw-plan-option__name-row"><span class="aw-plan-option__name">Monthly</span></span>
             <span class="aw-plan-option__sub">Billed monthly</span>
           </span>
-          <span class="aw-plan-option__price"><span class="aw-plan-option__amount">$9.99</span><span class="aw-plan-option__period">per month</span></span>
+          <span class="aw-plan-option__price"><span class="aw-plan-option__amount">$15</span><span class="aw-plan-option__period">/mo</span></span>
+        </button>
+        <button type="button" class="aw-plan-option" role="radio" aria-checked="false">
+          <span class="aw-radio" aria-hidden="true"><span class="aw-radio__dot"></span></span>
+          <span class="aw-plan-option__body">
+            <span class="aw-plan-option__name-row"><span class="aw-plan-option__name">Annual</span><span class="aw-chip aw-chip--primary aw-chip--sm">Save 51%</span></span>
+            <span class="aw-plan-option__sub">$7.33/mo · billed yearly</span>
+          </span>
+          <span class="aw-plan-option__price"><span class="aw-plan-option__amount">$88</span><span class="aw-plan-option__period">/yr</span></span>
+        </button>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Discount applied (.aw-plan-option__was) — old price struck through</div>
+      <div class="stack">
+        <button type="button" class="aw-plan-option is-selected" role="radio" aria-checked="true">
+          <span class="aw-radio is-checked" aria-hidden="true"><span class="aw-radio__dot"></span></span>
+          <span class="aw-plan-option__body"><span class="aw-plan-option__name-row"><span class="aw-plan-option__name">Monthly</span></span><span class="aw-plan-option__sub">Billed monthly</span></span>
+          <span class="aw-plan-option__price"><span class="aw-plan-option__was">$15</span><span class="aw-plan-option__amount">$12</span><span class="aw-plan-option__period">/mo</span></span>
         </button>
       </div>
     </div>

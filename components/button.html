@@ -47,6 +47,13 @@
     --aw-radius-pill: 9999px;
     --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
     --aw-dur-fast: 120ms;
+    --aw-fw-medium: 500;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-fs-base: 16px;
+    --aw-lh-base: 24px;
+    --aw-text-accent: #009350;
+    --aw-text-disabled: #71717a;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -65,7 +72,7 @@
     border: 0; border-radius: var(--aw-radius-button);
     background: transparent;
     font-family: inherit;
-    font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular);
+    font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-medium);
     color: var(--aw-text-primary);
     cursor: pointer;
     transition: background-color var(--aw-dur-fast) var(--aw-ease-out), border-color var(--aw-dur-fast) var(--aw-ease-out);
@@ -73,8 +80,8 @@
   .aw-btn .aw-icon { width: var(--aw-btn-icon-size); height: var(--aw-btn-icon-size); }
 
   /* size */
-  .aw-btn--sm { height: var(--aw-btn-h-sm); padding: 0 var(--aw-space-block); }
-  .aw-btn--lg { height: var(--aw-btn-h-lg); padding: 0 var(--aw-space-section-sm); }
+  .aw-btn--sm { height: var(--aw-btn-h-sm); padding: 0 var(--aw-space-block); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); }
+  .aw-btn--lg { height: var(--aw-btn-h-lg); padding: 0 var(--aw-space-section-sm); font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); }
 
   /* type — Primary: solid fill */
   .aw-btn--primary { background: var(--aw-positive); }
@@ -82,12 +89,14 @@
   .aw-btn--primary[disabled], .aw-btn--primary.is-disabled { background: var(--aw-primary-100); pointer-events: none; }
 
   /* type — Secondary: 1px outline, no fill */
-  .aw-btn--secondary { border: 1px solid var(--aw-positive); }
-  .aw-btn--secondary:hover { border-color: var(--aw-primary-400); }
+  .aw-btn--secondary { border: 1px solid var(--aw-positive); color: var(--aw-text-accent); }
+  .aw-btn--secondary:hover { border-color: var(--aw-primary-400); color: var(--aw-text-primary); }
   .aw-btn--secondary[disabled], .aw-btn--secondary.is-disabled { border-color: var(--aw-primary-100); pointer-events: none; }
 
-  /* type — Tertiary: label only. The set gives it no hover or disabled treatment */
-  .aw-btn--tertiary { background: transparent; border: 0; }
+  /* type — Tertiary: green label only; md is the one size set in regular weight */
+  .aw-btn--tertiary { background: transparent; border: 0; color: var(--aw-text-accent); }
+  .aw-btn--tertiary:hover { color: var(--aw-primary-400); }
+  .aw-btn--tertiary:not(.aw-btn--sm):not(.aw-btn--lg) { font-weight: var(--aw-fw-regular); }
   .aw-btn--tertiary[disabled], .aw-btn--tertiary.is-disabled { pointer-events: none; }
 
   /* radius — the set's radius axis (default is its radius=sm) */
@@ -106,6 +115,8 @@
 
   /* width */
   .aw-btn--full { width: 100%; }
+  /* state — Disabled label is --aw-text-disabled (#71717a) for every type (Figma Button set) */
+  .aw-btn[disabled], .aw-btn.is-disabled { color: var(--aw-text-disabled); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

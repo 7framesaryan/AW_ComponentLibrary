@@ -4,6 +4,8 @@
 
 A bottom sheet that rises over a scrim to hold a contained task: filters, or a payment / confirmation choice.
 
+Verified against the AW Mob V3 **Paywall B** sheets (Figma `B7mJJRaFlVAfLKPTjz48aK`, section `15780:33003`), built from AW Design System variables. The AW Design System file has no sheet component of its own yet.
+
 ## When to use
 - Filters for a result list (price range, grade, Reset / Show N results): default sheet with handle.
 - Payment or confirmation steps, such as choosing a plan: `.aw-sheet--modal`.
@@ -29,8 +31,8 @@ The scrim and bottom positioning are screen CSS, not part of the component.
 ## Variants
 | Class | Use |
 |---|---|
-| `.aw-sheet` | Filter sheet: `--aw-surface-raised` fill, `--aw-border-ghost` top border, 12px top radius, 16px padding. |
-| `.aw-sheet.aw-sheet--modal` | Payment / confirmation sheet: `--aw-sheet-modal-surface` near-black fill, no top border, 24px top radius. Provisional (screenshot reconstruction). |
+| `.aw-sheet` | Every bottom sheet: filters, "What's included", payment or confirmation. |
+| `.aw-sheet.aw-sheet--modal` | Alias kept for older markup; renders exactly like `.aw-sheet`. |
 
 ## States
 | State | How to apply | What changes |
@@ -43,18 +45,15 @@ The scrim and bottom positioning are screen CSS, not part of the component.
 ## Tokens
 | Property | Token |
 |---|---|
-| Fill (default) | `--aw-surface-raised` (#27272a) |
-| Top border (default) | 1px `--aw-border-ghost` (#ffffff26) |
-| Top radius (default) | `--aw-radius-hero` (12px) |
-| Padding (default) | `--aw-space-section` (16px) |
-| Handle | 36 x 4, `--aw-zinc-600` (#52525b), `--aw-radius-pill`, bottom margin `--aw-space-section` |
-| Fill (modal) | `--aw-sheet-modal-surface` (#0a0a0b, inferred) |
-| Top radius (modal) | `--aw-radius-sheet` (24px, inferred) |
-| Padding (modal) | `--aw-space-section-sm` (24px) sides and top, `--aw-space-header-pad` (20px) bottom |
-| Title | `--aw-fs-lg`/`--aw-lh-lg` (18/28), `--aw-fw-bold`, `--aw-text-primary`, bottom margin 24px |
-| Footnote | `--aw-fs-xs`/`--aw-lh-xs`, `--aw-text-muted`, top margin `--aw-space-block` |
-| Glass (optional) | `.aw-glass-sheet`: `--aw-glass-blur-sheet` (30px) |
-| Motion | `--aw-dur-sheet-in`, `--aw-dur-sheet-out`, `--aw-ease-out`, `--aw-ease-in` |
+| Fill | `--aw-sheet-modal-surface` (#18181b, Figma `colors/content/content1`) |
+| Top edge | 1px `--aw-border-ghost` (white @ 15%, Figma `colors/layout/divider`) |
+| Top radius | `--aw-radius-sheet` (14px, Figma `layout/radius/rounded-large`) |
+| Padding | `--aw-space-block` top · `--aw-space-section-sm` sides · `--aw-space-section-lg` bottom (includes the home-indicator area) |
+| Gap between children | `--aw-space-section` (16px) |
+| Handle | 36 × 4, `--aw-zinc-600`, `--aw-radius-pill` |
+| Title | `--aw-fs-lg`/`--aw-lh-lg` (18/28), `--aw-fw-bold`, `--aw-layout-foreground` |
+| Footnote | `--aw-fs-xs`/`--aw-lh-xs`, `--aw-text-muted` |
+| Motion | enter `--aw-dur-sheet-in` `--aw-ease-out` · exit `--aw-dur-sheet-out` `--aw-ease-in` |
 
 ## Layout & grid
 - The sheet is full-bleed (edge to edge of the 402px screen), pinned to the bottom; it sits outside the column grid.
@@ -97,9 +96,6 @@ The scrim and bottom positioning are screen CSS, not part of the component.
 - Dialog (`02-design-system/patterns/dialog.md`), motion (`02-design-system/foundations/motion/INDEX.md`), effects (`02-design-system/foundations/effects.md`)
 
 ## Open questions
-- No scrim token exists; the reproduction uses raw `#000000` at 0.6 opacity in screen CSS.
-- `.aw-glass-sheet` (base.css) sets a translucent background, but `.aw-sheet` (`components/sheet.css`, loaded later) overrides it with `--aw-surface-raised`, leaving only the blur. Is a glass fill intended?
-- Modal fill, radius and side padding are inferred (payment-plan gap P2).
-- The modal sheet has no handle in the reproduction; is drag-to-dismiss supported?
-- Old dialog pattern mentions a destructive red confirm, which conflicts with red = countdowns only.
-- Maximum height and scrolling behaviour are not specified.
+- The AW Design System Figma file has no Sheet component; this one follows the Paywall B sheets. Add it to the Figma library so both sides share one source.
+- The filter sheet used the raised-grey (#27272a) fill before; it now shares the Paywall B look. Check filter screens after rebuilding.
+

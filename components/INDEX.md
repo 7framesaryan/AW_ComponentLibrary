@@ -27,11 +27,11 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 
 | Component | Class | Status | Code | What it is |
 |---|---|---|---|---|
-| [Chip](chip.md) | `.aw-chip` | catalogued | [chip.html](chip.html) | A small non-interactive pill that states one fact about a card, such as price, grade, category or a verified tag. |
+| [Chip](chip.md) | `.aw-chip` | catalogued | [chip.html](chip.html) | A small non-interactive pill that states one fact about a card or item, such as a grade, category, seller or a verified tag. |
 | [Filter chip](filter-chip.md) | `.aw-filter-chip` | catalogued | [filter-chip.html](filter-chip.html) | A selectable pill that narrows a list of results; the active chip shows which filter or segment is applied. |
 | [Status chip](status-chip.md) | `.aw-status-chip` | catalogued | [status-chip.html](status-chip.html) | A pill with a leading dot that shows an auction's state (live, upcoming or ended) using its own fixed colour set. |
 | [Stat pill](stat-pill.md) | `.aw-stat-pill` | catalogued | [stat-pill.html](stat-pill.html) | A raised pill that surfaces one metric as icon, label and a bold value, such as "Watching 12". |
-| [Badge](badge.md) | `.aw-badge` | catalogued | [badge.html](badge.html) | A small count or status marker that signals something new, either pinned to an icon or inline beside a label. |
+| [Badge](badge.md) | `.aw-badge` | catalogued | [badge.html](badge.html) | A small pill count that sits on an icon, avatar or label to say how many new things are waiting. |
 | [Gated pill](gated-pill.md) | `.aw-gated-pill` | catalogued | in [listing-card.html](listing-card.html) | A raised pill with a label and an amber lock that marks a fact hidden behind a subscription, such as "Seller" or "PSA Grade". |
 
 ## Inputs & controls
@@ -39,14 +39,14 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | Component | Class | Status | Code | What it is |
 |---|---|---|---|---|
 | [Search](search.md) | `.aw-search` | catalogued | [search.html](search.html) | A blurred-glass search field (magnifier icon plus text input) that sits over scrolling content and starts or refines a search. |
-| [Field](field.md) | `.aw-field` | catalogued | [field.html](field.html) | A labelled text input with an optional hint line, for forms and auth screens. |
+| [Field](field.md) | `.aw-field` | verified | [field.html](field.html) | A labelled text input with an optional hint line, for forms and auth screens. |
 | [Switch](switch.md) | `.aw-switch` | catalogued | [switch.html](switch.html) | A labelled on/off toggle whose track turns green when on. |
 | [Checkbox](checkbox.md) | `.aw-checkbox` | catalogued | [checkbox.html](checkbox.html) | A 20px square box that fills green with a check icon when selected; used for multi-select choices. |
-| [Radio](radio.md) | `.aw-radio` | catalogued | [radio.html](radio.html) | A 20px round control for picking exactly one option from a group; the default fills solid green, the ring variant shows a green centre dot. |
+| [Radio](radio.md) | `.aw-radio` | verified | [radio.html](radio.html) | A 20px ring for picking exactly one option from a group: a 2px grey ring when off, a green ring with an 8px green centre dot when on. |
 | [Segmented](segmented.md) | `.aw-segmented` | catalogued | [segmented.html](segmented.html) | A pill-shaped toggle group where one option is active; switches a view mode or timeframe in place. |
 | [Range](range.md) | `.aw-range` | catalogued | [range.html](range.html) | A min/max filter: two text inputs with a separator, plus an optional slider track with a green fill and two knobs. |
 | [Filter option row](option-row.md) | `.aw-option-row` | catalogued | [option-row.html](option-row.html) | A full-width row with a label on the left and a checkbox or radio on the right; rows stack into a selectable option list. |
-| [Plan option](plan-option.md) | `.aw-plan-option` | provisional | [plan-option.html](plan-option.html) | A selectable subscription-plan card: ring radio, plan name with optional savings badge, a sub-line, and a right-aligned price. |
+| [Plan option](plan-option.md) | `.aw-plan-option` | verified | [plan-option.html](plan-option.html) | A selectable subscription-plan card: radio, plan name with an optional savings chip, a sub-line, and a right-aligned price (with an optional struck-through old price). |
 
 ## Cards & content
 
@@ -89,7 +89,7 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 
 | Component | Class | Status | Code | What it is |
 |---|---|---|---|---|
-| [Sheet](sheet.md) | `.aw-sheet` | catalogued | [sheet.html](sheet.html) | A bottom sheet that rises over a scrim to hold a contained task: filters, or a payment / confirmation choice. |
+| [Sheet](sheet.md) | `.aw-sheet` | verified | [sheet.html](sheet.html) | A bottom sheet that rises over a scrim to hold a contained task: filters, or a payment / confirmation choice. |
 | [Accordion](accordion.md) | `.aw-accordion` | catalogued | [accordion.html](accordion.html) | An expandable group with a tappable header and chevron; used for the auction calendar month that reveals that month's auction entries. |
 | [Empty state](empty.md) | `.aw-empty` | catalogued | [empty.html](empty.html) | A centred icon, title, short body and optional action shown when a list has no results. |
 | [Information alert](info-alert.md) | `.aw-info-alert` | verified | [info-alert.html](info-alert.html) | A raised inline panel with an info icon, a bold title and muted body text that explains something before the user acts. |
@@ -105,7 +105,7 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Device frame](device.md) | `.aw-device` | catalogued | [device.html](device.html) | The fixed iPhone 17 mockup every design renders inside: Figma's own render of the phone, its background and status bar, 438 × 905 with a 402 × 874 screen, the same size on every display. |
 | [Screen](screen.md) | `.aw-screen` | catalogued | [screen.html](screen.html) | The content container of a mobile screen: it paints the screen background and adds the 16px side margin that content sits inside. |
 | [Hero band](hero-band.md) | `.aw-hero-band` | catalogued | [hero-band.html](hero-band.html) | A full-bleed background that paints the near-black hero gradient behind a page title, glass chrome or a hero image. |
-| [Divider](divider.md) | `.aw-divider` | catalogued | [divider.html](divider.html) | A 1px horizontal rule that separates groups of content inside a card or between blocks. |
+| [Divider](divider.md) | `.aw-divider` | verified | [divider.html](divider.html) | A 1px horizontal rule that separates groups of content inside a card or between blocks. |
 | [Labeled divider](labeled-divider.md) | `.aw-labeled-divider` | catalogued | [labeled-divider.html](labeled-divider.html) | A short text label centred between two 1px rules, used to separate alternative choices such as social sign-in and email sign-in ("or"). |
 
 ## Utility classes
