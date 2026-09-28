@@ -28,7 +28,7 @@ system and are not imported.
 ```text
 button.aw-btn             centred inline-flex row, gap --aw-space-row (8)
 ├── svg.aw-icon           optional leading icon, 20 × 20
-├── label text            the action, as a verb — 14/20 regular, --aw-text-primary
+├── label text            the action, as a verb — medium; 12/16 · 14/20 · 16/24 by size
 └── svg.aw-icon           optional trailing icon, 20 × 20
 ```
 
@@ -50,7 +50,7 @@ button.aw-btn             centred inline-flex row, gap --aw-space-row (8)
 | *(default)* | 40px | `--aw-space-section` (16) |
 | `.aw-btn--lg` | 48px | `--aw-space-section-sm` (24) |
 
-The label is **14/20 regular at every size** — size changes the box, never the type.
+The label is **medium weight and scales with size**: 12/16 (sm), 14/20 (default), 16/24 (lg). The one exception in the set is Tertiary at the default size, which is 14/20 regular.
 
 ### Radius
 | Class | Radius |
@@ -70,10 +70,9 @@ The label is **14/20 regular at every size** — size changes the box, never the
 ## States
 | State | How to apply | What changes |
 |---|---|---|
-| Default | none | Variant styling |
-| Hover | `:hover` | Primary fill and secondary border become `--aw-primary-400` |
-| Disabled | `disabled` attribute or `.is-disabled` | Primary fill and secondary border become `--aw-primary-100`; no pointer events. The label stays white |
-| Tertiary hover / disabled | — | **The set gives tertiary no hover or disabled treatment**; it looks the same in all three states |
+| Default | none | Variant styling. Primary label white; Secondary and Tertiary labels `--aw-text-accent` (green) |
+| Hover | `:hover` | Primary fill and secondary border become `--aw-primary-400`; the secondary label turns white; the tertiary label becomes `--aw-primary-400` |
+| Disabled | `disabled` attribute or `.is-disabled` | Primary fill and secondary border become `--aw-primary-100`; every label becomes `--aw-text-disabled` (#71717a); no pointer events |
 | Pressed | Not specified | Not specified |
 | Focus-visible | Not specified | Not specified |
 | Loading | Not specified in this set | Not specified |
@@ -86,7 +85,8 @@ The label is **14/20 regular at every size** — size changes the box, never the
 | Icon slot | `--aw-btn-icon-size` (20px, every size) |
 | Icon–label gap | `--aw-space-row` (8) |
 | Radius | `--aw-radius-button` · `--aw-btn-radius-md` · `--aw-btn-radius-lg` · `--aw-radius-pill` |
-| Label | `--aw-fs-sm` / `--aw-lh-sm` / `--aw-fw-regular`, `--aw-text-primary` |
+| Label | `--aw-fw-medium`; `--aw-fs-xs`/`--aw-lh-xs` (sm) · `--aw-fs-sm`/`--aw-lh-sm` (default) · `--aw-fs-base`/`--aw-lh-base` (lg) |
+| Label colour | Primary `--aw-text-primary` · Secondary & Tertiary `--aw-text-accent` · Disabled `--aw-text-disabled` |
 | Primary fill | `--aw-positive` (`colors/base/primary`) |
 | Hover | `--aw-primary-400` (`colors/base/primary-400`) |
 | Disabled | `--aw-primary-100` (`colors/base/primary-100`) |
@@ -131,12 +131,13 @@ The label is **14/20 regular at every size** — size changes the box, never the
 1. **Icon-only primary uses a different green.** In the set, `isIconOnly=true, State=Default` fills
    with `primary-600` (#72bb8e) instead of `primary` (#009350) — 15 variants. Deliberate, or a slip in
    Figma? The code follows the set.
-2. **Tertiary has no hover or disabled treatment.** All three states are identical (no fill, no
-   border, white label), so a disabled tertiary is indistinguishable from an active one.
+2. ~~Tertiary has no hover or disabled treatment.~~ Resolved 2026-09-28: re-measured in dark mode, the
+   tertiary label is green, `primary-400` on hover and `default-400` (#71717a) when disabled.
 3. **Three Secondary icon-only variants differ**: fill `primary-100` with a `primary-300` 2px border,
    where every other Secondary is transparent with a 1px border.
-4. **The label is white in every type**, including secondary and tertiary on a dark surface. Earlier
-   AuctionWire screens used a green label on the outline CTA. Which is correct?
+4. ~~The label is white in every type.~~ Resolved 2026-09-28: re-measured in dark mode (Tokens `dark`),
+   the Secondary and Tertiary labels are `colors/base/primary` (green), the label is medium weight and
+   scales with size, and every disabled label is `colors/base/default-400`.
 5. The set has no pressed, focus-visible or loading state.
 6. The set's radius scale (0 · 8 · 12 · 14 · pill) doesn't match the foundation radius names; the two
    new values are held as `--aw-btn-radius-md` / `--aw-btn-radius-lg`.

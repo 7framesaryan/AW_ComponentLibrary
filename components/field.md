@@ -1,8 +1,10 @@
 # Field
 
-`.aw-field` · inputs-and-controls · status: **catalogued** · registry id `field`
+`.aw-field` · inputs-and-controls · status: **verified** · registry id `field`
 
 A labelled text input with an optional hint line, for forms and auth screens.
+
+Measured from the AW Design System Figma file (`tyqrAWDfmJ8E7yLRmap6VH`, component set **Input**, `variant=bordered, size=lg, radius=md, labelPlacement=outside`).
 
 ## When to use
 - Form and auth inputs that need a visible label: email, password, name.
@@ -17,9 +19,9 @@ A labelled text input with an optional hint line, for forms and auth screens.
 
 ## Anatomy
 ```text
-label.aw-field                    column, gap --aw-space-tight
-├── span.aw-field__label          label text, 12px medium, muted
-├── input.aw-field__input         48px input, 12px radius, strong border
+label.aw-field                    column, gap --aw-space-block (12)
+├── span.aw-field__label          label text, 12/16 regular, --aw-text-secondary
+├── input.aw-field__input         46px, transparent, 2px --aw-border-hairline border, 12px radius, 16/24 text
 └── span.aw-field__hint           optional helper or error text, 10px
 ```
 
@@ -31,26 +33,27 @@ label.aw-field                    column, gap --aw-space-tight
 ## States
 | State | How to apply | What changes |
 |---|---|---|
-| Default | none | 1px `--aw-border-strong` border; placeholder in `--aw-text-disabled` |
-| Focus | native `:focus` on the input | Border reads as 2px `--aw-border-primary` (#009350): 1px border plus a 1px inset ring, so content doesn't shift |
-| Error | add `.is-error` to `.aw-field` | Input border `--aw-border-danger` (#d4183d); hint text `--aw-text-danger` |
-| Disabled | `disabled` attribute on the input | Text `--aw-text-disabled`, border `--aw-border-subtle`, fill stays `--aw-surface` |
+| Default | none | 2px `--aw-border-hairline` (#52525b) border; placeholder `--aw-text-muted` (#a1a1aa) |
+| Focus / active | native `:focus`, or add `.is-active` to `.aw-field` | Border `--aw-border-primary` (#009350); label turns `--aw-text-accent` |
+| Error | add `.is-error` to `.aw-field` | Input border `--aw-border-danger`; hint `--aw-text-danger` |
+| Disabled | `disabled` attribute on the input | Text `--aw-text-disabled`, border `--aw-border-subtle` |
 
 ## Tokens
 | Property | Token |
 |---|---|
-| Label-input-hint gap | `--aw-space-tight` (4px) |
-| Label | `--aw-fs-xs` (12px), `--aw-fw-medium`, `--aw-text-muted` (#a1a1aa) |
-| Input fill | `--aw-surface` (#18181b) |
-| Input border | `--aw-border-strong` (#71717a), 1px |
+| Label–input gap | `--aw-space-block` (12px) |
+| Label | `--aw-fs-xs`/`--aw-lh-xs` (12/16), `--aw-fw-regular`, `--aw-text-secondary` (#d4d4d8, Figma `colors/base/default-600`) |
+| Input height | `--aw-field-h` (46px: 42px content + 2px border each side) |
+| Input fill | transparent |
+| Input border | `--aw-field-border-width` (2px) `--aw-border-hairline` (#52525b, Figma `colors/layout/foreground-300`) |
 | Input radius | `--aw-radius-search-lg` (12px) |
-| Input padding | `0 --aw-space-section` (16px) |
-| Input text | `--aw-fs-sm` (14px), `--aw-text-primary` |
-| Placeholder | `--aw-text-disabled` (#71717a) |
+| Input padding | `0 --aw-space-block` (12px) |
+| Input text | `--aw-fs-base`/`--aw-lh-base` (16/24), `--aw-layout-foreground` (#ecedee) |
+| Placeholder | `--aw-text-muted` (#a1a1aa, Figma `colors/layout/foreground-500`) |
 | Hint | `--aw-fs-caption` (10px), `--aw-text-muted` |
-| Focus border | `--aw-border-primary`, 2px (1px border + 1px inset `box-shadow` ring) |
+| Focus border / label | `--aw-border-primary` / `--aw-text-accent` |
 | Error border / hint | `--aw-border-danger` / `--aw-text-danger` |
-| Transition | `--aw-dur-fast`, `--aw-ease-out` on border colour |
+| Transition | `--aw-dur-fast`, `--aw-ease-out` |
 
 ## Layout & grid
 - A field spans all 4 columns (370px) by default; the input fills the field width.
@@ -71,7 +74,7 @@ label.aw-field                    column, gap --aw-space-tight
 
 ## Example
 ```html
-<label class="aw-field is-error"><span class="aw-field__label">Max bid</span><input class="aw-field__input" value="$50"><span class="aw-field__hint">Must be higher than the current bid ($3,850)</span></label>
+<label class="aw-field"><span class="aw-field__label">Promo code</span><input class="aw-field__input" placeholder="Enter promo code"></label>
 ```
 
 ## Related
@@ -79,6 +82,6 @@ label.aw-field                    column, gap --aw-space-tight
 - color (`02-design-system/foundations/color.md`), content (`02-design-system/foundations/content.md`)
 
 ## Open questions
-- The error state uses red (`--aw-border-danger`, `--aw-text-danger`), but red is reserved for countdowns. Is validation red an approved exception?
-- No auth or form screen template exists yet to show real field spacing.
-- Password visibility toggle, leading icons and success state are not specified.
+- The Figma set's description text size was not measured; the hint keeps its previous 10px.
+- Figma's `color=primary` variant shows a #3f3f46 border while unfocused; the code uses the default border until focus.
+

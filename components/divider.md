@@ -1,6 +1,6 @@
 # Divider
 
-`.aw-divider` · layout-and-surfaces · status: **catalogued** · registry id `divider`
+`.aw-divider` · layout-and-surfaces · status: **verified** · registry id `divider`
 
 A 1px horizontal rule that separates groups of content inside a card or between blocks.
 
@@ -21,7 +21,7 @@ A 1px horizontal rule that separates groups of content inside a card or between 
 ## Variants
 | Class | Use |
 |---|---|
-| `.aw-divider` | Default neutral rule. |
+| `.aw-divider` | Default neutral rule: white @ 15% (Figma **Divider**, `colors/layout/divider`). |
 | `.aw-divider.aw-divider--primary` | Soft green rule. Usage not specified. |
 
 ## States
@@ -33,7 +33,7 @@ A 1px horizontal rule that separates groups of content inside a card or between 
 | Property | Token |
 |---|---|
 | Thickness | 1px height |
-| Colour (default) | `--aw-border-subtle` (#27272a) |
+| Colour (default) | `--aw-border-ghost` (#ffffff26, white @ 15%) |
 | Colour (`--primary`) | `--aw-border-primary-soft` (#00935040) |
 | Vertical margin | `--aw-space-section` (16px) top and bottom |
 | Border | 0 (so it also resets an `<hr>`) |
