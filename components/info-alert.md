@@ -4,6 +4,8 @@
 
 A raised inline panel with an info icon, a bold title and muted body text that explains something before the user acts.
 
+> **Kit alignment (2026-09-28):** extended with the AW Design System Alert options (3132:38437): colour (primary, warning, danger), a close control and an action slot. `--inline` is the docked saved-search "smart nudge".
+
 ## When to use
 - Neutral, important context next to a decision, e.g. "Make payment on our website" before the free-trial CTA or inside the payment sheet.
 - Static explanation that does not need a response.
@@ -27,6 +29,10 @@ div.aw-info-alert                    row, top-aligned, gap 12px, 12px padding
 | Class | Use |
 |---|---|
 | `.aw-info-alert` | The only variant. |
+| `.aw-info-alert--primary` | Affirmative prompt (`--aw-primary-50` fill) |
+| `.aw-info-alert--warning` · `--danger` | Caution / blocking notice (`--aw-warning-50` / `--aw-danger-50`) |
+| `.aw-info-alert--inline` | Action on the right instead of below; for a docked prompt |
+| `.aw-info-alert__actions` · `__close` · `__icon-tile` | Action buttons (`.aw-btn--sm`) · dismiss · 40px tinted icon tile |
 
 ## States
 | State | How to apply | What changes |

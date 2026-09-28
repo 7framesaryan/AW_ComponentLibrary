@@ -4,6 +4,8 @@
 
 A bottom sheet that rises over a scrim to hold a contained task: filters, or a payment / confirmation choice.
 
+> **Kit alignment (2026-09-28):** the AW Design System kit has no bottom sheet (flagged). Built from kit values: top corners `--aw-rounded-large` (14, was 12), scrim `.aw-sheet__scrim` (layout/overlay), optional header with a close button. The modal variant is unchanged (still provisional).
+
 ## When to use
 - Filters for a result list (price range, grade, Reset / Show N results): default sheet with handle.
 - Payment or confirmation steps, such as choosing a plan: `.aw-sheet--modal`.
@@ -31,6 +33,9 @@ The scrim and bottom positioning are screen CSS, not part of the component.
 |---|---|
 | `.aw-sheet` | Filter sheet: `--aw-surface-raised` fill, `--aw-border-ghost` top border, 12px top radius, 16px padding. |
 | `.aw-sheet.aw-sheet--modal` | Payment / confirmation sheet: `--aw-sheet-modal-surface` near-black fill, no top border, 24px top radius. Provisional (screenshot reconstruction). |
+| `.aw-sheet__header` | Left title + a close button (`.aw-btn--icon --tertiary --sm`) |
+| `.aw-sheet__body` | Stack of fields, chips and rows with a 16 gap |
+| `.aw-sheet__scrim` | Full-screen `--aw-surface-translucent` behind the sheet; tapping it dismisses |
 
 ## States
 | State | How to apply | What changes |

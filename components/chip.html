@@ -27,39 +27,47 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-surface-raised: #27272a;
-    --aw-surface-strong: #3f3f46;
-    --aw-zinc-500: #71717a;
-    --aw-zinc-600: #52525b;
-    --aw-zinc-700: #3f3f46;
-    --aw-border-primary: #009350;
     --aw-text-primary: #ffffff;
-    --aw-text-accent: #009350;
-    --aw-positive: #009350;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-fw-regular: 400;
-    --aw-fs-xs: 12px;
-    --aw-lh-xs: 16px;
-    --aw-fs-sm: 14px;
-    --aw-lh-sm: 20px;
-    --aw-fs-base: 16px;
-    --aw-lh-base: 24px;
     --aw-space-tight: 4px;
+    --aw-chip-h-md: 28px;
     --aw-space-row: 8px;
     --aw-radius-pill: 9999px;
-    /* new — measured from the Chip set */
-    --aw-default-flat: #3f3f4666;     /* colors/flat/default-flat */
-    --aw-primary-flat: #2e8b574d;     /* colors/flat/primary-flat */
-    --aw-layout-foreground: #ecedee;  /* colors/layout/foreground: dot-chip primary label */
-    --aw-chip-h-sm: 24px;
-    --aw-chip-h-md: 28px;
-    --aw-chip-h-lg: 32px;
-    --aw-chip-icon-size: 20px;        /* start / end icon and avatar, every size */
+    --aw-surface-strong: #3f3f46;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
+    --aw-fw-regular: 400;
+    --aw-chip-icon-size: 20px;
+    --aw-zinc-600: #52525b;
     --aw-chip-dot-size: 8px;
-    --aw-chip-border-width: 2px;      /* bordered / faded / dot: 2px stroke, outside */
+    --aw-zinc-500: #71717a;
+    --aw-chip-h-sm: 24px;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-chip-h-lg: 32px;
+    --aw-fs-base: 16px;
+    --aw-lh-base: 24px;
+    --aw-positive: #009350;
+    --aw-chip-border-width: 2px;
+    --aw-zinc-700: #3f3f46;
+    --aw-border-primary: #009350;
+    --aw-text-accent: #009350;
+    --aw-default-flat: #3f3f4666;
+    --aw-primary-flat: #2e8b574d;
+    --aw-surface-raised: #27272a;
+    --aw-layout-foreground: #ecedee;
     --aw-chip-radius-sm: 8px;
     --aw-chip-radius-md: 12px;
     --aw-chip-radius-lg: 14px;
+    --aw-caution: #f5a524;
+    --aw-badge-text: #040501;
+    --aw-urgency: #d4183d;
+    --aw-warning-flat: #f5a52433;
+    --aw-text-warning: #f5a524;
+    --aw-danger-flat: #f3126033;
+    --aw-text-danger: #d4183d;
+    --aw-border-warning: #f5a524;
+    --aw-border-danger: #d4183d;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -134,6 +142,18 @@
   .aw-chip--r-sm { border-radius: var(--aw-chip-radius-sm); }
   .aw-chip--r-md { border-radius: var(--aw-chip-radius-md); }
   .aw-chip--r-lg { border-radius: var(--aw-chip-radius-lg); }
+
+  /* colour — warning and danger (added 2026-09-28 for saved-search statuses). The kit's chip set
+     only ships default | primary; these follow the same variant logic with the kit's own
+     base/warning, base/danger and flat/* colours. */
+  .aw-chip--warning { background: var(--aw-caution); color: var(--aw-badge-text); }
+  .aw-chip--danger  { background: var(--aw-urgency); color: var(--aw-text-primary); }
+  .aw-chip--flat.aw-chip--warning { background: var(--aw-warning-flat); color: var(--aw-text-warning); }
+  .aw-chip--flat.aw-chip--danger  { background: var(--aw-danger-flat); color: var(--aw-text-danger); }
+  .aw-chip--bordered.aw-chip--warning { background: transparent; outline-color: var(--aw-border-warning); color: var(--aw-text-warning); }
+  .aw-chip--bordered.aw-chip--danger  { background: transparent; outline-color: var(--aw-border-danger); color: var(--aw-text-danger); }
+  .aw-chip--dot.aw-chip--warning .aw-chip__dot { background: var(--aw-caution); }
+  .aw-chip--dot.aw-chip--danger  .aw-chip__dot { background: var(--aw-urgency); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

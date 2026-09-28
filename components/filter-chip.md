@@ -4,6 +4,8 @@
 
 A selectable pill that narrows a list of results; the active chip shows which filter or segment is applied.
 
+> **Kit alignment (2026-09-28):** rebuilt on the AW Design System Chip (2306:2321): variant=flat, size=md (28), radius=full, 14/20 regular. Selected = color=primary (flat). The old 11px / grey-active pill is gone.
+
 ## When to use
 - Quick filters above a result list: "Ending soon", "Baseball", "PSA 6+", "< $10k".
 - Segmenting a list by status or relationship: "All · 12", "Ending soon", "Outbid", "Winning" on Watchlist.
@@ -27,30 +29,25 @@ A selectable pill that narrows a list of results; the active chip shows which fi
 ## Variants
 | Class | Use |
 |---|---|
-| `.aw-filter-chip` | Unselected: `--aw-surface-raised` fill, `--aw-text-secondary` label |
-| `.aw-filter-chip.is-active` | Selected: `--aw-surface-strong` fill, `--aw-text-primary` label, 1px `--aw-border-strong` border |
+| `.aw-filter-chip` | Filter in a row (kit Chip flat · md · full · default) |
+| `.aw-filter-chip--glass` | Same chip floating over scrolling content, e.g. the bottom search dock (blurred `--aw-surface-search-small`) |
+| `.aw-badge.aw-badge--primary` inside | Count of applied filters on the leading "Filters" chip |
 
 ## States
 | State | How to apply | What changes |
 |---|---|---|
-| Default | none | Raised fill, secondary text |
-| Active | `.is-active` | Strong fill, primary text, strong border; background transitions over `--aw-dur-fast` |
-| Pressed | Not specified | Not specified |
-| Disabled | Not specified | Not specified |
-| Focus-visible | Not specified | Not specified |
+| Default | none | `--aw-default-flat` fill, `--aw-text-primary` label |
+| Active | add `.is-active` | `--aw-primary-flat` fill, `--aw-text-accent` label (kit flat primary) |
 
 ## Tokens
 | Property | Token |
 |---|---|
-| Height | 28px, fixed in CSS |
-| Side padding | `--aw-space-block` |
-| Gap | `--aw-space-tight` |
+| Height | `--aw-chip-h-md` (28) |
+| Padding · gap | `--aw-space-block` (12) · `--aw-space-tight` (4) |
 | Radius | `--aw-radius-pill` |
-| Fill | `--aw-surface-raised` (active: `--aw-surface-strong`) |
-| Border (active) | `--aw-border-strong` |
-| Label | `--aw-fs-chip` / `--aw-fw-medium` / `--aw-text-secondary` (active: `--aw-text-primary`) |
-| Row gap | `--aw-space-row` (`.aw-filter-row`) |
-| Motion | `--aw-dur-fast`, `--aw-ease-out` |
+| Type | `--aw-fs-sm` 14/20, `--aw-fw-regular` |
+| Fill default / active | `--aw-default-flat` / `--aw-primary-flat` |
+| Icon | `--aw-icon-sm` (16) |
 
 ## Layout & grid
 - Place chips in `.aw-filter-row`: flex, `--aw-space-row` gap, horizontal scroll, hidden scrollbar.

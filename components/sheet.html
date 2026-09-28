@@ -18,47 +18,27 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-surface-raised: #27272a;
-    --aw-surface-strong: #3f3f46;
-    --aw-surface-glass-bar-alt: #00000033;
-    --aw-border-subtle: #27272a;
-    --aw-border-strong: #71717a;
-    --aw-border-ghost: #ffffff26;
     --aw-text-primary: #ffffff;
-    --aw-text-body: #e4e4e7;
-    --aw-text-secondary: #d4d4d8;
-    --aw-text-muted: #a1a1aa;
-    --aw-text-accent-dim: #42835a;
-    --aw-positive: #009350;
-    --aw-zinc-50: #fafafa;
-    --aw-zinc-500: #71717a;
-    --aw-zinc-600: #52525b;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-fw-medium: 500;
-    --aw-fw-semibold: 600;
+    --aw-rounded-large: 14px;
+    --aw-surface-raised: #27272a;
+    --aw-border-small: 1px;
+    --aw-border-ghost: #ffffff26;
+    --aw-space-section: 16px;
+    --aw-radius-pill: 9999px;
+    --aw-zinc-600: #52525b;
+    --aw-sheet-modal-surface: #0a0a0b;
+    --aw-radius-sheet: 24px;
+    --aw-space-section-sm: 24px;
+    --aw-space-header-pad: 20px;
+    --aw-space-block: 12px;
+    --aw-fs-lg: 18px;
+    --aw-lh-lg: 28px;
     --aw-fw-bold: 700;
     --aw-fs-xs: 12px;
     --aw-lh-xs: 16px;
-    --aw-fs-sm: 14px;
-    --aw-fs-base: 16px;
-    --aw-lh-base: 24px;
-    --aw-fs-lg: 18px;
-    --aw-lh-lg: 28px;
-    --aw-space-row: 8px;
-    --aw-space-block: 12px;
-    --aw-space-section: 16px;
-    --aw-space-header-pad: 20px;
-    --aw-space-section-sm: 24px;
-    --aw-radius-sm: 4px;
-    --aw-radius-button: 8px;
-    --aw-radius-hero: 12px;
-    --aw-radius-pill: 9999px;
-    --aw-shadow-primary-glow: 0 4px 12px 0 #00935033;
-    --aw-glass-blur-sheet: 30px;
-    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
-    --aw-dur-fast: 120ms;
-    --aw-sheet-modal-surface: #0a0a0b;
-    --aw-radius-sheet: 24px;
+    --aw-text-muted: #a1a1aa;
+    --aw-surface-translucent: #00000066;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -130,19 +110,24 @@
   .aw-option-row__label { font-size: var(--aw-fs-sm); color: var(--aw-text-body); }
 
   /* — component — */
-  /* ── Filter sheet / modal (bottom sheet) ──────────────────────────────── */
+  /* ── Bottom sheet ─────────────────────────────────────────────────────
+     The kit has no sheet (2026-09-28); built from kit values: rounded-large top corners,
+     layout/overlay scrim, 16 padding. --modal is the near-black confirmation sheet. */
   .aw-sheet {
-    border-radius: var(--aw-radius-hero) var(--aw-radius-hero) 0 0;
+    border-radius: var(--aw-rounded-large) var(--aw-rounded-large) 0 0;
     background: var(--aw-surface-raised);
-    border-top: 1px solid var(--aw-border-ghost);
+    border-top: var(--aw-border-small) solid var(--aw-border-ghost);
     padding: var(--aw-space-section);
   }
   .aw-sheet__handle { width: 36px; height: 4px; border-radius: var(--aw-radius-pill); background: var(--aw-zinc-600); margin: 0 auto var(--aw-space-section); }
-  /* Modal sheet variant: near-black fill for payment / confirmation sheets,
-     distinct from the raised-grey filter sheet. Larger top radius. */
   .aw-sheet--modal { background: var(--aw-sheet-modal-surface); border-top: 0; border-radius: var(--aw-radius-sheet) var(--aw-radius-sheet) 0 0; padding: var(--aw-space-section-sm) var(--aw-space-section-sm) var(--aw-space-header-pad); }
+  .aw-sheet__header { display: flex; align-items: center; justify-content: space-between; gap: var(--aw-space-block); margin: 0 0 var(--aw-space-section); }
+  .aw-sheet__header .aw-sheet__title { margin: 0; text-align: left; }
   .aw-sheet__title { margin: 0 0 var(--aw-space-section-sm); text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); font-weight: var(--aw-fw-bold); color: var(--aw-text-primary); }
+  .aw-sheet__body { display: flex; flex-direction: column; gap: var(--aw-space-section); }
   .aw-sheet__footnote { margin: var(--aw-space-block) 0 0; text-align: center; font-family: var(--aw-font-sans); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); }
+  /* scrim behind an open sheet */
+  .aw-sheet__scrim { position: absolute; inset: 0; background: var(--aw-surface-translucent); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

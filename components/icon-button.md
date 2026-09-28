@@ -4,6 +4,8 @@
 
 A square button that holds only an icon: solid green for a page-title create action, or ghost grey for header and toolbar controls.
 
+> **Kit alignment (2026-09-28):** **deprecated for new screens.** The kit Button (2209:26195) has an icon-only mode: use `.aw-btn.aw-btn--icon` (Secondary for a header bookmark, Primary for its saved state). This 43×43 / 34×32 button is off the kit's 32/40/48 sizes.
+
 ## When to use
 - `.aw-btn-icon` (solid green): the page-title header's add or scan action, such as "+" on Saved searches.
 - `.aw-btn-icon-ghost`: back, overflow (more), filter, close, notifications (bell) and scan in glass headers, toolbars and sheet headers.

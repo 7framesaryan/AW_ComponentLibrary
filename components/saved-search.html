@@ -17,21 +17,76 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-surface: #18181b;
-    --aw-surface-raised: #27272a;
-    --aw-border-hairline: #52525b;
     --aw-text-primary: #ffffff;
-    --aw-text-muted: #a1a1aa;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-fw-regular: 400;
+    --aw-radius-card: 8px;
+    --aw-border-hairline: #52525b;
+    --aw-surface: #18181b;
+    --aw-space-block: 12px;
+    --aw-shadow-hairline: 0 1px 0 0 #0000004d;
+    --aw-space-row: 8px;
+    --aw-surface-raised: #27272a;
+    --aw-radius-sm: 4px;
+    --aw-space-section: 16px;
+    --aw-space-header-pad: 20px;
+    --aw-rounded-large: 14px;
+    --aw-border-small: 1px;
+    --aw-border-subtle: #27272a;
+    --aw-fs-lg: 18px;
+    --aw-lh-lg: 28px;
+    --aw-fw-bold: 700;
+    --aw-space-tight: 4px;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
+    --aw-text-muted: #a1a1aa;
+    --aw-btn-h-sm: 32px;
+    --aw-radius-pill: 9999px;
+    --aw-primary-flat: #2e8b574d;
+    --aw-text-accent: #009350;
+    --aw-icon-sm: 16px;
+    --aw-rounded-medium: 12px;
+    --aw-surface-translucent: #00000066;
+    --aw-input-h-sm: 40px;
+    --aw-space-micro: 2px;
     --aw-fw-semibold: 600;
     --aw-fs-xs: 12px;
     --aw-lh-xs: 16px;
-    --aw-space-row: 8px;
-    --aw-space-block: 12px;
-    --aw-radius-sm: 4px;
-    --aw-radius-card: 8px;
-    --aw-shadow-hairline: 0 1px 0 0 #0000004d;
+    --aw-saved-search-mosaic-row: 80px;
+    --aw-surface-glass-bar: #04050199;
+    --aw-fs-base: 16px;
+    --aw-border-medium: 2px;
+    --aw-border-primary: #009350;
+    --aw-shadow-primary-glow: 0 4px 12px 0 #00935033;
+    --aw-dur-ambient: 1900ms;
+    --aw-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --aw-border-primary-soft: #00935040;
+    --aw-chip-h-md: 28px;
+    --aw-surface-strong: #3f3f46;
+    --aw-fw-regular: 400;
+    --aw-chip-icon-size: 20px;
+    --aw-zinc-600: #52525b;
+    --aw-chip-dot-size: 8px;
+    --aw-zinc-500: #71717a;
+    --aw-chip-h-sm: 24px;
+    --aw-chip-h-lg: 32px;
+    --aw-lh-base: 24px;
+    --aw-positive: #009350;
+    --aw-chip-border-width: 2px;
+    --aw-zinc-700: #3f3f46;
+    --aw-default-flat: #3f3f4666;
+    --aw-layout-foreground: #ecedee;
+    --aw-chip-radius-sm: 8px;
+    --aw-chip-radius-md: 12px;
+    --aw-chip-radius-lg: 14px;
+    --aw-caution: #f5a524;
+    --aw-badge-text: #040501;
+    --aw-urgency: #d4183d;
+    --aw-warning-flat: #f5a52433;
+    --aw-text-warning: #f5a524;
+    --aw-danger-flat: #f3126033;
+    --aw-text-danger: #d4183d;
+    --aw-border-warning: #f5a524;
+    --aw-border-danger: #d4183d;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -62,6 +117,114 @@
   .aw-saved-search--v { display: flex; flex-direction: column; gap: var(--aw-space-row); width: 162px; }
   .aw-saved-search__thumb { width: 44px; height: 64px; object-fit: cover; background: var(--aw-surface-raised); border-radius: var(--aw-radius-sm); flex: none; }
 
+  /* ── Mosaic variant (Saved Searches list) ───────────────────────────────
+     Mobile V3 "Saved Search Card", Match Preview variants, on kit Card values
+     (content1 fill, 1px default-100 stroke, radius=lg). One tappable card per search:
+     name + criteria + saved mark, the newest match, a 4-tile preview, status chips. */
+  .aw-saved-search--mosaic {
+    display: flex; flex-direction: column; gap: var(--aw-space-section);
+    width: 100%; padding: var(--aw-space-header-pad);
+    border-radius: var(--aw-rounded-large); border: var(--aw-border-small) solid var(--aw-border-subtle);
+    background: var(--aw-surface); color: var(--aw-text-primary); text-align: left; cursor: pointer;
+    font-family: var(--aw-font-sans);
+  }
+  .aw-saved-search__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--aw-space-block); }
+  .aw-saved-search__title { margin: 0; font-size: var(--aw-fs-lg); line-height: var(--aw-lh-lg); font-weight: var(--aw-fw-bold); }
+  .aw-saved-search__criteria { margin: var(--aw-space-tight) 0 0; font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); color: var(--aw-text-muted); }
+  .aw-saved-search__mark { flex: none; display: grid; place-items: center; width: var(--aw-btn-h-sm); height: var(--aw-btn-h-sm); border-radius: var(--aw-radius-pill); background: var(--aw-primary-flat); color: var(--aw-text-accent); }
+  .aw-saved-search__mark .aw-icon { width: var(--aw-icon-sm); height: var(--aw-icon-sm); }
+  /* newest match, up front */
+  .aw-saved-search__match { display: flex; align-items: center; gap: var(--aw-space-block); padding: var(--aw-space-row) var(--aw-space-block) var(--aw-space-row) var(--aw-space-row); border-radius: var(--aw-rounded-medium); background: var(--aw-surface-translucent); border: var(--aw-border-small) solid var(--aw-border-subtle); }
+  .aw-saved-search__match-thumb { flex: none; width: var(--aw-btn-h-sm); height: var(--aw-input-h-sm); object-fit: contain; border-radius: var(--aw-radius-sm); background: var(--aw-surface-raised); }
+  .aw-saved-search__match-body { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: var(--aw-space-micro); }
+  .aw-saved-search__match-title { max-width: 100%; font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-semibold); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .aw-saved-search__match-meta { max-width: 100%; font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .aw-saved-search__match-more { color: var(--aw-text-accent); font-weight: var(--aw-fw-semibold); }
+  .aw-saved-search__match-price { flex: none; font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-bold); font-variant-numeric: tabular-nums; }
+  /* 4-tile preview: one lead tile, a wide tile, two small tiles; the last carries "+N" */
+  .aw-saved-search__mosaic { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: var(--aw-saved-search-mosaic-row) var(--aw-saved-search-mosaic-row); grid-template-areas: "a b b" "a c d"; gap: var(--aw-space-row); }
+  .aw-saved-search__tile { position: relative; overflow: hidden; border-radius: var(--aw-rounded-medium); background: var(--aw-surface-raised); }
+  .aw-saved-search__tile img { position: absolute; inset: 8%; width: 84%; height: 84%; object-fit: contain; }
+  .aw-saved-search__tile:nth-child(1) { grid-area: a; } .aw-saved-search__tile:nth-child(2) { grid-area: b; }
+  .aw-saved-search__tile:nth-child(3) { grid-area: c; } .aw-saved-search__tile:nth-child(4) { grid-area: d; }
+  .aw-saved-search__more { position: absolute; inset: 0; display: grid; place-items: center; background: var(--aw-surface-glass-bar); font-size: var(--aw-fs-base); font-weight: var(--aw-fw-bold); font-variant-numeric: tabular-nums; }
+  .aw-saved-search__statuses { display: flex; flex-wrap: wrap; gap: var(--aw-space-row); }
+  /* the search that just sent a notification: primary stroke + glow that pulses (motion: saved-search-glow.md) */
+  .aw-saved-search--mosaic.is-notified { border: var(--aw-border-medium) solid var(--aw-border-primary); box-shadow: var(--aw-shadow-primary-glow); animation: aw-saved-glow var(--aw-dur-ambient) var(--aw-ease-in-out) infinite; }
+  @keyframes aw-saved-glow { 50% { box-shadow: 0 0 0 var(--aw-space-tight) var(--aw-border-primary-soft), var(--aw-shadow-primary-glow); } }
+  @media (prefers-reduced-motion: reduce) { .aw-saved-search--mosaic.is-notified { animation: none; } }
+
+  /* — other components the specimens use (copied from their own files; not this component) — */
+  /* ── Chip ─────────────────────────────────────────────────────────────── */
+  /* Default = the set's variant=solid, size=md, color=default, radius=full.
+     Padding 0 8 = the set's 4 outer + 4 around the label; icons sit 4 from the label. */
+  .aw-chip {
+    display: inline-flex; align-items: center; gap: var(--aw-space-tight);
+    height: var(--aw-chip-h-md); padding: 0 var(--aw-space-row);
+    border-radius: var(--aw-radius-pill);
+    background: var(--aw-surface-strong); color: var(--aw-text-primary);
+    outline-offset: 0;
+    font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular);
+    white-space: nowrap;
+  }
+  .aw-chip .aw-icon { width: var(--aw-chip-icon-size); height: var(--aw-chip-icon-size); }
+  /* avatar slot: 20px circle, 4 from the edge (not 8) */
+  .aw-chip__avatar {
+    display: inline-flex; align-items: center; justify-content: center; flex: none;
+    width: var(--aw-chip-icon-size); height: var(--aw-chip-icon-size);
+    margin-left: calc(-1 * var(--aw-space-tight));
+    border-radius: var(--aw-radius-pill); background: var(--aw-zinc-600);
+    object-fit: cover; overflow: hidden;
+  }
+  /* dot slot (variant=dot) */
+  .aw-chip__dot { flex: none; width: var(--aw-chip-dot-size); height: var(--aw-chip-dot-size); border-radius: var(--aw-radius-pill); background: var(--aw-zinc-500); }
+
+  /* size — md 28 (14/20) is the default */
+  .aw-chip--sm { height: var(--aw-chip-h-sm); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); }
+  .aw-chip--lg { height: var(--aw-chip-h-lg); font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); }
+
+  /* colour — primary on the default (solid) variant */
+  .aw-chip--primary { background: var(--aw-positive); color: var(--aw-text-primary); }
+
+  /* variant — bordered: no fill, 2px outside stroke */
+  .aw-chip--bordered { background: transparent; outline: var(--aw-chip-border-width) solid var(--aw-zinc-700); }
+  .aw-chip--bordered.aw-chip--primary { background: transparent; outline-color: var(--aw-border-primary); color: var(--aw-text-accent); }
+
+  /* variant — light: label only */
+  .aw-chip--light { background: transparent; }
+  .aw-chip--light.aw-chip--primary { background: transparent; color: var(--aw-text-accent); }
+
+  /* variant — flat: translucent fill */
+  .aw-chip--flat { background: var(--aw-default-flat); }
+  .aw-chip--flat.aw-chip--primary { background: var(--aw-primary-flat); color: var(--aw-text-accent); }
+
+  /* variant — faded: raised fill + 2px zinc-700 stroke */
+  .aw-chip--faded { background: var(--aw-surface-raised); outline: var(--aw-chip-border-width) solid var(--aw-zinc-700); }
+  .aw-chip--faded.aw-chip--primary { background: var(--aw-surface-raised); color: var(--aw-text-accent); }
+
+  /* variant — dot: no fill, 2px zinc-700 stroke, leading 8px dot carries the colour */
+  .aw-chip--dot { background: transparent; outline: var(--aw-chip-border-width) solid var(--aw-zinc-700); }
+  .aw-chip--dot.aw-chip--primary { background: transparent; color: var(--aw-layout-foreground); }
+  .aw-chip--dot.aw-chip--primary .aw-chip__dot { background: var(--aw-positive); }
+
+  /* radius — the set's radius axis (default is its radius=full) */
+  .aw-chip--r-none { border-radius: 0; }
+  .aw-chip--r-sm { border-radius: var(--aw-chip-radius-sm); }
+  .aw-chip--r-md { border-radius: var(--aw-chip-radius-md); }
+  .aw-chip--r-lg { border-radius: var(--aw-chip-radius-lg); }
+
+  /* colour — warning and danger (added 2026-09-28 for saved-search statuses). The kit's chip set
+     only ships default | primary; these follow the same variant logic with the kit's own
+     base/warning, base/danger and flat/* colours. */
+  .aw-chip--warning { background: var(--aw-caution); color: var(--aw-badge-text); }
+  .aw-chip--danger  { background: var(--aw-urgency); color: var(--aw-text-primary); }
+  .aw-chip--flat.aw-chip--warning { background: var(--aw-warning-flat); color: var(--aw-text-warning); }
+  .aw-chip--flat.aw-chip--danger  { background: var(--aw-danger-flat); color: var(--aw-text-danger); }
+  .aw-chip--bordered.aw-chip--warning { background: transparent; outline-color: var(--aw-border-warning); color: var(--aw-text-warning); }
+  .aw-chip--bordered.aw-chip--danger  { background: transparent; outline-color: var(--aw-border-danger); color: var(--aw-text-danger); }
+  .aw-chip--dot.aw-chip--warning .aw-chip__dot { background: var(--aw-caution); }
+  .aw-chip--dot.aw-chip--danger  .aw-chip__dot { background: var(--aw-urgency); }
+
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }
   h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
@@ -78,6 +241,7 @@
       <symbol id="aw-i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
       <path d="m9 5 7 7-7 7"/>
     </symbol>
+      <symbol id="aw-i-bookmark-filled" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 4.8C6 3.3 7.3 2 8.8 2h6.4C16.7 2 18 3.3 18 4.8v15.4c0 .9-1 1.4-1.7.9L12 18l-4.3 3.1c-.7.5-1.7 0-1.7-.9V4.8Z"/></symbol>
     </defs>
   </svg>
 
@@ -97,6 +261,16 @@
         <div class="aw-saved-search__thumb"></div>
         <div><div class="aw-body-strong">Jordan RC · PSA 9</div><div class="aw-body-muted">8 new lots</div></div>
       </div>
+    </div>
+    <div>
+      <div class="cap">Mosaic (.aw-saved-search--mosaic.is-notified): the search that just alerted</div>
+      <button class="aw-saved-search aw-saved-search--mosaic is-notified">
+        <span class="aw-saved-search__head"><span><p class="aw-saved-search__title">Mickey Mantle</p><p class="aw-saved-search__criteria">PSA 6+ · Under $5,000 · All Auction Houses</p></span>
+          <span class="aw-saved-search__mark" aria-label="Saved"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-bookmark-filled"/></svg></span></span>
+        <span class="aw-saved-search__match"><span class="aw-saved-search__match-thumb"></span><span class="aw-saved-search__match-body"><span class="aw-chip aw-chip--sm aw-chip--primary">NEW</span><span class="aw-saved-search__match-title">1956 Topps #135 Mickey Mantle</span><span class="aw-saved-search__match-meta">PSA 7 · Heritage · 2h ago · <span class="aw-saved-search__match-more">+1 more new</span></span></span><span class="aw-saved-search__match-price">$3,400</span></span>
+        <span class="aw-saved-search__mosaic"><span class="aw-saved-search__tile"></span><span class="aw-saved-search__tile"></span><span class="aw-saved-search__tile"></span><span class="aw-saved-search__tile"><span class="aw-saved-search__more">+8</span></span></span>
+        <span class="aw-saved-search__statuses"><span class="aw-chip aw-chip--sm aw-chip--flat">12 available</span><span class="aw-chip aw-chip--sm aw-chip--flat aw-chip--primary">2 new</span><span class="aw-chip aw-chip--sm aw-chip--flat aw-chip--warning">1 ending</span><span class="aw-chip aw-chip--sm aw-chip--flat aw-chip--danger">2 expired</span></span>
+      </button>
     </div>
   </div>
 </body>

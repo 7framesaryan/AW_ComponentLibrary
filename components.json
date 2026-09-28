@@ -20,7 +20,8 @@
       "status-chip",
       "stat-pill",
       "badge",
-      "gated-pill"
+      "gated-pill",
+      "corner-tag"
     ],
     "inputs-and-controls": [
       "search",
@@ -31,7 +32,9 @@
       "segmented",
       "range",
       "option-row",
-      "plan-option"
+      "plan-option",
+      "switch-row",
+      "suggestion-row"
     ],
     "cards-and-content": [
       "listing-card",
@@ -73,7 +76,9 @@
       "success-indicator",
       "success-heading",
       "feedback-description",
-      "tooltip"
+      "tooltip",
+      "coach-mark",
+      "toast"
     ],
     "layout-and-surfaces": [
       "device",
@@ -114,7 +119,7 @@
     "chip": {
       "name": "Chip",
       "category": "chips-and-badges",
-      "status": "catalogued",
+      "status": "verified",
       "guide": "components/chip.md",
       "class": "aw-chip",
       "files": [
@@ -124,9 +129,11 @@
       "variants": {
         "default": ".aw-chip",
         "primary": ".aw-chip.aw-chip--primary",
-        "sm": ".aw-chip.aw-chip--sm"
+        "sm": ".aw-chip.aw-chip--sm",
+        "warning": ".aw-chip.aw-chip--warning",
+        "danger": ".aw-chip.aw-chip--danger"
       },
-      "figmaSource": null,
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2306:2321 (component set \"Chip\")",
       "verification": "catalogued-from-css; not independently verified against live Figma"
     },
     "status-chip": {
@@ -191,10 +198,12 @@
       ],
       "contract": "components/switch.md",
       "variants": {
-        "default": ".aw-switch"
+        "default": ".aw-switch",
+        "md": ".aw-switch.aw-switch--md",
+        "lg": ".aw-switch.aw-switch--lg"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; not independently verified against live Figma"
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#1818:363",
+      "verification": "kit-aligned 2026-09-28 from the AW Design System Figma file"
     },
     "checkbox": {
       "name": "Checkbox",
@@ -241,10 +250,11 @@
       "contract": "components/search.md",
       "variants": {
         "default": ".aw-search",
-        "sm": ".aw-search.aw-search--sm"
+        "sm": ".aw-search.aw-search--sm",
+        "pill": ".aw-search.aw-search--pill"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; not independently verified against live Figma"
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#5414:60145",
+      "verification": "kit-aligned 2026-09-28 from the AW Design System Figma file"
     },
     "avatar": {
       "name": "Avatar",
@@ -323,8 +333,8 @@
       "variants": {
         "default": ".aw-list-row"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; not independently verified against live Figma"
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#3333:1762 (Card values)",
+      "verification": "kit-aligned 2026-09-28 from the AW Design System Figma file"
     },
     "top-player": {
       "name": "Top-player card",
@@ -355,7 +365,8 @@
       "variants": {
         "default": ".aw-saved-search",
         "h": ".aw-saved-search.aw-saved-search--h",
-        "v": ".aw-saved-search.aw-saved-search--v"
+        "v": ".aw-saved-search.aw-saved-search--v",
+        "mosaic": ".aw-saved-search.aw-saved-search--mosaic"
       },
       "figmaSource": null,
       "verification": "catalogued-from-css; not independently verified against live Figma"
@@ -564,10 +575,12 @@
       ],
       "contract": "components/field.md",
       "variants": {
-        "default": ".aw-field"
+        "default": ".aw-field",
+        "flat": ".aw-field.aw-field--flat",
+        "sm": ".aw-field.aw-field--sm"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; not independently verified against live Figma"
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2702:198295 (Input)",
+      "verification": "kit-aligned 2026-09-28 from the AW Design System Figma file"
     },
     "social-btn": {
       "name": "Social auth button",
@@ -622,7 +635,7 @@
     "badge": {
       "name": "Badge",
       "category": "chips-and-badges",
-      "status": "catalogued",
+      "status": "verified",
       "guide": "components/badge.md",
       "class": "aw-badge",
       "files": [
@@ -636,7 +649,7 @@
         "dot": ".aw-badge-dot",
         "anchored": ".aw-badge-anchor"
       },
-      "figmaSource": null,
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2250:38501 (component set \"Badge\")",
       "verification": "catalogued-from-css; not independently verified against live Figma"
     },
     "fast-switcher": {
@@ -917,7 +930,11 @@
       ],
       "contract": "components/info-alert.md",
       "variants": {
-        "default": ".aw-info-alert"
+        "default": ".aw-info-alert",
+        "primary": ".aw-info-alert.aw-info-alert--primary",
+        "warning": ".aw-info-alert.aw-info-alert--warning",
+        "danger": ".aw-info-alert.aw-info-alert--danger",
+        "inline": ".aw-info-alert.aw-info-alert--inline"
       },
       "figmaSource": {
         "fileKey": "B7mJJRaFlVAfLKPTjz48aK",
@@ -1001,10 +1018,11 @@
       "contract": "components/filter-chip.md",
       "variants": {
         "default": ".aw-filter-chip",
-        "active": ".aw-filter-chip.is-active"
+        "active": ".aw-filter-chip.is-active",
+        "glass": ".aw-filter-chip.aw-filter-chip--glass"
       },
-      "figmaSource": null,
-      "verification": "catalogued-from-css; used in watchlist and search-results"
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2306:2321 (Chip flat md full)",
+      "verification": "kit-aligned 2026-09-28 from the AW Design System Figma file"
     },
     "fact-row": {
       "name": "Fact row",
@@ -1151,6 +1169,93 @@
       },
       "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH (page \"Avatar Group\" 2545:33395)",
       "verification": "imported from the live Figma component set; registered 2026-09-28 (was missing from the registry)"
+    },
+    "coach-mark": {
+      "name": "Coach mark",
+      "category": "overlays-and-feedback",
+      "status": "catalogued",
+      "guide": "components/coach-mark.md",
+      "class": "aw-coach-mark",
+      "files": [
+        "components/coach-mark.html"
+      ],
+      "contract": "components/coach-mark.md",
+      "variants": {
+        "default": ".aw-coach-mark",
+        "arrowTopEnd": ".aw-coach-mark.aw-coach-mark--arrow-top-end",
+        "arrowTopStart": ".aw-coach-mark.aw-coach-mark--arrow-top-start",
+        "arrowBottomEnd": ".aw-coach-mark.aw-coach-mark--arrow-bottom-end"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2708:977 (Tooltip; multi-line extension)",
+      "verification": "catalogued-from-the-kit-2026-09-28; built on kit values, not yet a kit component"
+    },
+    "toast": {
+      "name": "Toast",
+      "category": "overlays-and-feedback",
+      "status": "catalogued",
+      "guide": "components/toast.md",
+      "class": "aw-toast",
+      "files": [
+        "components/toast.html"
+      ],
+      "contract": "components/toast.md",
+      "variants": {
+        "default": ".aw-toast",
+        "primary": ".aw-toast.aw-toast--primary"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#3592:7898 (Toast [WIP])",
+      "verification": "imported from the kit Toast [WIP] sets 2026-09-28"
+    },
+    "switch-row": {
+      "name": "Switch row",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/switch-row.md",
+      "class": "aw-switch-row",
+      "files": [
+        "components/switch-row.html"
+      ],
+      "contract": "components/switch-row.md",
+      "variants": {
+        "default": ".aw-switch-row"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#1818:363 (Switch; composed)",
+      "verification": "catalogued-from-the-kit-2026-09-28; built on kit values, not yet a kit component"
+    },
+    "corner-tag": {
+      "name": "Corner tag",
+      "category": "chips-and-badges",
+      "status": "catalogued",
+      "guide": "components/corner-tag.md",
+      "class": "aw-corner-tag",
+      "files": [
+        "components/corner-tag.html"
+      ],
+      "contract": "components/corner-tag.md",
+      "variants": {
+        "default": ".aw-corner-tag",
+        "warning": ".aw-corner-tag.aw-corner-tag--warning",
+        "danger": ".aw-corner-tag.aw-corner-tag--danger",
+        "bottom": ".aw-corner-tag.aw-corner-tag--bottom"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#2250:38501 (Badge sm sizing)",
+      "verification": "catalogued-from-the-kit-2026-09-28; built on kit values, not yet a kit component"
+    },
+    "suggestion-row": {
+      "name": "Suggestion row",
+      "category": "inputs-and-controls",
+      "status": "catalogued",
+      "guide": "components/suggestion-row.md",
+      "class": "aw-suggestion-row",
+      "files": [
+        "components/suggestion-row.html"
+      ],
+      "contract": "components/suggestion-row.md",
+      "variants": {
+        "default": ".aw-suggestion-row"
+      },
+      "figmaSource": null,
+      "verification": "catalogued-from-the-kit-2026-09-28; built on kit values, not yet a kit component"
     }
   }
 }

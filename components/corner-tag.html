@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+  AuctionWire · Corner tag  (registry id: corner-tag · class: .aw-corner-tag · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-corner-tag  colour .aw-corner-tag--warning|--danger
+  Contract: components/corner-tag.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Built on the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH. Sized like the kit Badge sm (2250:38501); colours from base/primary, warning, danger. Not in the kit yet.
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Corner tag</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-space-row: 8px;
+    --aw-corner-tag-h: 16px;
+    --aw-space-tight: 4px;
+    --aw-radius-sm: 4px;
+    --aw-positive: #009350;
+    --aw-fs-caption: 10px;
+    --aw-lh-caption: 16px;
+    --aw-fw-bold: 700;
+    --aw-caution: #f5a524;
+    --aw-badge-text: #040501;
+    --aw-urgency: #d4183d;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+
+  /* — component — */
+  /* ── Corner tag ────────────────────────────────────────────────────────── */
+  .aw-corner-tag {
+    position: absolute; top: var(--aw-space-row); left: var(--aw-space-row); z-index: 1;
+    display: inline-flex; align-items: center; height: var(--aw-corner-tag-h); padding: 0 var(--aw-space-tight);
+    border-radius: var(--aw-radius-sm); background: var(--aw-positive); color: var(--aw-text-primary);
+    font-family: var(--aw-font-sans); font-size: var(--aw-fs-caption); line-height: var(--aw-lh-caption); font-weight: var(--aw-fw-bold);
+    letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+  }
+  .aw-corner-tag--warning { background: var(--aw-caution); color: var(--aw-badge-text); }
+  .aw-corner-tag--danger  { background: var(--aw-urgency); color: var(--aw-text-primary); }
+  .aw-corner-tag--bottom  { top: auto; bottom: var(--aw-space-row); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+
+  <h1>AuctionWire · Corner tag</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">On a 96 × 132 thumbnail: NEW · ENDING · countdown</div>
+      <div class="row">
+        <div style="position:relative;width:96px;height:132px;border-radius:4px;background:#27272a"><span class="aw-corner-tag">New</span></div>
+        <div style="position:relative;width:96px;height:132px;border-radius:4px;background:#27272a"><span class="aw-corner-tag aw-corner-tag--warning">Ending</span></div>
+        <div style="position:relative;width:96px;height:132px;border-radius:4px;background:#27272a"><span class="aw-corner-tag aw-corner-tag--danger aw-corner-tag--bottom">2 days left</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

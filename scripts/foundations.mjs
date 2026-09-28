@@ -5,7 +5,7 @@
  *
  * The two repos sit side by side (nothing is nested inside the other). Resolution order:
  *   1. $AW_FOUNDATIONS                                   explicit path to <foundations repo>/02-design-system
- *   2. ../AW_DesignLanguage/02-design-system             sibling clone, local folder name
+ *   2. ../AW_DesignLanguage/02-design-system             sibling clone, local folder name (or ../AW_Design_Language)
  *   3. ../auctionwire-mobile-design/02-design-system     sibling clone, GitHub default folder name
  */
 import { existsSync } from "node:fs";
@@ -27,6 +27,7 @@ export function foundationsDir() {
   const candidates = [
     process.env.AW_FOUNDATIONS && resolve(process.env.AW_FOUNDATIONS),
     resolve(root, "../AW_DesignLanguage/02-design-system"),
+    resolve(root, "../AW_Design_Language/02-design-system"),
     resolve(root, "../auctionwire-mobile-design/02-design-system"),
   ].filter(Boolean);
   const found = candidates.find(isFoundations);

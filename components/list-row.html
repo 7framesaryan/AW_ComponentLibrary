@@ -18,34 +18,20 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-surface-raised: #27272a;
-    --aw-surface-translucent: #00000066;
-    --aw-border-ghost: #ffffff26;
     --aw-text-primary: #ffffff;
-    --aw-text-high-alt: #f4f4f5;
-    --aw-text-muted: #a1a1aa;
-    --aw-text-accent-dim: #42835a;
-    --aw-text-danger: #d4183d;
-    --aw-positive: #009350;
-    --aw-zinc-500: #71717a;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-fw-regular: 400;
-    --aw-fw-medium: 500;
-    --aw-fw-semibold: 600;
-    --aw-fs-xs: 12px;
-    --aw-lh-xs: 16px;
-    --aw-fs-base: 16px;
-    --aw-lh-base: 24px;
-    --aw-fs-lg: 18px;
-    --aw-space-tight: 4px;
-    --aw-space-row: 8px;
     --aw-space-block: 12px;
-    --aw-space-section-sm: 24px;
+    --aw-rounded-medium: 12px;
+    --aw-border-small: 1px;
+    --aw-border-subtle: #27272a;
+    --aw-surface: #18181b;
+    --aw-surface-raised: #27272a;
     --aw-radius-sm: 4px;
-    --aw-radius-card: 8px;
-    --aw-radius-button: 8px;
-    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
-    --aw-dur-fast: 120ms;
+    --aw-space-tight: 4px;
+    --aw-border-medium: 2px;
+    --aw-border-primary: #009350;
+    --aw-border-warning: #f5a524;
+    --aw-opacity-disabled: 0.5;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -90,16 +76,23 @@
   }
 
   /* — component — */
-  /* ── List-result row — dense (thumb + facts + CTA) ────────────────────── */
+  /* ── List-result row ──────────────────────────────────────────────────
+     Kit-aligned 2026-09-28: the AW Design System Card (3333:1762): content1 fill, 1px
+     default-100 stroke, radius=md. States mark a saved-search match. */
   .aw-list-row {
+    position: relative;
     display: flex; gap: var(--aw-space-block); padding: var(--aw-space-block);
-    border-radius: var(--aw-radius-card);
-    border: 1px solid var(--aw-border-ghost);
-    background: var(--aw-surface-translucent);
+    border-radius: var(--aw-rounded-medium);
+    border: var(--aw-border-small) solid var(--aw-border-subtle);
+    background: var(--aw-surface);
   }
-  .aw-list-row__thumb { width: 96px; height: 132px; object-fit: cover; background: var(--aw-surface-raised); border-radius: var(--aw-radius-sm); flex: none; }
+  .aw-list-row__media { position: relative; flex: none; }
+  .aw-list-row__thumb { width: 96px; height: 132px; object-fit: cover; background: var(--aw-surface-raised); border-radius: var(--aw-radius-sm); flex: none; display: block; }
   .aw-list-row__body { flex: 1; display: flex; flex-direction: column; gap: var(--aw-space-tight); min-width: 0; }
   .aw-list-row__spacer { flex: 1; }
+  .aw-list-row.is-new { border: var(--aw-border-medium) solid var(--aw-border-primary); }
+  .aw-list-row.is-ending { border: var(--aw-border-medium) solid var(--aw-border-warning); }
+  .aw-list-row.is-expired { opacity: var(--aw-opacity-disabled); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

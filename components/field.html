@@ -17,25 +17,34 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-surface: #18181b;
-    --aw-border-subtle: #27272a;
-    --aw-border-strong: #71717a;
-    --aw-border-primary: #009350;
-    --aw-border-danger: #d4183d;
     --aw-text-primary: #ffffff;
-    --aw-text-muted: #a1a1aa;
-    --aw-text-disabled: #71717a;
-    --aw-text-danger: #d4183d;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-fw-medium: 500;
-    --aw-fs-caption: 10px;
-    --aw-fs-xs: 12px;
-    --aw-fs-sm: 14px;
     --aw-space-tight: 4px;
-    --aw-space-section: 16px;
-    --aw-radius-search-lg: 12px;
-    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-fw-regular: 400;
+    --aw-text-secondary: #d4d4d8;
+    --aw-input-h-lg: 48px;
+    --aw-space-block: 12px;
+    --aw-rounded-medium: 12px;
+    --aw-border-medium: 2px;
+    --aw-border-hairline: #52525b;
+    --aw-layout-foreground: #ecedee;
+    --aw-fs-base: 16px;
+    --aw-lh-base: 24px;
     --aw-dur-fast: 120ms;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-text-muted: #a1a1aa;
+    --aw-border-primary: #009350;
+    --aw-surface-raised: #27272a;
+    --aw-surface-strong: #3f3f46;
+    --aw-input-h-sm: 40px;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
+    --aw-text-disabled: #71717a;
+    --aw-border-danger: #d4183d;
+    --aw-text-danger: #d4183d;
+    --aw-opacity-disabled: 0.5;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -51,22 +60,29 @@
   }
 
   /* — component — */
-  /* ── Text field (forms / auth) ────────────────────────────────────────── */
+  /* ── Text field ───────────────────────────────────────────────────────
+     Kit-aligned 2026-09-28: the AW Design System Input (2702:198295), labelPlacement=outside,
+     size=lg. Default = variant=bordered (2px foreground-300 stroke, primary when focused);
+     .aw-field--flat = variant=flat (default-100 fill). */
   .aw-field { display: flex; flex-direction: column; gap: var(--aw-space-tight); }
-  .aw-field__label { font-size: var(--aw-fs-xs); font-weight: var(--aw-fw-medium); color: var(--aw-text-muted); }
+  .aw-field__label { font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); font-weight: var(--aw-fw-regular); color: var(--aw-text-secondary); }
   .aw-field__input {
-    height: 48px; padding: 0 var(--aw-space-section);
-    border-radius: var(--aw-radius-search-lg);
-    background: var(--aw-surface); border: 1px solid var(--aw-border-strong);
-    color: var(--aw-text-primary); font-size: var(--aw-fs-sm); outline: none;
-    transition: border-color var(--aw-dur-fast) var(--aw-ease-out);
+    height: var(--aw-input-h-lg); padding: 0 var(--aw-space-block);
+    border-radius: var(--aw-rounded-medium);
+    background: transparent; border: var(--aw-border-medium) solid var(--aw-border-hairline);
+    color: var(--aw-layout-foreground); font-family: var(--aw-font-sans); font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); outline: none;
+    transition: border-color var(--aw-dur-fast) var(--aw-ease-out), background var(--aw-dur-fast) var(--aw-ease-out);
   }
-  .aw-field__input::placeholder { color: var(--aw-text-disabled); }
-  .aw-field__input:focus { border-color: var(--aw-border-primary); box-shadow: inset 0 0 0 1px var(--aw-border-primary); }
+  .aw-field__input::placeholder { color: var(--aw-text-muted); }
+  .aw-field__input:focus { border-color: var(--aw-border-primary); }
+  .aw-field--flat .aw-field__input { background: var(--aw-surface-raised); border-color: transparent; }
+  .aw-field--flat .aw-field__input:hover { background: var(--aw-surface-strong); }
+  .aw-field--flat .aw-field__input:focus { border-color: var(--aw-border-primary); }
+  .aw-field--sm .aw-field__input { height: var(--aw-input-h-sm); font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); }
+  .aw-field__hint { font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-disabled); }
   .aw-field.is-error .aw-field__input { border-color: var(--aw-border-danger); }
-  .aw-field__hint { font-size: var(--aw-fs-caption); color: var(--aw-text-muted); }
   .aw-field.is-error .aw-field__hint { color: var(--aw-text-danger); }
-  .aw-field__input[disabled] { background: var(--aw-surface); color: var(--aw-text-disabled); border-color: var(--aw-border-subtle); }
+  .aw-field__input[disabled] { opacity: var(--aw-opacity-disabled); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

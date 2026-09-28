@@ -4,6 +4,8 @@
 
 A labelled text input with an optional hint line, for forms and auth screens.
 
+> **Kit alignment (2026-09-28):** rebuilt on the AW Design System Input (2702:198295), labelPlacement=outside, size=lg: 2px border (was 1px), 16/24 value (was 14), label 12/16 in default-600, focus = 2px primary border. Added the kit flat variant and size sm.
+
 ## When to use
 - Form and auth inputs that need a visible label: email, password, name.
 - Numeric entry with validation feedback, for example a max bid that must beat the current bid.
@@ -26,31 +28,24 @@ label.aw-field                    column, gap --aw-space-tight
 ## Variants
 | Class | Use |
 |---|---|
-| `.aw-field` | The only variant. |
+| `.aw-field` | Kit variant=bordered: 2px `--aw-border-hairline`, transparent fill |
+| `.aw-field--flat` | Kit variant=flat: `--aw-surface-raised` fill, no stroke (hover `--aw-surface-strong`) |
+| `.aw-field--sm` | 40 tall, 14/20 value |
 
 ## States
 | State | How to apply | What changes |
 |---|---|---|
-| Default | none | 1px `--aw-border-strong` border; placeholder in `--aw-text-disabled` |
-| Focus | native `:focus` on the input | Border reads as 2px `--aw-border-primary` (#009350): 1px border plus a 1px inset ring, so content doesn't shift |
-| Error | add `.is-error` to `.aw-field` | Input border `--aw-border-danger` (#d4183d); hint text `--aw-text-danger` |
-| Disabled | `disabled` attribute on the input | Text `--aw-text-disabled`, border `--aw-border-subtle`, fill stays `--aw-surface` |
+| Focus | `:focus` | Border `--aw-border-primary` (2px) |
+| Error | `.is-error` on `.aw-field` | Border `--aw-border-danger`; hint `--aw-text-danger` |
+| Disabled | `disabled` on the input | `--aw-opacity-disabled` |
 
 ## Tokens
 | Property | Token |
 |---|---|
-| Label-input-hint gap | `--aw-space-tight` (4px) |
-| Label | `--aw-fs-xs` (12px), `--aw-fw-medium`, `--aw-text-muted` (#a1a1aa) |
-| Input fill | `--aw-surface` (#18181b) |
-| Input border | `--aw-border-strong` (#71717a), 1px |
-| Input radius | `--aw-radius-search-lg` (12px) |
-| Input padding | `0 --aw-space-section` (16px) |
-| Input text | `--aw-fs-sm` (14px), `--aw-text-primary` |
-| Placeholder | `--aw-text-disabled` (#71717a) |
-| Hint | `--aw-fs-caption` (10px), `--aw-text-muted` |
-| Focus border | `--aw-border-primary`, 2px (1px border + 1px inset `box-shadow` ring) |
-| Error border / hint | `--aw-border-danger` / `--aw-text-danger` |
-| Transition | `--aw-dur-fast`, `--aw-ease-out` on border colour |
+| Height | `--aw-input-h-lg` (48) · sm `--aw-input-h-sm` (40) |
+| Radius · border | `--aw-rounded-medium` (12) · `--aw-border-medium` (2) `--aw-border-hairline` |
+| Value · placeholder | `--aw-fs-base` 16/24 `--aw-layout-foreground` · `--aw-text-muted` |
+| Label · hint | `--aw-fs-xs` 12/16 `--aw-text-secondary` · `--aw-text-disabled` |
 
 ## Layout & grid
 - A field spans all 4 columns (370px) by default; the input fills the field width.

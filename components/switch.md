@@ -4,6 +4,8 @@
 
 A labelled on/off toggle whose track turns green when on.
 
+> **Kit alignment (2026-09-28):** matches the AW Design System Switch (1818:363): sm 40×24 with a 16px thumb and 4px inset (was a 20px thumb), md 48×28 and lg 56×32 added, label 16/24 in default-600, disabled at 50% opacity.
+
 ## When to use
 - A setting that takes effect immediately: alerts, notifications, auto-bid.
 - Settings and More rows, filter toggles, notification preferences.
@@ -16,33 +18,35 @@ A labelled on/off toggle whose track turns green when on.
 ## Anatomy
 ```text
 label.aw-switch                  inline row, gap --aw-space-row
-├── span.aw-switch__track        40 x 24 pill track
-│   └── span.aw-switch__thumb    20 x 20 white knob, 2px inset
-└── span.aw-switch__label        label text
+├── span.aw-switch__track        40 × 24 (sm) pill track, 4px padding
+│   └── span.aw-switch__thumb    16 white knob, hairline shadow
+└── span.aw-switch__label        16/24 label, optional
 ```
 
 ## Variants
 | Class | Use |
 |---|---|
-| `.aw-switch` | The only variant. |
+| `.aw-switch` | Default, size sm (40 × 24, thumb 16) |
+| `.aw-switch--md` | 48 × 28, thumb 20 |
+| `.aw-switch--lg` | 56 × 32, thumb 24 |
+| Inside [Switch row](switch-row.md) | A setting with a description line |
 
 ## States
 | State | How to apply | What changes |
 |---|---|---|
 | Off | none | Track `--aw-surface-strong` (#3f3f46); thumb at left |
-| On | add `.is-on` to `.aw-switch` | Track `--aw-positive` (#009350); thumb slides 16px right |
-| Disabled | Not specified | Not specified |
+| On | add `.is-on` | Track `--aw-positive`; thumb moves to the right edge (inset 4) |
+| Disabled | add `.is-disabled` | `--aw-opacity-disabled` (0.5) |
 
 ## Tokens
 | Property | Token |
 |---|---|
-| Track-label gap | `--aw-space-row` (8px) |
-| Track radius / thumb radius | `--aw-radius-pill` |
-| Track off | `--aw-surface-strong` (#3f3f46) |
-| Track on | `--aw-positive` (#009350) |
-| Thumb | `--aw-zinc-50` (#fafafa) |
-| Label | `--aw-fs-xs` (12px), `--aw-text-primary` |
-| Motion | `--aw-dur-fast` (120ms), `--aw-ease-out` on track colour and thumb transform |
+| Track · thumb (sm / md / lg) | `--aw-switch-w-*`, `--aw-switch-h-*`, `--aw-switch-thumb-*` |
+| Inset · gap | `--aw-space-tight` (4) · `--aw-space-row` (8) |
+| Track off / on | `--aw-surface-strong` / `--aw-positive` |
+| Thumb | `--aw-white`, `--aw-shadow-hairline` |
+| Label | `--aw-fs-base` 16/24, `--aw-text-secondary` |
+| Motion | `--aw-dur-fast`, `--aw-ease-out` |
 
 ## Layout & grid
 - The switch hugs its content; it is not sized to a column span.
@@ -69,7 +73,5 @@ label.aw-switch                  inline row, gap --aw-space-row
 - motion (`02-design-system/foundations/motion/INDEX.md`), color (`02-design-system/foundations/color.md`)
 
 ## Open questions
-- Disabled state is not specified.
-- The old Figma guide listed the label as Regular 12/16; CSS sets only size and colour (no weight or line-height). Confirm.
-- No settings screen template exists to show switch rows in context.
-- Label before or after the track: only after is shown.
+- The kit's default (non-primary) colour turns the track grey (#a1a1aa) when on; not imported, green is the only on colour.
+

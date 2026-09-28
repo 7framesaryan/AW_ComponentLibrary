@@ -27,12 +27,13 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 
 | Component | Class | Status | Code | What it is |
 |---|---|---|---|---|
-| [Chip](chip.md) | `.aw-chip` | catalogued | [chip.html](chip.html) | A small non-interactive pill that states one fact about a card or item, such as a grade, category, seller or a verified tag. |
+| [Chip](chip.md) | `.aw-chip` | verified | [chip.html](chip.html) | A small non-interactive pill that states one fact about a card or item, such as a grade, category, seller or a verified tag. |
 | [Filter chip](filter-chip.md) | `.aw-filter-chip` | catalogued | [filter-chip.html](filter-chip.html) | A selectable pill that narrows a list of results; the active chip shows which filter or segment is applied. |
 | [Status chip](status-chip.md) | `.aw-status-chip` | catalogued | [status-chip.html](status-chip.html) | A pill with a leading dot that shows an auction's state (live, upcoming or ended) using its own fixed colour set. |
 | [Stat pill](stat-pill.md) | `.aw-stat-pill` | catalogued | [stat-pill.html](stat-pill.html) | A raised pill that surfaces one metric as icon, label and a bold value, such as "Watching 12". |
-| [Badge](badge.md) | `.aw-badge` | catalogued | [badge.html](badge.html) | A small pill count that sits on an icon, avatar or label to say how many new things are waiting. |
+| [Badge](badge.md) | `.aw-badge` | verified | [badge.html](badge.html) | A small pill count that sits on an icon, avatar or label to say how many new things are waiting. |
 | [Gated pill](gated-pill.md) | `.aw-gated-pill` | catalogued | in [listing-card.html](listing-card.html) | A raised pill with a label and an amber lock that marks a fact hidden behind a subscription, such as "Seller" or "PSA Grade". |
+| [Corner tag](corner-tag.md) | `.aw-corner-tag` | catalogued | [corner-tag.html](corner-tag.html) | A tiny uppercase label pinned to the corner of a card image: NEW, ENDING, or a countdown. |
 
 ## Inputs & controls
 
@@ -47,6 +48,8 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Range](range.md) | `.aw-range` | catalogued | [range.html](range.html) | A min/max filter: two text inputs with a separator, plus an optional slider track with a green fill and two knobs. |
 | [Filter option row](option-row.md) | `.aw-option-row` | catalogued | [option-row.html](option-row.html) | A full-width row with a label on the left and a checkbox or radio on the right; rows stack into a selectable option list. |
 | [Plan option](plan-option.md) | `.aw-plan-option` | provisional | [plan-option.html](plan-option.html) | A selectable subscription-plan card: ring radio, plan name with optional savings badge, a sub-line, and a right-aligned price. |
+| [Switch row](switch-row.md) | `.aw-switch-row` | catalogued | [switch-row.html](switch-row.html) | A raised row with an optional icon, a label with a description line, and a [Switch](switch.md) on the right. |
+| [Suggestion row](suggestion-row.md) | `.aw-suggestion-row` | catalogued | [suggestion-row.html](suggestion-row.html) | One suggested search keyword under the search field while the user types: search icon, the keyword with |
 
 ## Cards & content
 
@@ -98,6 +101,8 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Success heading](success-heading.md) | `.aw-success-heading` | verified | [success-heading.html](success-heading.html) | A centred 24px bold heading that states the outcome on a confirmation screen. |
 | [Feedback description](feedback-description.md) | `.aw-feedback-description` | verified | [feedback-description.html](feedback-description.html) | Centred 14px muted supporting copy that explains a success or feedback heading. |
 | [Tooltip](tooltip.md) | `.aw-tooltip` | verified | [tooltip.html](tooltip.html) | A small green label that explains or confirms something about the element it points at, with an optional arrow on any edge. |
+| [Coach mark](coach-mark.md) | `.aw-coach-mark` | catalogued | [coach-mark.html](coach-mark.html) | A green, multi-line tooltip that introduces a feature the first time someone meets it: a title, a |
+| [Toast](toast.md) | `.aw-toast` | catalogued | [toast.html](toast.html) | A short, temporary message that confirms what just happened, with an optional action (Undo) or close. |
 
 ## Layout & surfaces
 

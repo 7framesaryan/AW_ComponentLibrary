@@ -17,19 +17,23 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-surface-raised: #27272a;
-    --aw-surface-strong: #3f3f46;
-    --aw-border-strong: #71717a;
     --aw-text-primary: #ffffff;
-    --aw-text-secondary: #d4d4d8;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-fw-medium: 500;
-    --aw-fs-chip: 11px;
     --aw-space-tight: 4px;
+    --aw-chip-h-md: 28px;
     --aw-space-block: 12px;
     --aw-radius-pill: 9999px;
-    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-default-flat: #3f3f4666;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
+    --aw-fw-regular: 400;
     --aw-dur-fast: 120ms;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-icon-sm: 16px;
+    --aw-primary-flat: #2e8b574d;
+    --aw-text-accent: #009350;
+    --aw-surface-search-small: #333333b3;
+    --aw-glass-blur-search: 12px;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -47,17 +51,23 @@
   .aw-icon svg { display: block; width: 100%; height: 100%; }
 
   /* — component — */
-  /* Filter pill — solid, selectable */
+  /* ── Filter chip ──────────────────────────────────────────────────────
+     Kit-aligned 2026-09-28: the AW Design System Chip (2306:2321) as variant=flat, size=md,
+     radius=full, color=default; the selected chip switches to color=primary (flat). */
   .aw-filter-chip {
     display: inline-flex; align-items: center; gap: var(--aw-space-tight);
-    height: 28px; padding: 0 var(--aw-space-block);
-    border-radius: var(--aw-radius-pill);
-    background: var(--aw-surface-raised); color: var(--aw-text-secondary);
-    font-size: var(--aw-fs-chip); font-weight: var(--aw-fw-medium);
-    flex: none; white-space: nowrap;
-    transition: background var(--aw-dur-fast) var(--aw-ease-out);
+    height: var(--aw-chip-h-md); padding: 0 var(--aw-space-block);
+    border: 0; border-radius: var(--aw-radius-pill);
+    background: var(--aw-default-flat); color: var(--aw-text-primary);
+    font-family: var(--aw-font-sans); font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular);
+    flex: none; white-space: nowrap; cursor: pointer;
+    transition: background var(--aw-dur-fast) var(--aw-ease-out), color var(--aw-dur-fast) var(--aw-ease-out);
   }
-  .aw-filter-chip.is-active { background: var(--aw-surface-strong); color: var(--aw-text-primary); border: 1px solid var(--aw-border-strong); }
+  .aw-filter-chip .aw-icon { width: var(--aw-icon-sm); height: var(--aw-icon-sm); }
+  .aw-filter-chip.is-active { background: var(--aw-primary-flat); color: var(--aw-text-accent); }
+  /* glass: the same chip floating over scrolling content (bottom search dock) */
+  .aw-filter-chip--glass { background: var(--aw-surface-search-small); backdrop-filter: blur(var(--aw-glass-blur-search)); -webkit-backdrop-filter: blur(var(--aw-glass-blur-search)); }
+  .aw-filter-chip--glass.is-active { background: var(--aw-primary-flat); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

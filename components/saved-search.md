@@ -4,6 +4,8 @@
 
 A card for one stored search: thumbnail, query name and a new-lots count, in a horizontal (list) or vertical (pinned row) form.
 
+> **Kit alignment (2026-09-28):** added `--mosaic`, the Saved Searches list card (Mobile V3 "Saved Search Card", Match Preview variants) on kit Card values. The single-thumbnail --h / --v variants are unchanged.
+
 ## When to use
 - The Saved searches screen: a vertical list of all searches (`--h`) and a horizontal row of pinned searches (`--v`).
 - Anywhere a saved query is shown as a monitored intent with a count of new matches.
@@ -34,6 +36,8 @@ A card for one stored search: thumbnail, query name and a new-lots count, in a h
 | `.aw-saved-search` | Base surface. Always add `--h` or `--v` |
 | `.aw-saved-search--h` | Horizontal, 253px wide. List of all searches (templates override to `width:100%`) |
 | `.aw-saved-search--v` | Vertical, 162px wide. Pinned searches in a horizontal scroll |
+| `.aw-saved-search--mosaic` | One tappable card per search: title, criteria, saved mark, newest match, 4-tile preview ("+N" on the last tile), status chips |
+| `.aw-saved-search--mosaic.is-notified` | The search that sent the notification just opened: primary stroke + breathing glow (`02-design-system/foundations/motion/saved-search-glow.md`) |
 
 ## States
 | State | How to apply | What changes |
@@ -43,6 +47,7 @@ A card for one stored search: thumbnail, query name and a new-lots count, in a h
 | No new matches | omit the badge; meta reads "No new lots" | No badge |
 | Status available / ending / expired | Not specified | Not specified |
 | Pressed / focus-visible | Not specified | Not specified |
+| Statuses (mosaic) | `.aw-chip--sm --flat` in `.aw-saved-search__statuses` | available (default) · new (`--primary`) · ending (`--warning`) · expired (`--danger`); hide a zero count |
 
 ## Tokens
 | Property | Token |

@@ -18,25 +18,30 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-surface-nav-pill: #4b4b4b66;
-    --aw-surface-nav-active: #1e68131f;
-    --aw-border-glass-bright: #ffffff38;
     --aw-text-primary: #ffffff;
-    --aw-text-muted: #a1a1aa;
-    --aw-text-accent: #009350;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-font-nav: -apple-system, "SF Pro Text", system-ui, sans-serif;
-    --aw-fw-medium: 500;
-    --aw-fs-caption: 10px;
-    --aw-space-micro: 2px;
     --aw-space-tight: 4px;
     --aw-space-row: 8px;
+    --aw-radius-nav-pill: 16px;
+    --aw-space-micro: 2px;
     --aw-space-block: 12px;
     --aw-radius-button: 8px;
-    --aw-radius-nav-pill: 16px;
-    --aw-glass-blur-nav: 20px;
-    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-text-muted: #a1a1aa;
+    --aw-font-nav: -apple-system, "SF Pro Text", system-ui, sans-serif;
+    --aw-fs-caption: 10px;
+    --aw-fw-medium: 500;
     --aw-dur-fast: 120ms;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-text-accent: #009350;
+    --aw-surface-nav-active: #1e68131f;
+    --aw-nav-scan-lift: 24px;
+    --aw-nav-scan-disc: 46px;
+    --aw-radius-pill: 9999px;
+    --aw-surface: #18181b;
+    --aw-text-secondary: #d4d4d8;
+    --aw-shadow-hairline: 0 1px 0 0 #0000004d;
+    --aw-border-small: 1px;
+    --aw-border-ghost: #ffffff26;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -77,9 +82,15 @@
   }
   .aw-nav-item.is-active { color: var(--aw-text-accent); background: var(--aw-surface-nav-active); }
 
-  /* — specimen-local helpers (not part of the component) — */
-  /* template-local wrapper — floats the pill near the bottom of a screen */
-  .float-nav { display: flex; justify-content: center; }
+  /* Scan variant (Mobile V3 "Menu 2"): the middle item is a raised disc that lifts clear of the bar. */
+  .aw-nav-item--scan { position: relative; }
+  .aw-nav-item__disc {
+    position: absolute; left: 50%; top: calc(-1 * var(--aw-nav-scan-lift));
+    width: var(--aw-nav-scan-disc); height: var(--aw-nav-scan-disc); margin-left: calc(var(--aw-nav-scan-disc) / -2);
+    display: grid; place-items: center; border-radius: var(--aw-radius-pill);
+    background: var(--aw-surface); color: var(--aw-text-secondary); box-shadow: var(--aw-shadow-hairline), 0 0 0 var(--aw-border-small) var(--aw-border-ghost);
+  }
+  .aw-nav-item__icon { position: relative; display: grid; place-items: center; }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

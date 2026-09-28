@@ -11,6 +11,8 @@ imported: its drop shadows (blur 15) break the Foundations rule of no soft shado
 The set's vuesax bold tick-circle and close-circle icons are drawn with the Foundations `check` and
 `close` icons; the sprite has no filled circle icons.
 
+> **Kit alignment (2026-09-28):** added `--warning` and `--danger` colours (solid, flat, bordered, dot) from the kit's own base/warning, base/danger and flat/* tokens. The kit chip set ships default | primary only: add these colours there too. Chip tokens now live in Foundations.
+
 ## When to use
 - A grade, category or tag on a card: `PSA 10`, `Rookie`, `Baseball`.
 - A positive or verified tag: `--primary`, usually `--flat --primary` ("Verified", "Graded").
@@ -77,6 +79,8 @@ Icons and the avatar are **20px at every size**; the side padding is 8 at every 
 | `svg.aw-icon` after the label | End icon (the set's close-circle) |
 | `span.aw-chip__avatar` before the label | 20px avatar circle, `--aw-zinc-600` placeholder fill, sits 4px from the edge |
 | `span.aw-chip__dot` before the label | 8px dot, used with `--dot` |
+| `.aw-chip--warning` | Caution status, e.g. "1 ending" (flat: `--aw-warning-flat` / `--aw-text-warning`) |
+| `.aw-chip--danger` | Countdown, or an expired/removed listing count (flat: `--aw-danger-flat` / `--aw-text-danger`) |
 
 ## States
 | State | How to apply | What changes |

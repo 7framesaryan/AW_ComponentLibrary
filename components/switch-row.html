@@ -1,10 +1,12 @@
 <!doctype html>
 <!--
-  AuctionWire · Switch  (registry id: switch · class: .aw-switch · status: catalogued)
+  AuctionWire · Switch row  (registry id: switch-row · class: .aw-switch-row · status: catalogued)
   Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
   so it drops straight into a Claude artifact without the whole token file.
-  Classes: .aw-switch .aw-switch__track .aw-switch__thumb .aw-switch__label
-  Contract: Foundations components/switch.md  ·  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Classes: .aw-switch-row  parts __icon __text __label __description (+ an .aw-switch)
+  Contract: components/switch-row.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Built on the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH. Composed from the kit Switch (1818:363) and text styles; not in the kit yet: flagged 2026-09-28.
   THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
   screen builds read that block straight out of this file. Edit it here, nowhere else.
 -->
@@ -12,13 +14,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AuctionWire · Switch</title>
+<title>AuctionWire · Switch row</title>
 <style>
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
     --aw-text-primary: #ffffff;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-space-block: 12px;
+    --aw-space-section: 16px;
+    --aw-rounded-medium: 12px;
+    --aw-surface-raised: #27272a;
+    --aw-btn-icon-size: 20px;
+    --aw-text-secondary: #d4d4d8;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
+    --aw-fw-medium: 500;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-text-muted: #a1a1aa;
     --aw-space-row: 8px;
     --aw-switch-w-sm: 40px;
     --aw-switch-h-sm: 24px;
@@ -33,7 +47,6 @@
     --aw-positive: #009350;
     --aw-fs-base: 16px;
     --aw-lh-base: 24px;
-    --aw-text-secondary: #d4d4d8;
     --aw-switch-w-md: 48px;
     --aw-switch-h-md: 28px;
     --aw-switch-thumb-md: 20px;
@@ -54,8 +67,22 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
 
   /* — component — */
+  /* ── Switch row ────────────────────────────────────────────────────────── */
+  .aw-switch-row {
+    display: flex; align-items: center; gap: var(--aw-space-block);
+    padding: var(--aw-space-block) var(--aw-space-section);
+    border-radius: var(--aw-rounded-medium); background: var(--aw-surface-raised);
+    font-family: var(--aw-font-sans);
+  }
+  .aw-switch-row__icon { flex: none; width: var(--aw-btn-icon-size); height: var(--aw-btn-icon-size); color: var(--aw-text-secondary); }
+  .aw-switch-row__text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .aw-switch-row__label { font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-medium); color: var(--aw-text-primary); }
+  .aw-switch-row__description { font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); color: var(--aw-text-muted); }
+
+  /* — other components the specimens use (copied from their own files; not this component) — */
   /* ── Switch ───────────────────────────────────────────────────────────
      Kit-aligned 2026-09-28: the AW Design System Switch (1818:363), color=primary.
      4px track padding; the thumb sits right when on. sm is the default. */
@@ -83,7 +110,6 @@
   .aw-switch--lg .aw-switch__thumb { width: var(--aw-switch-thumb-lg); height: var(--aw-switch-thumb-lg); }
   .aw-switch--lg.is-on .aw-switch__thumb { transform: translateX(calc(var(--aw-switch-w-lg) - var(--aw-switch-thumb-lg) - 2 * var(--aw-space-tight))); }
   .aw-switch.is-disabled { opacity: var(--aw-opacity-disabled); cursor: default; }
-
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }
   h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
@@ -94,14 +120,23 @@
 </style>
 </head>
 <body class="aw-root">
-  <h1>AuctionWire · Switch</h1>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 10.5c0-3.6-2.9-6.5-6.5-6.5S5.5 6.9 5.5 10.5c0 1-.3 2-.8 2.8L3.4 15.6c-.9 1.4 0 3.2 1.6 3.6 4.5 1.2 9.5 1.2 14 0 1.6-.4 2.5-2.2 1.6-3.6l-1.3-2.3c-.5-.8-.8-1.8-.8-2.8Z"/>
+  <path d="M9.5 20.5c.6 1.5 2 2.5 3.5 2.5s2.9-1 3.5-2.5"/>
+  <path d="M12 6v4"/></symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Switch row</h1>
   <div class="spec">
     <div>
-      <div class="cap">On (.is-on) &amp; off</div>
-      <div class="stack">
-        <label class="aw-switch is-on"><span class="aw-switch__track"><span class="aw-switch__thumb"></span></span><span class="aw-switch__label">Auto-bid</span></label>
-        <label class="aw-switch"><span class="aw-switch__track"><span class="aw-switch__thumb"></span></span><span class="aw-switch__label">Outbid alerts</span></label>
-      </div>
+      <div class="cap">Setting with a description</div>
+      <label class="aw-switch-row">
+        <svg class="aw-icon aw-switch-row__icon" aria-hidden="true"><use href="#aw-i-bell"/></svg>
+        <span class="aw-switch-row__text"><span class="aw-switch-row__label">Alert me about new matches</span><span class="aw-switch-row__description">Push notification</span></span>
+        <span class="aw-switch is-on" role="switch" aria-checked="true"><span class="aw-switch__track"><span class="aw-switch__thumb"></span></span></span>
+      </label>
     </div>
   </div>
 </body>

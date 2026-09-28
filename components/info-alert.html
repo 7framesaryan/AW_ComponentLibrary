@@ -17,21 +17,33 @@
   /* — tokens this component actually uses — */
   :root {
     --aw-bg: #040501;
-    --aw-surface-raised: #27272a;
     --aw-text-primary: #ffffff;
-    --aw-text-muted: #a1a1aa;
     --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --aw-fw-regular: 400;
-    --aw-fw-bold: 700;
-    --aw-fs-xs: 12px;
-    --aw-lh-xs: 16px;
+    --aw-space-block: 12px;
+    --aw-info-radius: 16px;
+    --aw-surface-raised: #27272a;
+    --aw-space-section-sm: 24px;
+    --aw-space-micro: 2px;
     --aw-fs-sm: 14px;
     --aw-lh-sm: 20px;
-    --aw-space-micro: 2px;
-    --aw-space-block: 12px;
-    --aw-space-section-sm: 24px;
+    --aw-fw-bold: 700;
     --aw-info-title-color: #ecedee;
-    --aw-info-radius: 16px;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-fw-regular: 400;
+    --aw-text-muted: #a1a1aa;
+    --aw-primary-50: #172e20;
+    --aw-border-small: 1px;
+    --aw-border-primary-soft: #00935040;
+    --aw-warning-50: #312107;
+    --aw-danger-50: #310413;
+    --aw-space-row: 8px;
+    --aw-btn-icon-size: 20px;
+    --aw-icon-sm: 16px;
+    --aw-space-section-lg: 40px;
+    --aw-rounded-medium: 12px;
+    --aw-primary-flat: #2e8b574d;
+    --aw-text-accent: #009350;
   }
 
   /* — shared primitives this component leans on (Foundations base.css) — */
@@ -53,6 +65,20 @@
   .aw-info-alert__content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--aw-space-micro); }
   .aw-info-alert__title { margin: 0; font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-bold); color: var(--aw-info-title-color); }
   .aw-info-alert__description { margin: 0; font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); font-weight: var(--aw-fw-regular); color: var(--aw-text-muted); white-space: pre-line; }
+
+  /* Kit Alert options (AW Design System Alert 3132:38437 / 3132:38598), added 2026-09-28:
+     colour, a close control and an action slot. --inline puts the action on the right, for a
+     docked prompt such as the saved-search "smart nudge". */
+  .aw-info-alert--primary { background: var(--aw-primary-50); box-shadow: inset 0 0 0 var(--aw-border-small) var(--aw-border-primary-soft); }
+  .aw-info-alert--warning { background: var(--aw-warning-50); }
+  .aw-info-alert--danger  { background: var(--aw-danger-50); }
+  .aw-info-alert--inline { align-items: center; }
+  .aw-info-alert__actions { display: flex; gap: var(--aw-space-row); margin-top: var(--aw-space-row); }
+  .aw-info-alert--inline .aw-info-alert__actions { margin-top: 0; flex: none; }
+  .aw-info-alert__close { flex: none; display: grid; place-items: center; width: var(--aw-btn-icon-size); height: var(--aw-btn-icon-size); padding: 0; border: 0; background: none; color: var(--aw-text-muted); cursor: pointer; }
+  .aw-info-alert__close .aw-icon { width: var(--aw-icon-sm); height: var(--aw-icon-sm); }
+  .aw-info-alert__icon-tile { flex: none; display: grid; place-items: center; width: var(--aw-space-section-lg); height: var(--aw-space-section-lg); border-radius: var(--aw-rounded-medium); background: var(--aw-primary-flat); color: var(--aw-text-accent); }
+  .aw-info-alert__icon-tile .aw-icon { width: var(--aw-btn-icon-size); height: var(--aw-btn-icon-size); }
 
   /* — specimen scaffold (not part of the component) — */
   body { margin: 0; padding: 28px; min-height: 100vh; }

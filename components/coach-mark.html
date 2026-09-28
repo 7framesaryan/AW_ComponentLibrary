@@ -1,0 +1,124 @@
+<!doctype html>
+<!--
+  AuctionWire · Coach mark  (registry id: coach-mark · class: .aw-coach-mark · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-coach-mark  parts __head __title __close __body  arrow .aw-coach-mark--arrow-top-end|--arrow-top-start|--arrow-bottom-end  target .aw-coach-mark__target (the element it points at)
+  Contract: components/coach-mark.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Built on the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH. Multi-line version of the kit Tooltip (2708:977): same primary fill, radius=md and 10px arrow;
+  title, a "New" chip (Chip solid sm), a close control and a body line. Not in the kit yet: flagged 2026-09-28.
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Coach mark</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-coach-mark-w: 296px;
+    --aw-space-tight: 4px;
+    --aw-space-block: 12px;
+    --aw-space-section: 16px;
+    --aw-tooltip-radius: 12px;
+    --aw-positive: #009350;
+    --aw-shadow-primary-glow: 0 4px 12px 0 #00935033;
+    --aw-space-row: 8px;
+    --aw-fs-base: 16px;
+    --aw-lh-base: 24px;
+    --aw-fw-semibold: 600;
+    --aw-btn-icon-size: 20px;
+    --aw-radius-pill: 9999px;
+    --aw-icon-sm: 16px;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
+    --aw-fw-regular: 400;
+    --aw-tooltip-arrow: 10px;
+    --aw-tooltip-arrow-radius: 2px;
+    --aw-text-accent: #009350;
+    --aw-dur-intro: 380ms;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-dur-dangle: 2800ms;
+    --aw-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+
+  /* — component — */
+  /* ── Coach mark ───────────────────────────────────────────────────────── */
+  .aw-coach-mark {
+    position: relative; width: var(--aw-coach-mark-w); max-width: 100%;
+    display: flex; flex-direction: column; gap: var(--aw-space-tight);
+    padding: var(--aw-space-block) var(--aw-space-block) var(--aw-space-block) var(--aw-space-section);
+    border-radius: var(--aw-tooltip-radius);
+    background: var(--aw-positive); color: var(--aw-text-primary);
+    box-shadow: var(--aw-shadow-primary-glow);
+    font-family: var(--aw-font-sans);
+  }
+  .aw-coach-mark__head { display: flex; align-items: center; gap: var(--aw-space-row); }
+  .aw-coach-mark__title { margin: 0; font-size: var(--aw-fs-base); line-height: var(--aw-lh-base); font-weight: var(--aw-fw-semibold); }
+  .aw-coach-mark__close { margin-left: auto; flex: none; display: grid; place-items: center; width: var(--aw-btn-icon-size); height: var(--aw-btn-icon-size); padding: 0; border: 0; border-radius: var(--aw-radius-pill); background: none; color: var(--aw-text-primary); cursor: pointer; }
+  .aw-coach-mark__close .aw-icon { width: var(--aw-icon-sm); height: var(--aw-icon-sm); }
+  .aw-coach-mark__body { margin: 0; font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-regular); }
+  .aw-coach-mark__body b { font-weight: var(--aw-fw-semibold); }
+  /* arrow — the kit tooltip's 10px square turned 45°, on the edge that points at the target */
+  .aw-coach-mark[class*="aw-coach-mark--arrow-"]::after {
+    content: ""; position: absolute; width: var(--aw-tooltip-arrow); height: var(--aw-tooltip-arrow);
+    background: inherit; border-radius: var(--aw-tooltip-arrow-radius); transform: rotate(45deg);
+  }
+  .aw-coach-mark--arrow-top-end::after   { top: calc(var(--aw-tooltip-arrow) / -2); right: var(--aw-space-section); }
+  .aw-coach-mark--arrow-top-start::after { top: calc(var(--aw-tooltip-arrow) / -2); left: var(--aw-space-section); }
+  .aw-coach-mark--arrow-bottom-end::after { bottom: calc(var(--aw-tooltip-arrow) / -2); right: var(--aw-space-section); }
+  /* the element a first-visit coach mark points at: grows 8px (40 → 48) from its centre,
+     turns green and its icon dangles (motion: foundations/motion/coach-mark-cue.md) */
+  .aw-coach-mark__target { color: var(--aw-text-accent); transform: scale(1.2); transition: transform var(--aw-dur-intro) var(--aw-ease-out), color var(--aw-dur-intro) var(--aw-ease-out); }
+  .aw-coach-mark__target .aw-icon { transform-origin: 50% 10%; animation: aw-coach-dangle var(--aw-dur-dangle) var(--aw-ease-in-out) var(--aw-dur-intro) infinite; }
+  @keyframes aw-coach-dangle { 0%, 58%, 100% { transform: rotate(0); } 66% { transform: rotate(-14deg); } 74% { transform: rotate(11deg); } 82% { transform: rotate(-6deg); } 90% { transform: rotate(0); } }
+  @media (prefers-reduced-motion: reduce) { .aw-coach-mark__target, .aw-coach-mark__target .aw-icon { animation: none; transition: none; } }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Coach mark</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Arrow top-end (points up at a header bookmark)</div>
+      <div class="aw-coach-mark aw-coach-mark--arrow-top-end" role="dialog" aria-labelledby="cm1">
+        <div class="aw-coach-mark__head"><p class="aw-coach-mark__title" id="cm1">Save This Search</p><span class="aw-chip aw-chip--sm">New</span>
+          <button class="aw-coach-mark__close" aria-label="Dismiss"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-close"/></svg></button></div>
+        <p class="aw-coach-mark__body"><b>Marc</b>, you’ve searched Mickey Mantle 3 times this month. Save it and we’ll alert you when a new PSA 6+ under $5k is listed.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -32,6 +32,7 @@ div.aw-tabs[role=tablist]           flex row
 |---|---|---|---|
 | `.aw-tabs--chips` | `--aw-surface-translucent` (black 40%), radius `--aw-radius-sm` 4, padding 4, gap 16 | 32 tall (`--aw-tabs-chip-h`), at least 82 wide (`--aw-tabs-chip-min-w`), padding 0 10, radius 5 (`--aw-tabs-chip-radius`); 12/16 regular, `--aw-text-primary` | fill `--aw-positive` |
 | `.aw-tabs--tab` | none, gap 0 | padding 12 16 16 (48 tall); 14/20 regular, `--aw-text-high` | fill `--aw-tabs-tab-selected` (#111714), 2px `--aw-positive` bottom border, label medium `--aw-text-accent` |
+| `.aw-badge.aw-badge--primary` inside a chip tab | New-activity count on that tab only (e.g. New 2, Expiring Soon 1). Never a total on Available or Previously Seen |
 
 ## States
 | State | How to apply | What changes |

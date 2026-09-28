@@ -4,6 +4,8 @@
 
 A blurred-glass search field (magnifier icon plus text input) that sits over scrolling content and starts or refines a search.
 
+> **Kit alignment (2026-09-28):** matches the AW Design System Search (5414:60145, Mobile): 48 tall, layout/search fill + 12 blur, 2px foreground-500 stroke, primary when active, 20px icon, 14/20 text. --sm now matches "Search small" (48 tall, radius 8, 1px). Added --pill for the bottom search dock and a clear control.
+
 ## When to use
 - The main search entry on Home and the search screen: large default `.aw-search`.
 - An in-page or in-header query field, for example the search-results header beside back and filter buttons: compact `.aw-search--sm`.
@@ -24,29 +26,25 @@ label.aw-search                          row container, gap --aw-space-row
 ## Variants
 | Class | Use |
 |---|---|
-| `.aw-search` | Large, 48px tall, radius `--aw-radius-search-lg` (12px). Home and search screen. |
-| `.aw-search.aw-search--sm` | Compact, 40px tall, radius `--aw-radius-search-sm` (8px), fill `--aw-surface-search-small`. Headers and in-page filtering. |
+| `.aw-search` | Kit Search, Mobile: radius 12 |
+| `.aw-search--sm` | Kit Search small: in-page (e.g. filter your saved searches), radius 8, 1px stroke, 16 icon |
+| `.aw-search--pill` | The bottom-anchored search dock that floats over results (full pill) |
+| `.aw-search__clear` | Clear the query (close icon, right edge) |
 
 ## States
 | State | How to apply | What changes |
 |---|---|---|
-| Default | none | 1px transparent border, translucent fill, 12px backdrop blur |
-| Focused | add `.is-focused` to `.aw-search` | Border reads as 2px `--aw-border-primary` (#009350): 1px border plus a 1px inset ring, so content doesn't shift |
-| Filled | set `value` on the input | Text in `--aw-text-primary` |
-| Disabled / error | Not specified | Not specified |
+| Default | none | 2px `--aw-search-stroke` |
+| Active | `.is-focused` | Stroke `--aw-border-primary` |
 
 ## Tokens
 | Property | Token |
 |---|---|
-| Fill (large) | `--aw-surface-translucent` (#00000066) |
-| Fill (compact) | `--aw-surface-search-small` (#333333b3) |
-| Blur | `--aw-glass-blur-search` (12px) |
-| Radius | `--aw-radius-search-lg` (12px) / `--aw-radius-search-sm` (8px) |
-| Horizontal padding | `--aw-space-section` (16px) |
-| Icon-to-input gap | `--aw-space-row` (8px) |
-| Icon and placeholder colour | `--aw-text-secondary` (#d4d4d8) |
-| Input text | `--aw-fs-sm` (14px), `--aw-fw-medium`, `--aw-text-primary` |
-| Focus border | `--aw-border-primary` (#009350), 2px (1px border + 1px inset `box-shadow` ring) |
+| Height | `--aw-input-h-lg` (48) |
+| Radius | `--aw-radius-search-lg` (12) · sm `--aw-radius-search-sm` (8) · pill `--aw-radius-pill` |
+| Fill · blur | `--aw-surface-search-small` · `--aw-glass-blur-search` |
+| Stroke | `--aw-border-medium` `--aw-search-stroke` (sm: `--aw-border-small`) |
+| Type | `--aw-fs-sm` 14/20 `--aw-layout-foreground`; placeholder `--aw-text-muted` |
 
 ## Layout & grid
 - The large field spans all 4 columns (370px) on its own row.

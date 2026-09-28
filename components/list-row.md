@@ -4,6 +4,8 @@
 
 A dense horizontal result: thumbnail on the left, title, meta, price, countdown and an outline bid CTA on the right.
 
+> **Kit alignment (2026-09-28):** on the AW Design System Card values (3333:1762): `--aw-surface` (content1) fill, 1px `--aw-border-subtle` (default-100), radius=md 12 (was 8 on a translucent fill). Added match states and a media wrapper for a Corner tag.
+
 ## When to use
 - A dense vertical list of search or browse results (the list view of a List/Grid toggle).
 - When the user compares many results quickly and needs a bid CTA on each row.
@@ -30,14 +32,14 @@ A dense horizontal result: thumbnail on the left, title, meta, price, countdown 
 | Class | Use |
 |---|---|
 | `.aw-list-row` | The only variant |
+| `.aw-list-row__media` | Wraps the thumbnail so a [Corner tag](corner-tag.md) can pin to it |
 
 ## States
 | State | How to apply | What changes |
 |---|---|---|
-| Default | none | As styled |
-| Watched | Not specified | Not specified |
-| Filtered out (dimmed) | Not specified | Not specified |
-| Pressed / focus-visible | Not specified | Not specified |
+| New match (saved search) | `.is-new` | 2px `--aw-border-primary`; pair with a NEW corner tag |
+| Ending within 24h | `.is-ending` | 2px `--aw-border-warning`; pair with an ENDING corner tag |
+| Expired | `.is-expired` | `--aw-opacity-disabled`; the CTA becomes a disabled Secondary button |
 
 ## Tokens
 | Property | Token |

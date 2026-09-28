@@ -4,6 +4,8 @@
 
 The floating glass pill at the bottom of every top-level screen, holding the five app destinations with exactly one active.
 
+> **Kit alignment (2026-09-28):** the kit has no mobile bottom nav (only a vertical Menu Item). Added the Mobile V3 Scan variant: `.aw-nav-item--scan` with a raised `.aw-nav-item__disc`. The saved search flows use Home · Watchlist · Scan · Search · Saved.
+
 ## When to use
 - Every top-level tab screen: Home, Watchlist, Saved, Portfolio, More.
 - Always composed with the glass utility: `class="aw-glass-nav aw-bottom-nav"`.
@@ -24,6 +26,8 @@ The floating glass pill at the bottom of every top-level screen, holding the fiv
 | Class | Use |
 |---|---|
 | `.aw-bottom-nav` | The only variant. Pair with `.aw-glass-nav`. |
+| `.aw-nav-item--scan` + `.aw-nav-item__disc` | Middle Scan item: a 46px disc lifted 24px above the bar |
+| `.aw-nav-item__icon` + `.aw-badge.aw-badge-anchor` | Icon wrapper that anchors a new-activity badge (e.g. Saved "2") |
 
 ## States
 | State | How to apply | What changes |

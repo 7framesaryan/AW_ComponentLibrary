@@ -1,0 +1,95 @@
+<!doctype html>
+<!--
+  AuctionWire · Suggestion row  (registry id: suggestion-row · class: .aw-suggestion-row · status: catalogued)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-suggestion-row  parts __icon __label __rest __fill
+  Contract: components/suggestion-row.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Built on the AW Design System Figma file tyqrAWDfmJ8E7yLRmap6VH. No kit component (2026-09-28); built from kit values: rounded-medium, text-small, default-foreground.
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Suggestion row</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-space-block: 12px;
+    --aw-space-row: 8px;
+    --aw-rounded-medium: 12px;
+    --aw-fs-sm: 14px;
+    --aw-lh-sm: 20px;
+    --aw-fw-semibold: 600;
+    --aw-surface-raised: #27272a;
+    --aw-icon-sm: 16px;
+    --aw-text-muted: #a1a1aa;
+    --aw-fw-regular: 400;
+    --aw-btn-icon-size: 20px;
+    --aw-radius-pill: 9999px;
+    --aw-text-disabled: #71717a;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+
+  /* — component — */
+  /* ── Suggestion row ────────────────────────────────────────────────────── */
+  .aw-suggestion-row {
+    display: flex; align-items: center; gap: var(--aw-space-block); width: 100%;
+    padding: var(--aw-space-row); border: 0; border-radius: var(--aw-rounded-medium);
+    background: transparent; color: var(--aw-text-primary); text-align: left; cursor: pointer;
+    font-family: var(--aw-font-sans); font-size: var(--aw-fs-sm); line-height: var(--aw-lh-sm); font-weight: var(--aw-fw-semibold);
+  }
+  .aw-suggestion-row:hover { background: var(--aw-surface-raised); }
+  .aw-suggestion-row__icon { flex: none; width: var(--aw-icon-sm); height: var(--aw-icon-sm); color: var(--aw-text-muted); }
+  .aw-suggestion-row__label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .aw-suggestion-row__rest { font-weight: var(--aw-fw-regular); color: var(--aw-text-muted); }
+  .aw-suggestion-row__fill { flex: none; display: grid; place-items: center; width: var(--aw-btn-icon-size); height: var(--aw-btn-icon-size); border-radius: var(--aw-radius-pill); color: var(--aw-text-disabled); }
+  .aw-suggestion-row__fill .aw-icon { width: var(--aw-icon-sm); height: var(--aw-icon-sm); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="aw-i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7"/><path d="m20 20-4.5-4.5"/></symbol>
+      <symbol id="aw-i-arrow-left-up" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M18 18L6 6M6 15V6H15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <h1>AuctionWire · Suggestion row</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Typed “Mickey Mantle”: the match is white, the rest muted</div>
+      <div class="stack">
+        <button class="aw-suggestion-row"><svg class="aw-icon aw-suggestion-row__icon" aria-hidden="true"><use href="#aw-i-search"/></svg><span class="aw-suggestion-row__label">Mickey Mantle</span><span class="aw-suggestion-row__fill" aria-label="Use this search"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-arrow-left-up"/></svg></span></button>
+        <button class="aw-suggestion-row"><svg class="aw-icon aw-suggestion-row__icon" aria-hidden="true"><use href="#aw-i-search"/></svg><span class="aw-suggestion-row__label">Mickey Mantle<span class="aw-suggestion-row__rest"> 1956 Topps</span></span><span class="aw-suggestion-row__fill" aria-label="Use this search"><svg class="aw-icon" aria-hidden="true"><use href="#aw-i-arrow-left-up"/></svg></span></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
