@@ -50,7 +50,8 @@
       "image-block",
       "dots",
       "fast-switcher",
-      "avatar"
+      "avatar",
+      "avatar-group"
     ],
     "navigation-and-chrome": [
       "top-bar",
@@ -1131,6 +1132,25 @@
       },
       "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH#483:42676 (component set \"Link\", 22 variants: color × size × isBlock × isUnderline)",
       "verification": "imported from the live Figma component set 2026-09-24; every value measured from it; 18 variants pixel-diffed at 2x against the Figma export (0.3% plain and block, 0.6% underlined; the anchor icon is Solar, not the set's vuesax icon)"
+    },
+    "avatar-group": {
+      "name": "Avatar group",
+      "category": "cards-and-content",
+      "status": "verified",
+      "guide": "components/avatar-group.md",
+      "class": "aw-avatar-group",
+      "files": [
+        "components/avatar-group.html"
+      ],
+      "contract": "components/avatar-group.md",
+      "variants": {
+        "default": ".aw-avatar-group",
+        "sm": ".aw-avatar-group.aw-avatar-group--sm",
+        "lg": ".aw-avatar-group.aw-avatar-group--lg",
+        "primary": ".aw-avatar-group.aw-avatar-group--primary"
+      },
+      "figmaSource": "tyqrAWDfmJ8E7yLRmap6VH (page \"Avatar Group\" 2545:33395)",
+      "verification": "imported from the live Figma component set; registered 2026-09-28 (was missing from the registry)"
     }
   }
 }

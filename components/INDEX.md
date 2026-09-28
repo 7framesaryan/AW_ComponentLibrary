@@ -27,11 +27,11 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 
 | Component | Class | Status | Code | What it is |
 |---|---|---|---|---|
-| [Chip](chip.md) | `.aw-chip` | catalogued | [chip.html](chip.html) | A small non-interactive pill that states one fact about a card, such as price, grade, category or a verified tag. |
+| [Chip](chip.md) | `.aw-chip` | catalogued | [chip.html](chip.html) | A small non-interactive pill that states one fact about a card or item, such as a grade, category, seller or a verified tag. |
 | [Filter chip](filter-chip.md) | `.aw-filter-chip` | catalogued | [filter-chip.html](filter-chip.html) | A selectable pill that narrows a list of results; the active chip shows which filter or segment is applied. |
 | [Status chip](status-chip.md) | `.aw-status-chip` | catalogued | [status-chip.html](status-chip.html) | A pill with a leading dot that shows an auction's state (live, upcoming or ended) using its own fixed colour set. |
 | [Stat pill](stat-pill.md) | `.aw-stat-pill` | catalogued | [stat-pill.html](stat-pill.html) | A raised pill that surfaces one metric as icon, label and a bold value, such as "Watching 12". |
-| [Badge](badge.md) | `.aw-badge` | catalogued | [badge.html](badge.html) | A small count or status marker that signals something new, either pinned to an icon or inline beside a label. |
+| [Badge](badge.md) | `.aw-badge` | catalogued | [badge.html](badge.html) | A small pill count that sits on an icon, avatar or label to say how many new things are waiting. |
 | [Gated pill](gated-pill.md) | `.aw-gated-pill` | catalogued | in [listing-card.html](listing-card.html) | A raised pill with a label and an amber lock that marks a fact hidden behind a subscription, such as "Seller" or "PSA Grade". |
 
 ## Inputs & controls
@@ -69,6 +69,7 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Dots](dots.md) | `.aw-dots` | catalogued | [dots.html](dots.html) | A centred row of small page indicators for an image carousel, where the current page is a wider white pill. |
 | [Fast switcher](fast-switcher.md) | `.aw-fast-switcher` | catalogued | [fast-switcher.html](fast-switcher.html) | A centred strip of circular card thumbnails where the focal one is larger, fully opaque and ringed green, for jumping between nearby cards without leaving the screen. |
 | [Avatar](avatar.md) | `.aw-avatar` | catalogued | [avatar.html](avatar.html) | A 32×32 round image of a person, with a user-icon fallback when no photo exists. |
+| [Avatar group](avatar-group.md) | `.aw-avatar-group` | verified | [avatar-group.html](avatar-group.html) | A row of overlapping avatars that stands for several people at once, ending in a "+N" count for the ones not shown. |
 
 ## Navigation & chrome
 

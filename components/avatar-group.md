@@ -15,7 +15,7 @@ avatar is [Avatar](avatar.md) and is not changed by this import.
 - `--primary` when the group belongs to the signed-in user or should read as active.
 
 ## When not to use
-- One person → use [Avatar](avatar.md), or [User](user.md) when the name sits beside it
+- One person → use [Avatar](avatar.md), or User (not in the library yet) when the name sits beside it
 - A row of card thumbnails → use [Fast switcher](fast-switcher.md)
 - A count on its own with no faces → use [Badge](badge.md)
 
@@ -103,7 +103,7 @@ item. In code, render only the items you need.
 ```
 
 ## Related
-- [Avatar](avatar.md) · [User](user.md) · [Badge](badge.md)
+- [Avatar](avatar.md) · User (not in the library yet) · [Badge](badge.md)
 
 ## Open questions (raised by the import, 2026-09-25)
 1. The set's avatars (32 / 40 / 56, fill `colors/base/default`) differ from the catalogued

@@ -26,6 +26,7 @@ export const CASCADE = [
   "checkbox",
   "radio",
   "avatar",
+  "avatar-group",
   "search",
   "section-header",
   "listing-card",  // includes gated-pill
