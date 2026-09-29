@@ -73,6 +73,7 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Fast switcher](fast-switcher.md) | `.aw-fast-switcher` | catalogued | [fast-switcher.html](fast-switcher.html) | A centred strip of circular card thumbnails where the focal one is larger, fully opaque and ringed green, for jumping between nearby cards without leaving the screen. |
 | [Avatar](avatar.md) | `.aw-avatar` | catalogued | [avatar.html](avatar.html) | A 32×32 round image of a person, with a user-icon fallback when no photo exists. |
 | [Avatar group](avatar-group.md) | `.aw-avatar-group` | verified | [avatar-group.html](avatar-group.html) | A row of overlapping avatars that stands for several people at once, ending in a "+N" count for the ones not shown. |
+| [Result card](result-card.md) | `.aw-result-card` | catalogued | [result-card.html](result-card.html) | One listing per row in a one-column results list: slab photo, title with heart and overflow, price, source and grade tags, and an outline Bid. |
 
 ## Navigation & chrome
 

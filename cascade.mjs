@@ -35,6 +35,7 @@ export const CASCADE = [
   "fact-row",
   "grid-card",
   "list-row",
+  "result-card",
   "top-player",
   "saved-search",
   "portfolio-summary",

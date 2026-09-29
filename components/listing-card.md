@@ -12,6 +12,7 @@ The main content object: one auction listing with photo, title, price and grade,
 ## When not to use
 - A listing in a 2-up grid → use [PLP grid card](grid-card.md)
 - A dense vertical list of results → use [List-result row](list-row.md)
+- One listing per row in a one-column results list → use [Result card](result-card.md)
 - A compact watched item in the Watchlist list → use [Watchlist card](watchlist-card.md)
 - A ranked player → use [Top-player card](top-player.md)
 - A stored search → use [Saved-search card](saved-search.md)

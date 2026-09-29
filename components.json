@@ -54,7 +54,8 @@
       "dots",
       "fast-switcher",
       "avatar",
-      "avatar-group"
+      "avatar-group",
+      "result-card"
     ],
     "navigation-and-chrome": [
       "top-bar",
@@ -1256,6 +1257,26 @@
       },
       "figmaSource": null,
       "verification": "catalogued-from-the-kit-2026-09-28; built on kit values, not yet a kit component"
+    },
+    "result-card": {
+      "name": "Result card",
+      "category": "cards-and-content",
+      "status": "catalogued",
+      "guide": "components/result-card.md",
+      "class": "aw-result-card",
+      "files": [
+        "components/result-card.html"
+      ],
+      "contract": "components/result-card.md",
+      "variants": {
+        "default": ".aw-result-card",
+        "watched": ".aw-result-card.is-watched",
+        "new": ".aw-result-card.aw-result-card--new",
+        "ending": ".aw-result-card.aw-result-card--ending",
+        "expired": ".aw-result-card.aw-result-card--expired"
+      },
+      "figmaSource": "B7mJJRaFlVAfLKPTjz48aK#15445:67051 (Mobile V3 Wishlist Cards)",
+      "verification": "built-from-mobile-v3-2026-09-29; not yet a kit component"
     }
   }
 }
