@@ -5,7 +5,7 @@
 A tiny uppercase label pinned to the corner of a card image: NEW, ENDING, or a countdown.
 
 ## When to use
-- Marking a listing inside a saved search: NEW (listed since the last visit) or ENDING (ends within 24 hours).
+- Marking a listing inside a saved search: NEW (listed in the last 24 hours; it stays NEW for that whole window, even after the user has looked) or ENDING (ends within 24 hours).
 - A countdown on the image ("2 days left"), which is the one place red belongs.
 
 ## When not to use
