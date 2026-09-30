@@ -22,6 +22,7 @@ The set's vuesax bold tick-circle and close-circle icons are drawn with the Foun
 
 ## When not to use
 - Letting the user filter a list → use [Filter chip](filter-chip.md)
+- Saved search criteria or a chart time range → use [Range chip](range-chip.md)
 - Showing auction state (Live / Upcoming / Ended) → use [Status chip](status-chip.md)
 - A fact hidden behind a subscription → use [Gated pill](gated-pill.md)
 - An icon + label + big value metric → use [Stat pill](stat-pill.md)

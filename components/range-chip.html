@@ -1,0 +1,97 @@
+<!doctype html>
+<!--
+  AuctionWire · Range chip  (registry id: range-chip · class: .aw-range-chip · status: verified)
+  Coded component — self-contained. Carries ONLY the tokens, primitives and icons it uses,
+  so it drops straight into a Claude artifact without the whole token file.
+  Classes: .aw-range-chip  state .is-selected / [aria-pressed="true"]  row .aw-range-chip-row
+  Contract: components/range-chip.md
+  Styling source: this file (the "component" marker in its <style>) + Foundations src/tokens.css, src/base.css
+  Built from Mobile V3 B7mJJRaFlVAfLKPTjz48aK component "AW Mob / Range Chip" 15336:80391 (State=Default | Selected), 2026-09-30.
+  THIS FILE IS THE SOURCE. The rules under the "component" marker below are its styling;
+  screen builds read that block straight out of this file. Edit it here, nowhere else.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AuctionWire · Range chip</title>
+<style>
+  /* — tokens this component actually uses — */
+  :root {
+    --aw-bg: #040501;
+    --aw-text-primary: #ffffff;
+    --aw-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --aw-range-chip-h: 32px;
+    --aw-space-block: 12px;
+    --aw-zinc-600: #52525b;
+    --aw-range-chip-radius: 16px;
+    --aw-zinc-400: #a1a1aa;
+    --aw-fs-xs: 12px;
+    --aw-lh-xs: 16px;
+    --aw-fw-bold: 700;
+    --aw-dur-fast: 120ms;
+    --aw-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --aw-positive: #009350;
+    --aw-space-row: 8px;
+  }
+
+  /* — shared primitives this component leans on (Foundations base.css) — */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  .aw-root {
+    font-family: var(--aw-font-sans);
+    color: var(--aw-text-primary);
+    background: var(--aw-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .aw-icon { display: inline-block; vertical-align: middle; color: currentColor; flex: none; }
+
+  /* — component — */
+  /* ── Range chip ────────────────────────────────────────────────────────── */
+  /* Figma "AW Mob / Range Chip" (B7mJJRaFlVAfLKPTjz48aK 15336:80391): State=Default | Selected.
+     An outlined 32px pill with a 12/16 bold label. Default: 1px zinc-600 outline, zinc-400 label.
+     Selected: solid primary fill, white label. */
+  .aw-range-chip {
+    appearance: none; display: inline-flex; align-items: center; justify-content: center; flex: none;
+    height: var(--aw-range-chip-h); padding: 0 var(--aw-space-block);
+    border: 1px solid var(--aw-zinc-600); border-radius: var(--aw-range-chip-radius);
+    background: transparent; color: var(--aw-zinc-400);
+    font-family: var(--aw-font-sans); font-size: var(--aw-fs-xs); line-height: var(--aw-lh-xs); font-weight: var(--aw-fw-bold);
+    white-space: nowrap;
+    transition: background-color var(--aw-dur-fast) var(--aw-ease-out), color var(--aw-dur-fast) var(--aw-ease-out), border-color var(--aw-dur-fast) var(--aw-ease-out);
+  }
+  button.aw-range-chip { cursor: pointer; }
+  .aw-range-chip.is-selected, .aw-range-chip[aria-pressed="true"] { background: var(--aw-positive); border-color: transparent; color: var(--aw-text-primary); }
+  /* a wrapping row of chips, 8 apart */
+  .aw-range-chip-row { display: flex; flex-wrap: wrap; gap: var(--aw-space-row); }
+
+  /* — specimen scaffold (not part of the component) — */
+  body { margin: 0; padding: 28px; min-height: 100vh; }
+  h1 { font-size: 15px; font-weight: 600; margin: 0 0 20px; color: #a1a1aa; letter-spacing: .02em; }
+  .spec { display: grid; gap: 22px; max-width: 402px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .stack { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 11px; color: #71717a; margin-bottom: 8px; }
+</style>
+</head>
+<body class="aw-root">
+
+  <h1>AuctionWire · Range chip</h1>
+  <div class="spec">
+    <div>
+      <div class="cap">Saved criteria (Save This Search · Mobile V3 15463:74065): the query is Selected, the filters Default</div>
+      <div class="aw-range-chip-row" style="max-width:354px">
+        <span class="aw-range-chip is-selected">“Mickey Mantle”</span><span class="aw-range-chip">Grade: PSA 6+</span><span class="aw-range-chip">Under $5,000</span><span class="aw-range-chip">All Auction Houses</span>
+      </div>
+    </div>
+    <div>
+      <div class="cap">Time range on a chart (interactive: buttons with aria-pressed)</div>
+      <div class="aw-range-chip-row">
+        <button type="button" class="aw-range-chip">1M</button><button type="button" class="aw-range-chip" aria-pressed="true">3M</button><button type="button" class="aw-range-chip">6M</button><button type="button" class="aw-range-chip">1Y</button><button type="button" class="aw-range-chip">All</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

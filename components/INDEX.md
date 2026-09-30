@@ -34,6 +34,7 @@ Status: **verified** = Checked against live Figma in a reproduction · **catalog
 | [Badge](badge.md) | `.aw-badge` | verified | [badge.html](badge.html) | A small pill count that sits on an icon, avatar or label to say how many new things are waiting. |
 | [Gated pill](gated-pill.md) | `.aw-gated-pill` | catalogued | in [listing-card.html](listing-card.html) | A raised pill with a label and an amber lock that marks a fact hidden behind a subscription, such as "Seller" or "PSA Grade". |
 | [Corner tag](corner-tag.md) | `.aw-corner-tag` | catalogued | [corner-tag.html](corner-tag.html) | A tiny uppercase label pinned to the corner of a card image: NEW, ENDING, or a countdown. |
+| [Range chip](range-chip.md) | `.aw-range-chip` | verified | [range-chip.html](range-chip.html) | An outlined 32px pill with a bold 12px label that names one criterion or time range; the chosen one is solid green. |
 
 ## Inputs & controls
 

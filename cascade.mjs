@@ -59,6 +59,7 @@ export const CASCADE = [
   "tabs",
   "badge",
   "corner-tag",
+  "range-chip",
   "fast-switcher",
   "menu",
   "image-block",

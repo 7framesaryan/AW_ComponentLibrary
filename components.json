@@ -21,7 +21,8 @@
       "stat-pill",
       "badge",
       "gated-pill",
-      "corner-tag"
+      "corner-tag",
+      "range-chip"
     ],
     "inputs-and-controls": [
       "search",
@@ -1277,6 +1278,24 @@
       },
       "figmaSource": "B7mJJRaFlVAfLKPTjz48aK#15445:67051 (Mobile V3 Wishlist Cards)",
       "verification": "built-from-mobile-v3-2026-09-29; not yet a kit component"
+    },
+    "range-chip": {
+      "name": "Range chip",
+      "category": "chips-and-badges",
+      "status": "verified",
+      "guide": "components/range-chip.md",
+      "class": "aw-range-chip",
+      "files": [
+        "components/range-chip.html"
+      ],
+      "contract": "components/range-chip.md",
+      "variants": {
+        "default": ".aw-range-chip",
+        "selected": ".aw-range-chip.is-selected",
+        "row": ".aw-range-chip-row"
+      },
+      "figmaSource": "B7mJJRaFlVAfLKPTjz48aK#15336:80391 (AW Mob / Range Chip)",
+      "verification": "verified-against-mobile-v3-2026-09-30 (15463:74065)"
     }
   }
 }
